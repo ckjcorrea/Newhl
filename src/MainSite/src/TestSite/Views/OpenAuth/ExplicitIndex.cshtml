@@ -1,0 +1,37 @@
+﻿@model TestSite.Models.ConsumerKeyModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<form action="/OpenAuth/GetRequestToken">
+     <div>
+        <label>Service Url</label>
+        <input type="text" name="serviceUri" value="@Model.EndpointModel.ServiceUri"/>   
+    </div>
+    <div>
+        <label>Get Request Token Url</label>
+        <input type="text" name="requestTokenUri" value="@Model.EndpointModel.RequestTokenUri"/>   
+    </div>
+    <div>
+        <label>Authorization Url</label>
+        <input type="text" name="authorizationUri" value="@Model.EndpointModel.AuthorizationUri"/>   
+    </div>
+    <div>
+        <label>AccessToken Url</label>
+        <input type="text" name="accessTokenUri" value="@Model.EndpointModel.AccessTokenUri"/>   
+    </div>          
+    <div>
+        <label>Consumer Key</label>
+        <input type="text" name="consumerKey" value="@Model.ConsumerKey"/>   
+    </div>
+    <div>
+        <label>Consumer Secret</label>
+        <input type="text" name="consumerSecret" value ="@Model.ConsumerSecret"/>   
+    </div>
+    <div>
+        <label>Callback Url</label>
+        <input type="text" name="callbackUrl" value="@Model.CallbackUrl"/>   
+    </div>
+    <input type="submit" />
+</form>

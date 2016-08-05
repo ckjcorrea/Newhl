@@ -1,0 +1,196 @@
+﻿@model Newhl.MainSite.Web.Models.ConfirmRegistrationModel
+@{
+    ViewBag.Title = "New England Womens Hockey League";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section headerPlugins
+{   
+    <link rel="stylesheet" type="text/css" href="shortcodes/shortcodes.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.min.js"></script>    
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<script>
+    function setHiddenPaymentAmt() {
+        var payAmt = document.getElementById("paymentAmount").value;
+        document.getElementById("amount").value = payAmt;
+}</script>
+
+
+}
+<section class="main__middle__container">
+    <div class="container">
+        <div class="row">
+            <section class="col-md-8 main-content">
+                <p id="feedback"></p>
+                <form role="form" id="regProgramForm" name="regProgramForm" method="post" action="/Programs/ConfirmPaymentOptions" class="regProgramForm">
+                    <div class="form-group">
+                        Below are your Registration details:<br />
+                        <div class="one_third">
+                            Name:
+                        </div>
+                        <div class="two_third column-last">
+                            @Model.PlayerRegistration.FirstName &nbsp; @Model.PlayerRegistration.LastName
+                        </div>
+                        <div class="dc_clear"></div>
+                        <br />
+                        <div class="one_third">
+                            Email Address:
+                        </div>
+                        <div class="two_third column-last">
+                            @Model.PlayerRegistration.Email
+
+                        </div>
+                        <div class="dc_clear"></div>
+                        <br />
+                        <div class="one_third">
+                            Programs Requested:
+                        </div>
+                        <div class="two_third column-last">
+                            @{ if (Model.PlayerRegistration.LTP == "yes")
+                                {  <p>Learn To Play - Monday - @Model.LTPPrice </p> <br />}
+                            }
+                            @{ if (Model.PlayerRegistration.Tuesday == "yes")
+                                {  <p>Rec SKills = Tuesday - @Model.TuesdayPrice </p> <br />}
+                            }
+                            @{ if (Model.PlayerRegistration.Wednesday == "yes")
+                                {  <p>C/D Skills  - Wednesday - @Model.WednesdayPrice </p> <br />}
+                            }
+                            @{ if (Model.PlayerRegistration.Stickhandling == "yes")
+                                {  <p>Stickhandling and Shooting - Thursday - @Model.StickhandlingPrice </p> <br />}
+                            }
+                            @{ if (Model.PlayerRegistration.Somerville == "yes")
+                                {  <p>Learn Somerville - Thursday PM - @Model.SomervillePrice </p> <br />}
+                            }
+                            @{ if (Model.PlayerRegistration.Games == "yes")
+                                {  <p>Games - Friday - @Model.GamesPrice </p> <br />}
+                            }
+                        </div>
+                        <div class="dc_clear"></div>
+                        <div class="one_third">
+                            Total Program Price:
+                        </div>
+                        <div class="two_third column-last">
+                            @Model.TotalPrice
+                        </div>
+                        <div class="dc_clear"></div>
+                        <br />
+                    </div><!--end form group-->
+
+                    <div class="form-group ">
+                        <br /><br />
+                        <p><strong>Select your payment portion:</ br></strong></p>
+                        <div class="one_fourth">
+                            <label for="50pct">50 Percent</label>
+                            @{ if (ViewBag.PaymentPortion == "50pct")
+                                {
+                                    <input type="radio" name="paymentPortion" id="50pct" value="50pct" checked="checked">}
+                                else
+                                {<input type="radio" name="paymentPortion" id="50pct" value="50pct"> }
+                            }<br>
+                        </div>
+                        <div class="one_fourth">
+                            <label for="100pct">100 Percent</label>
+                            @{ if (ViewBag.PaymentPortion == "100pct")
+                                {<input type="radio" name="paymentPortion" id="100pct" value="100pct" checked="checked">}
+                                else
+                                {<input type="radio" name="paymentPortion" id="100pct" value="100pct"> }
+                            }<br>
+                        </div>
+                        <div class="one_fourth">
+                            <label for="Other">Other</label>
+                            @{ if (ViewBag.PaymentPortion == "Other")
+                                {<input type="radio" name="paymentPortion" id="other" value="other" checked="checked"> }
+                                else
+                                {<input type="radio" name="paymentPortion" id="other" value="other"> }
+                            }<br>
+                        </div>
+                        <div class="one_fourth column-last">
+                            <label for="Other">Payment Amount:</label>
+                            <!--<input required type="number" class="form-control" id="paymentAmount" name="paymentAmount" value="@ViewBag.PaymentAmount">
+                            -->
+                            <input required type="text" class="form-control" id="paymentAmount" name="paymentAmount" value="@ViewBag.PaymentAmount" >
+
+                        </div>
+                    </div> <!--end form group-->
+                    <div class="dc_clear"></div>
+                    <div class="form-group">
+                        Enter payment type:
+                        <div class="one_fourth">
+                            <label for="cash">Cash</label>
+                            @{ if (ViewBag.PaymentType == "Cash")
+                                {<input type="radio" name="paymentType" id="cash" value="cash" checked="checked">}
+                                else
+                                {<input type="radio" name="paymentType" id="cash" value="cash"> }
+                            }<br>
+                        </div>
+                        <div class="one_fourth">
+                            <label for="cc">Credit Card</label>
+                            @{ if (ViewBag.PaymentType == "CreditCard")
+                                {<input type="radio" name="paymentType" id="cc" value="cc" checked="checked"> }
+                                else
+                                {<input type="radio" name="paymentType" id="cc" value="cc"> }
+                            }<br>
+                        </div>
+                        <div class="one_fourth">
+                            <label for="check">Check</label>
+                            @{ if (ViewBag.PaymentType == "Check")
+                                {
+                                    <input type="radio" name="paymentType" id="check" value="check" checked="checked">}
+                                else
+                                {<input type="radio" name="paymentType" id="check" value="check"> }
+                            }<br>
+                        </div>
+                        <div class="one_fourth column-last">
+                            <label for="check">Check Number:</label>
+                            <input type="number" class="form-control" id="checkNumber" name="checkNumber" value="@ViewBag.CheckNumber">
+                        </div>
+
+                        <!--Enter Check number or select PayPal option-->
+
+                    </div>
+                    <div class="dc_clear"></div>
+
+                    <p><input type="submit" value="Enter Payment" /></p>
+                    <!-- include complete payment button -->
+                </form>
+            </section>
+
+            <aside class="col-md-4">
+                <div class="form-group">
+                    <!-- DC PayPal Payment Link Start -->
+                    <form id="payPalSubmitForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <p>After entering payment amount, click on the button to make payment via PayPal</p>
+                        <input type="hidden" name="cmd" value="_xclick">
+                        <input type="hidden" name="business" value="KERRI@KERRIMACALUSO.COM">
+                        <input type="hidden" name="item_name" value="Newhl Registration">
+                        <input type="hidden" id="amount" name="amount" >
+                        <input type="hidden" name="currency_code" value="USD">
+                        <input type="hidden" name="button_subtype" value="products">
+                    </form>
+                    <a onclick="setHiddenPaymentAmt()">
+                        <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    </a>
+                    <!-- DC PayPal Payment Link End -->
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+  
+<script type="text/javascript">
+    function setHiddenPaymentAmt() {
+        var payAmount = jQuery("#paymentAmount").val();
+        jQuery("#amount").val(payAmount);
+        jQuery("#payPalSubmitForm").submit();
+    }
+</script>
+  

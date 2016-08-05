@@ -1,0 +1,58 @@
+USER
+about
+coaches
+players
+off-ice
+contact-us
+
+PROGRAMS
+learn to skate
+rec
+C-D
+Games
+
+APRIL-SHOWERS
+History
+Details
+RegTeam
+RegPlayer
+Accommodations
+Directions
+GameSchedule
+Results
+
+navbar default maxheight:150px
+
+NEWHLeague@gmail.com  PW: Kerriandsonya7
+groupPHoto 1920x702
+
+
+String FirstName, String LastName, String Email, String confirm, String USAHockeyNum, DateTime DOB, String Address1, String Address2, String City, String State, String Zip, String Phone1, String Phone2, String Emergency1, String Emergency2, int YearsExp, String Internet, String Referral, String Tournament, String Other, String LTP, String Tues, String Wed, String Stickhandling, String Games, DateCreated, UserStatus, Role, PasswordSalt, PasswordHash, PasswordHint)
+
+**create database
+**double check which way to save registration, which table to save registration
+
+
+need to add error checking that at least one program was chosen
+need to add pricing to website and hook up PayPal
+add confirm, address2, any other missing field
+Make sure model errors are coming across
+Use ViewBag to carry data from program controller to registerplayer page
+
+        /// <summary>
+        /// Register a new user with the site
+        /// </summary>
+        /// <param name="registerModel">The incoming parameters used to register the user</param>
+        /// <returns>The Registered user view</returns>
+        public ActionResult Register(RegisterModel registerModel)
+
+**RegisterModel
+**AMFUserLogin
+
+   Newhl.MainSite.DataLayer.Repositories.AMFUserRepository.GetByEmail(String emailAddress) in C:\NEWHL\src\MainSite\DataLayer\Repositories\AMFUserRepository.cs:65
+   Newhl.MainSite.BusinessLayer.Services.UserService.GetByEmail(String email) in C:\NEWHL\src\MainSite\BusinessLayer\Services\UserService.cs:217
+   Newhl.MainSite.Web.Controllers.ProgramsController.RegisterPlayer(String formAction, String FirstName, String LastName, String Email, String confirm, String USAHockeyNum, String DOB, String Address1, String Address2, String City, String State, String Zip, String Phone1, String Phone2, String Emergency1, String Emergency2, String YearsExp, String Level, String Internet, String Referral, String Tournament, String Other, String LTP, String Tues, String Wed, String Stickhandling, String Somerville, String Games, UserStatus userStatus, String PasswordHint) in C:\NEWHL\src\MainSite\Web\Controllers\Programs.cs:83
+
+line# 236 ul.dropdown-menu li {
+	border-bottom: 1px solid #3d3a44;
+}

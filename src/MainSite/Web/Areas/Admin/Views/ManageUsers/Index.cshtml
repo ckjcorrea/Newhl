@@ -1,0 +1,59 @@
+﻿@model Newhl.Common.Utilities.IPagedList<Newhl.MainSite.Common.DomainModel.AMFUserLogin>
+@{
+    ViewBag.Title = "Index";
+    ViewBag.SelectedTab = 2;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section headerPlugins
+{
+    <script src="@Url.Content("~/Scripts/Controllers/UserController.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/Pager.css")" rel="stylesheet" type="text/css" />
+}
+<div class="bodyContent" ng-controller="UserController" ng-init="getUsers()">
+    <div class="contentPageTitle">
+        <label>Manage Users</label>
+    </div>
+    <a href="/Admin/ManageUsers/Edit">Add User</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th width="20%">User</th>
+                <th width="20%">First Name</th>
+                <th width="20%">Last Name</th>
+                <th width="20%">Status</th>
+                <th width="20%">Role</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users.Results">
+                <td><a href="/Admin/ManageUsers/Edit/{{user.Id}}">{{user.Email}}</a></td>
+                <td>{{user.FirstName}}</td>
+                <td>{{user.LastName}}</td>
+                <td>{{user.UserStatus}}</td>
+                <td>{{user.Role}}</td>
+                <td>
+                    <div>
+                        <button type="button" class="btn-sm btn-primary"><a href="/Admin/ManageUsers/LoginHistory?userName={{user.Email}}">History</a></button>
+                    </div>
+                    <div>
+                        <a ng-click="deleteUser(user.Id)"><img src="/Content/Images/delete.png" height="25" width="25" /></a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/Admin/ManageUsers/Edit">Add User</a>
+    <div class="pager" ng-if="users">
+        <span ng-if="users.Paging.IsFirstPage" class="disabled">&lt;</span>
+        <a ng-if="!users.Paging.IsFirstPage" ng-click="getUsersByPage(users.Paging.PageNumber - 1)">&lt;</a>
+
+        <span ng-repeat="n in pages(users.Paging.PageCount)">
+            <span class="current" ng-if="users.Paging.PageNumber==n">{{n}}</span>
+            <a ng-if="users.Paging.PageNumber!=n" ng-click="getUsersByPage(n)">{{n}}</a>
+        </span>
+        <span ng-if="users.Paging.IsLastPage" class="disabled">&gt;</span>
+        <a ng-if="!users.Paging.IsLastPage" ng-click="getUsersByPage(users.Paging.PageNumber + 1)">&gt;</a>
+    </div>
+</div>
+

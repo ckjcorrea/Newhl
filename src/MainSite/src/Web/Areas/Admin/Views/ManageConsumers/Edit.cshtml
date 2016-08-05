@@ -1,0 +1,54 @@
+﻿
+@model AlwaysMoveForward.OAuth.Common.DomainModel.Consumer
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section headerPlugins
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#saveButton").click(function () {
+                $("#saveForm").submit();
+            });
+        });
+    </script>
+}
+<div>
+    @if (Model != null)
+    {
+        <form id="saveForm" action="/Admin/ManageConsumers/Save" method="post">
+            <div>
+                <span class="label">Consumer Key:</span>
+                <input type="text" readonly id='consumerKey' name="consumerKey" value="@Model.ConsumerKey"/>
+            </div>
+            <input type="hidden" name="consumerSecret" id="consumerSecret" value="@Model.ConsumerSecret"/>
+            <input type="hidden" name="publicKey" id="publicKey" value="@Model.PublicKey" />
+            <div>
+                <span class="label">Name:</span>
+                <input type="text" readonly id='name' name="name" value="@Model.Name" />
+            </div>
+            <div>
+                <span class="label">Contact Email:</span>
+                <input type="text" readonly id='contactEmail' name="contactEmail" value="@Model.ContactEmail" />
+            </div>            
+            <div>
+                <span class="label">Allow AutoGrant:</span>
+                <select name="autoGrant" id="autoGrant">
+                    <option value="true" @if (@Model.AutoGrant == true) { <text> selected </text> }>Yes</option>
+                    <option value="false" @if (@Model.AutoGrant == false) { <text> selected </text> }>No</option>
+                </select>
+            </div>
+            <div>
+                <span class="label">Token Lifetime:</span>
+                <input type="text" readonly id='accessTokenLifetime' name="accessTokenLifetime" value="@Model.AccessTokenLifetime" />
+            </div>
+            <br />
+            <button type="button" id="saveButton" class="btn btn-primary">Save</button>
+        </form>
+    }
+    else
+    {
+        <h1>Consumer not found</h1>
+    }
+</div>

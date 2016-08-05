@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dependencies name="VP.Digital.Common.Tools.EncryptionUtility" version="28.2.0.0">
+  <Assembly name="VP.Digital.Common.Tools.EncryptionUtility" version="28.2.0.0">
+    <References>
+      <Reference name="System.Windows.Forms" fullName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="mscorlib" fullName="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System" fullName="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="VP.Digital.Common" fullName="VP.Digital.Common, Version=28.2.0.0, Culture=neutral, PublicKeyToken=null" version="28.2.0.0" />
+      <Reference name="System.Drawing" fullName="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="4.0.0.0" />
+    </References>
+    <TypeReferences>
+      <From fullname="VP.Digital.Common.Tools.EncryptionUtility.EncryptionForm" path="e:\Work\Digital\digital\src\Common\Tools\EncryptionUtility\EncryptionForm.cs">
+        <To fullname="VP.Digital.Common.Utilities.Encryption.X509CertificateManager" assemblyname="VP.Digital.Common" assemblyversion="28.2.0.0" />
+        <To fullname="VP.Digital.Common.Utilities.Encryption.AESEncryptionManager" assemblyname="VP.Digital.Common" assemblyversion="28.2.0.0" />
+      </From>
+    </TypeReferences>
+    <Design>
+      <type fullName="VP.Digital.Common.Tools.EncryptionUtility.EncryptionForm" source="e:\Work\Digital\digital\src\Common\Tools\EncryptionUtility\EncryptionForm.cs" rfc="68" dit="7">
+        <block>
+          <element type="Field" name="aesEncryptionTab" />
+          <element type="Field" name="btnAESDecrypt" />
+          <element type="Field" name="btnAESEncrypt" />
+          <element type="Field" name="btnDecrypt" />
+          <element type="Field" name="btnEncrypt" />
+          <element type="Field" name="btnKeyStoreDecrypt" />
+          <element type="Field" name="btnKeyStoreEncrypt" />
+          <element type="Field" name="btnPrivateKeyFile" />
+          <element type="Field" name="btnPublicKeyFile" />
+          <element type="Field" name="keyFileEncryptionTab" />
+          <element type="Field" name="keyStoreEncryptionTab" />
+          <element type="Field" name="label1" />
+          <element type="Field" name="label10" />
+          <element type="Field" name="label12" />
+          <element type="Field" name="label13" />
+          <element type="Field" name="label14" />
+          <element type="Field" name="label15" />
+          <element type="Field" name="label2" />
+          <element type="Field" name="label3" />
+          <element type="Field" name="label4" />
+          <element type="Field" name="label5" />
+          <element type="Field" name="label6" />
+          <element type="Field" name="label7" />
+          <element type="Field" name="label8" />
+          <element type="Field" name="label9" />
+          <element type="Field" name="openFileDialog1" />
+          <element type="Field" name="tabPage1" />
+          <element type="Field" name="txtAESClearText" />
+          <element type="Field" name="txtAESEncryptedText" />
+          <element type="Field" name="txtAESEncryptionKey" />
+          <element type="Field" name="txtAESSalt" />
+          <element type="Field" name="txtCertificateName" />
+          <element type="Field" name="txtClearText" />
+          <element type="Field" name="txtEncryptedText" />
+          <element type="Field" name="txtKeyFilePassword" />
+          <element type="Field" name="txtKeyStoreClearText" />
+          <element type="Field" name="txtKeyStoreEncryptedText" />
+          <element type="Field" name="txtPrivateKeyFile" />
+          <element type="Field" name="txtPublicKeyFile" />
+          <element type="Field" name="txtStoreLocation" />
+          <element type="Field" name="txtStoreName" />
+          <element type="Method" name="System.Void btnAESDecrypt_Click(System.Object, System.EventArgs)" />
+          <element type="Method" name="System.Void btnAESEncrypt_Click(System.Object, System.EventArgs)" />
+          <element type="Method" name="System.Void btnDecrypt_Click(System.Object, System.EventArgs)" />
+          <element type="Method" name="System.Void btnEncrypt_Click(System.Object, System.EventArgs)" />
+          <element type="Method" name="System.Void btnKeyStoreDecrypt_Click(System.Object, System.EventArgs)" />
+          <element type="Method" name="System.Void btnKeyStoreEncrypt_Click(System.Object, System.EventArgs)" />
+          <element type="Method" name="System.Void btnPrivateKeyFile_Click(System.Object, System.EventArgs)" />
+          <element type="Method" name="System.Void btnPublicKeyFile_Click(System.Object, System.EventArgs)" />
+          <element type="Method" name="System.Void InitializeComponent()" />
+          <element type="Method" name="System.Boolean IsAESValid()" />
+          <element type="Method" name="System.Boolean IsKeyFileDecryptionValid()" />
+          <element type="Method" name="System.Boolean IsKeyFileEncryptionValid()" />
+          <element type="Method" name="System.Boolean IsKeyStoreValid()" />
+          <element type="Method" name="System.String ShowFileSelectDialog(System.String)" />
+        </block>
+      </type>
+      <type fullName="VP.Digital.Common.Tools.EncryptionUtility.Program" source="e:\Work\Digital\digital\src\Common\Tools\EncryptionUtility\Program.cs" rfc="4" dit="1" />
+      <type fullName="VP.Digital.Common.Tools.EncryptionUtility.Properties.Resources" source="e:\Work\Digital\digital\src\Common\Tools\EncryptionUtility\Properties\Resources.Designer.cs" rfc="0" dit="1" />
+      <type fullName="VP.Digital.Common.Tools.EncryptionUtility.Properties.Settings" source="e:\Work\Digital\digital\src\Common\Tools\EncryptionUtility\Properties\Settings.Designer.cs" rfc="0" dit="3" />
+      <type fullName="&lt;Module&gt;" source="" rfc="0" dit="0" />
+    </Design>
+  </Assembly>
+  <Assembly name="VP.Digital.Common" version="28.2.0.0">
+    <References>
+      <Reference name="mscorlib" fullName="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System.Configuration" fullName="System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="4.0.0.0" />
+      <Reference name="System.Data" fullName="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System" fullName="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="NLog" fullName="NLog, Version=2.0.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c" version="2.0.1.0" />
+      <Reference name="System.Xml" fullName="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System.Core" fullName="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+    </References>
+  </Assembly>
+  <Assembly name="NLog" version="2.0.1.0">
+    <References>
+      <Reference name="mscorlib" fullName="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System" fullName="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System.ServiceModel" fullName="System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System.Xml" fullName="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System.Windows.Forms" fullName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System.Drawing" fullName="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="4.0.0.0" />
+      <Reference name="System.Data" fullName="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System.Configuration" fullName="System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="4.0.0.0" />
+      <Reference name="System.Core" fullName="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+      <Reference name="System.Runtime.Serialization" fullName="System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="4.0.0.0" />
+    </References>
+  </Assembly>
+</Dependencies>

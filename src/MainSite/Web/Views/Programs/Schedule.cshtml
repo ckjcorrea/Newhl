@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "New England Womens Hockey League";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section headerPlugins
+{
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+}
+<section class="main__middle__container">
+    <div class="container recent-posts">
+        <h2 class="text-center"><span>Full Schedule</span></h2>
+        <p style="text-align:center">The schedules for all 2016-17 NEWHL Programs are listed below. The season begins on September 13. </p>
+        <br />
+
+        <div class="row no_padding no-margin text-center">
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%2300394d&amp;src=newhleague%40gmail.com&amp;color=%2300131a&amp;ctz=America%2FNew_York" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
+</section>

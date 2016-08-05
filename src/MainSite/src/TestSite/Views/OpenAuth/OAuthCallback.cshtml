@@ -1,0 +1,29 @@
+﻿@model TestSite.Models.RequestTokenModel
+@{
+    ViewBag.Title = "View1";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<form action="/OpenAuth/MakeOAuthRequest" method="post">
+    <div>
+        <label>Consumer Key</label>
+        <input type="text" name="consumerKey" value="@Model.ConsumerKey" />
+    </div>
+    <div>
+        <label>Access Token</label>
+        <input type="text" name="accessToken" value="@Model.Token"/>   
+    </div>
+    <div>
+        <label>Access Token Secret</label>
+        <input type="text" name="accessTokenSecret" value="@Model.Secret"/>   
+    </div>
+    <div>
+        <label>Endpoint Uri</label>
+        <input type="text" name="endpointUri" value="@Model.EndpointModel.ServiceUri"/>   
+    </div>
+    <div>
+        <label>Endpoint Action</label>
+        <input type="text" name="endpointAction" value="Social/ActiveOAuthTokens"/>   
+    </div>
+    <input type="submit" />
+</form>

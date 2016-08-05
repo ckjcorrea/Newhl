@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "New England Womens Hockey League";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section headerPlugins
+{   
+    <link rel="stylesheet" type="text/css" href="shortcodes/shortcodes.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.min.js"></script>    
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+}
+<section class="main__middle__container">
+    <div class="container">
+        <div class="row">
+            <section class="col-md-8 main-content">
+                <p id="feedback"></p>
+                <p>The payment amount entered is: @ViewBag.PaymentAmount</p>
+                <p>The payment type selected is: @ViewBag.PaymentType</p>
+            </section>
+            @if (ViewBag.PaymentType == "check")
+            {
+                <p>The payment amount entered is: @ViewBag.PaymentAmount</p>
+                <p>The check number entered is: @ViewBag.CheckNumber</p>
+            }
+            else
+            {
+            <aside class="col-md-4">
+                <div class="form-group">
+                    <!-- DC PayPal Payment Link Start -->
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <p>After entering payment amount, click on the button to make payment via PayPal</p>
+                        <input type="hidden" name="cmd" value="_xclick">
+                        <input type="hidden" name="business" value="KERRI@KERRIMACALUSO.COM">
+                        <input type="hidden" name="item_name" value="Newhl Registration">
+                        <input type="hidden" name="amount" value="@ViewBag.PaymentAmount" >
+                        <input type="hidden" name="currency_code" value="USD">
+                        <input type="hidden" name="button_subtype" value="products">
+                        <a onclick="setHiddenPaymentAmt()"><input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"></a>
+                    </form>
+                    <!-- DC PayPal Payment Link End -->
+                </div>
+            </aside> 
+            }
+        </div>
+    </div>
+</section>
+  

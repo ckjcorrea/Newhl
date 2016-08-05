@@ -1,0 +1,36 @@
+﻿@model AlwaysMoveForward.OAuth.Web.Models.TokenModel
+@{
+    ViewBag.Title = "GrantAccess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#approveButton").click(function(){
+            $("#approveAccessForm").submit();
+        });
+
+        $("#denyButton").click(function(){
+            $("#denyAccessForm").submit();
+        });
+    });
+</script>
+<div class="messaging-container">
+    <div id="ctlx2" class="panel panel-primary loginPanel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Would you like to grant @Model.ConsumerName access to your data?</h3>
+        </div>
+        <div class="panel-body">
+            <form id="approveAccessForm" action="/User/ApproveAccess" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="oauthToken" value="@Model.Token" />
+                <button type="button" id="approveButton" class="btn btn-primary">Approve</button>
+            </form>
+            <br/>
+            <form id="denyAccessForm" action="/User/DenyAccess" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="oauthToken" value="@Model.Token" />
+                <button type="button" id="denyButton" class="btn btn-danger">Deny</button>
+            </form>
+        </div>
+    </div>
+</div>

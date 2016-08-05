@@ -1,0 +1,84 @@
+﻿@model TestSite.Models.ConsumerKeyModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+<div style="width:80%;margin-left:10%">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>User Login</h3>
+        </div>
+        <div class="panel-body">
+                <form id="interactiveForm" action="/DevDefined/GetRequestToken">
+                     <div>
+                        <label for="serviceUri">Service Url</label>
+                        <input type="text" name="serviceUri" value="@Model.EndpointModel.ServiceUri"/>   
+                    </div>
+                    <div>
+                        <label for="requestTokenUri">Get Request Token Url</span>
+                        <input type="text" name="requestTokenUri" value="@Model.EndpointModel.RequestTokenUri"/>   
+                    </div>
+                    <div>
+                        <label for="authorizationUri">Authorization Url</span>
+                        <input type="text" name="authorizationUri" value="@Model.EndpointModel.AuthorizationUri"/>   
+                    </div>
+                    <div>
+                        <label for="accessTokenUri">AccessToken Url</span>
+                        <input type="text" name="accessTokenUri" value="@Model.EndpointModel.AccessTokenUri"/>   
+                    </div>          
+                    <div>
+                        <label for="consumerKey">Consumer Key</span>
+                        <input type="text" name="consumerKey" value="@Model.ConsumerKey"/>   
+                    </div>
+                    <div>
+                        <label for="consumerSecret">Consumer Secret</span>
+                        <input type="text" name="consumerSecret" value ="@Model.ConsumerSecret"/>   
+                    </div>
+                    <div>
+                        <label for="callbackUrl">Callback Url</span>
+                        <input type="text" name="callbackUrl" value="@Model.CallbackUrl"/>   
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Submit" />
+                </form>
+        </div>
+    </div>
+    <br />
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3>Inline Example</h3>
+        </div>
+        <div class="panel-body">
+            <form id="inlineForm" action="/DevDefined/GetInlineOAuthToken">
+                 <div>
+                    <label for="serviceUri">Service Url</span>
+                    <input type="text" name="serviceUri" value="@Model.EndpointModel.ServiceUri"/>   
+                </div>
+                <div>
+                    <label for="requestTokenUri">Get Request Token Url</span>
+                    <input type="text" name="requestTokenUri" value="@Model.EndpointModel.RequestTokenUri"/>   
+                </div>
+                <div>
+                    <label for="authorizationUri">Authorization Url</span>
+                    <input type="text" name="authorizationUri" value="@TestSite.Code.Constants.UnattendedAuthorizationUri"/>   
+                </div>
+                <div>
+                    <label for="accessTokenUri">AccessToken Url</span>
+                    <input type="text" name="accessTokenUri" value="@Model.EndpointModel.AccessTokenUri"/>   
+                </div>          
+                <div>
+                    <label for="consumerKey">Consumer Key</span>
+                    <input type="text" name="consumerKey" value="@Model.ConsumerKey"/>   
+                </div>
+                <div>
+                    <label for="consumerSecret">Consumer Secret</span>
+                    <input type="text" name="consumerSecret" value ="@Model.ConsumerSecret"/>   
+                </div>
+                <div>
+                    <label for="callbackUrl">Callback Url</span>
+                    <input type="text" name="callbackUrl" value="@Model.CallbackUrl"/>   
+                </div>
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </form>
+        </div>
+    </div>
+</div>

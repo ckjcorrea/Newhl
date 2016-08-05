@@ -1,0 +1,26 @@
+﻿@model TestSite.Models.RequestTokenModel
+@{
+    ViewBag.Title = "GetRequestToken";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<form action="/RestSharp/GetAccessToken">
+    <input type="hidden" name="consumerKey" value="@Model.ConsumerKey" />
+    <input type="hidden" name="consumerSecret" value="@Model.ConsumerSecret" />
+    <input type="hidden" name="requestTokenUri" value="@Model.EndpointModel.RequestTokenUri"/> 
+    <input type="hidden" name="authorizationUri" value="@Model.EndpointModel.AuthorizationUri"/>
+    <input type="hidden" name="accessTokenUri" value="@Model.EndpointModel.AccessTokenUri"/>   
+    <div>
+        <label>Request Token</label>
+        <input type="text" name="requestToken" value="@Model.Token"/>   
+    </div>
+    <div>
+        <label>Request Secret</label>
+        <input type="text" name="requestTokenSecret" value="@Model.Secret"/>   
+    </div>
+    <div>
+        <label>Verifier</label>
+        <input type="text" name="oauthVerifier"/>   
+    </div>
+    <input type="submit" />
+</form>

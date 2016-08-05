@@ -1,0 +1,21 @@
+﻿@model String
+<script type="text/javascript" src="@HttpContext.Current.Request.Url.Authority/Scripts/UI/SiteLogin.js"/>
+<div class="loginDiv">
+    <div id="loginFormsDiv">
+        <form id='loginForm' action="/User/Login" method='post'>
+            <div>
+                <span>
+                    <input type="submit" class="btn btn-sm btn-info" id="submitLoginButton" value="log in" />
+                </span>
+            </div>
+            <br />
+        </form>
+    </div>
+    <div id="forgotPasswordFormDiv" style="display:none">
+        <form id="forgotPasswordForm" action="/User/ForgotPassword" method="post">
+            <span class="loginLabel">Enter your email address and a new password will be sent to you.</span>
+            <input type="text" id="userEmail" name="userEmail" />
+            <input type="button" id="submitForgotPasswordButton" value="submit" onclick="SiteLogin.SubmitForgotPassword();" />
+        </form>
+    </div>
+</div>

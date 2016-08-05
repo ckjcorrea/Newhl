@@ -1,0 +1,29 @@
+﻿@model TestSite.Models.RequestTokenModel
+@{
+    ViewBag.Title = "View1";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<form action="/DevDefined/MakeOAuthRequest" method="post">
+    <div>
+        <label for="consumerKey">Consumer Key</label>
+        <input type="text" name="consumerKey" value="@Model.ConsumerKey" />
+    </div>
+    <div>
+        <label for="accessToken">Access Token</span>
+        <input type="text" name="accessToken" value="@Model.Token"/>   
+    </div>
+    <div>
+        <label for="accessTokenSecret">Access Token Secret</span>
+        <input type="text" name="accessTokenSecret" value="@Model.Secret"/>   
+    </div>
+    <div>
+        <label for="endpointUri">Endpoint Uri</span>
+        <input type="text" name="endpointUri" value="@Model.EndpointModel.ServiceUri"/>   
+    </div>
+    <div>
+        <label for="endpointAction">Endpoint Action</span>
+        <input type="text" name="endpointAction" value="User/Details"/>   
+    </div>
+    <input class="btn btn-primary" type="submit" />
+</form>

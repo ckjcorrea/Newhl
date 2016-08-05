@@ -1,0 +1,91 @@
+/****** Object:  Table [AMFOAuth].[AMFOAuth]    Script Date: 03/12/2015 12:16:42 ******/
+CREATE TABLE `LoginAttempts`(
+	`Id` BIGINT NOT NULL AUTO_INCREMENT,
+	`WasSuccessfull` bit NOT NULL,
+	`AttemptDate` datetime NOT NULL,
+	`Source` nvarchar(255) NOT NULL,
+	`UserName` nvarchar(255) NOT NULL,
+	PRIMARY KEY (`Id`),
+	UNIQUE INDEX `IX_LoginAttempts_Id` (`Id` ASC));
+
+CREATE INDEX `IX_LoginAttempts_UserName` ON `LoginAttempts` 
+(
+	`UserName` ASC
+);
+
+
+
+/****** Object:  Table [dbo].[AMFUsers]    Script Date: 07/30/2016 12:16:42 ******/
+CREATE TABLE `AMFUsers`(
+	`Id` BIGINT NOT NULL AUTO_INCREMENT,
+	`FirstName` nvarchar(30) NOT NULL,
+	`LastName` nvarchar(30) NOT NULL,
+	`Email` nvarchar(255) NOT NULL,
+	`USAHockeyNum` nvarchar (30) NOT NULL,
+	`DOB` datetime NOT NULL,
+	`Address1` nvarchar(255) NOT NULL,
+	`Address2` nvarchar(255) NOT NULL,
+	`City` nvarchar(50) NOT NULL,
+	`State` nvarchar(15) NOT NULL,
+	`Zip` nvarchar (10) NOT NULL,
+	`Phone1` nvarchar (12) NOT NULL,
+	`Phone2` nvarchar (12) NULL,
+	`Emergency1` nvarchar (12) NOT NULL,
+	`Emergency2` nvarchar (12) NOT NULL,
+	`YearsExp` int NOT NULL,
+	`Level` nvarchar (5) NOT NULL,
+	`Internet` nvarchar (5) NULL,
+	`Referral` nvarchar (5) NULL,
+	`Tournament` nvarchar (5) NULL,
+	`LTP` nvarchar (5) NULL,
+	`Tuesday` nvarchar (5) NULL,
+	`Wednesday` nvarchar (5) NULL,
+	`Stickhandling` nvarchar (5) NULL,
+	`Somerville` nvarchar (5) NULL,
+	`Games` nvarchar (5) NULL,
+	`DateCreated` datetime NOT NULL,
+	`UserStatus` int NOT NULL,
+	`Role` int NOT NULL,
+	PRIMARY KEY (`Id`),
+	UNIQUE INDEX `IX_AMFUsers_Id` (`Id` ASC));
+
+CREATE UNIQUE INDEX `IX_AMFUsers_Email` ON `AMFUsers` 
+(
+	`Email` ASC
+);
+
+
+/****** Object:  Table [dbo].[Programs]    Script Date: 07/30/2016 12:16:42 ******/
+CREATE TABLE `Programs`(
+	`Id` BIGINT NOT NULL AUTO_INCREMENT,
+	`ProgramName` nvarchar(30) NOT NULL,
+	`Day` nvarchar(15) NOT NULL,
+	`Location` nvarchar(15) NOT NULL,
+	`Price` long NOT NULL,
+	`StartDate` datetime  NOT NULL,
+	PRIMARY KEY (`Id`),
+	UNIQUE INDEX `IX_Programs_Id` (`Id` ASC));
+
+
+/****** Object:  Table [dbo].[ProgramRegistrations]    Script Date: 07/30/2016 12:16:42 ******/
+CREATE TABLE `ProgramRegistrations`(
+	`Id` BIGINT NOT NULL AUTO_INCREMENT,
+	`PlayerID` BIGINT NOT NULL NOT NULL,
+	`ProgramID` BIGINT NOT NULL NOT NULL,
+	`Season` nvarchar(15) nvarchar(15)
+	PRIMARY KEY (`Id`),
+	UNIQUE INDEX `IX_Programs_Id` (`Id` ASC));
+
+
+/****** Object:  Table [dbo].[Payments]    Script Date: 07/30/2016 12:16:42 ******/
+CREATE TABLE `Payments`(
+	`Id` BIGINT NOT NULL AUTO_INCREMENT,
+	`PlayerID` BIGINT NOT NULL NOT NULL,
+	`ProgramDays` nvarchar(128) NOT NULL NOT NULL,
+	`PaymentTotalDue` long NOT NULL,
+	`PaymentMethod` nvarchar(15) NOT NULL,
+	`CheckNumber` nvarchar(15) NULL,
+	`PaymentAmount` long NOT NULL,
+	`PaymentDate` datetime NOT NULL,
+	PRIMARY KEY (`Id`),
+	UNIQUE INDEX `IX_Payments_Id` (`Id` ASC));
