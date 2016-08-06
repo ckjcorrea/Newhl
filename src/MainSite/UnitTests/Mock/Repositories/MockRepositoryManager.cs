@@ -38,5 +38,21 @@ namespace Newhl.MainSite.UnitTests.Mock.Repositories
                 return this.mockLoginAttemptRepository.Object;
             }
         }
+
+        Mock<IProgramRepository> mockProgramRepository;
+
+        public IProgramRepository ProgramRepository
+        {
+            get
+            {
+                if (this.mockProgramRepository == null)
+                {
+                    this.mockProgramRepository = new Mock<IProgramRepository>();
+                    MockProgramRepository.ConfigureAllMethods(this.mockProgramRepository);
+                }
+
+                return this.mockProgramRepository.Object;
+            }
+        }
     }
 }

@@ -40,3 +40,29 @@ REFERENCES [dbo].[AMFUsers] ([Id])
 GO
 ALTER TABLE [dbo].[Payments] CHECK CONSTRAINT [FK_Payments_Users]
 GO
+
+DROP Table [dbo].[Programs]
+
+/****** Object:  Table [dbo].[Programs]    Script Date: 08/03/2016 12:39:43 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE TABLE [dbo].[Programs](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[DayOfWeek] [nvarchar](30) NOT NULL,
+	[StartTime] [nvarchar](30) NOT NULL,
+	[Price] DECIMAL(19,4) NOT NULL,
+	[StartDate] [datetime] NOT NULL,
+	[EndDate] [datetime] NOT NULL
+ CONSTRAINT [PK_Programs] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
