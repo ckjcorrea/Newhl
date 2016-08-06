@@ -922,6 +922,7 @@
     <Compile Include="Models\API\UsetDetailModel.cs" />
     <Compile Include="Models\ConfirmPaymentModel.cs" />
     <Compile Include="Models\ManagePaymentsModel.cs" />
+    <Compile Include="Models\ManageProgramsModel.cs" />
     <Compile Include="Models\PagedListModel.cs" />
     <Compile Include="Models\PagingModel.cs" />
     <Compile Include="Models\PasswordHintModel.cs" />
@@ -957,6 +958,7 @@
     <Content Include="Views\User\_UserDetails.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\Confirm.cshtml" />
+    <Content Include="Views\Programs\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

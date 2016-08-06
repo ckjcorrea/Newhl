@@ -31,5 +31,11 @@ namespace Newhl.MainSite.DataLayer.DTO
 
         [NHibernate.Mapping.Attributes.Property]
         public virtual DateTime EndDate { get; set; }
+
+        [NHibernate.Mapping.Attributes.Property]
+        public virtual bool IsActive { get; set; }
+
+        [NHibernate.Mapping.Attributes.Property]
+        public virtual string Location { get; set; }
     }
 }

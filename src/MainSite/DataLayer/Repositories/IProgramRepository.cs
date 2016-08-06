@@ -10,5 +10,6 @@ namespace Newhl.MainSite.DataLayer.Repositories
 {
     public interface IProgramRepository : INHibernateRepository<Program, long>
     {
+        IList<Program> GetAllActive();
     }
 }

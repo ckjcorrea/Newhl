@@ -22,6 +22,22 @@ namespace Newhl.MainSite.Web.Controllers
     /// </summary>
     public class ProgramsController : ControllerBase
     {
+        [MVCAuthorization]
+        public ActionResult Index()
+        {
+            if (this.CurrentPrincipal == null || this.CurrentPrincipal.IsAuthenticated == false)
+            {
+                return this.RedirectToAction("Signin", "User");
+            }
+            else
+            {
+                ManageProgramsModel retVal = new ManageProgramsModel();
+                retVal.Player = this.CurrentPrincipal.User;
+                retVal.ActivePrograms = this.ServiceManager.ProgramService.GetAll(true);
+
+                return this.View(retVal);
+            }
+        }
         /// <summary>
         /// Returns the LearnToPlay Programs page.
         /// </summary>

@@ -86,5 +86,21 @@ namespace Newhl.MainSite.BusinessLayer.Services
                 return this.paymentService;
             }
         }
+
+        private IProgramService programService;
+
+        public IProgramService ProgramService
+        {
+            get
+            {
+                if (this.programService == null)
+                {
+                    this.programService = new ProgramService(this.RepositoryManager.ProgramRepository);
+                }
+
+                return this.programService;
+            }
+        }
+        
     }
 }

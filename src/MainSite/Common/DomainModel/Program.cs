@@ -15,5 +15,9 @@ namespace Newhl.MainSite.Common.DomainModel
         public float Price { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public string Location { get; set; }
     }
 }

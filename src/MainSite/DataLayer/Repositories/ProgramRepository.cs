@@ -50,5 +50,12 @@ namespace Newhl.MainSite.DataLayer.Repositories
             criteria.Add(Expression.Eq("Id", id));
             return criteria.UniqueResult<DTO.Program>();
         }
+
+        public IList<Program> GetAllActive()
+        {
+            ICriteria criteria = ((UnitOfWork)this.UnitOfWork).CurrentSession.CreateCriteria<DTO.Program>();
+            criteria.Add(Expression.Eq("IsActive", true));
+            return this.GetDataMapper().Map(criteria.List<DTO.Program>());
+        }
     }
 }
