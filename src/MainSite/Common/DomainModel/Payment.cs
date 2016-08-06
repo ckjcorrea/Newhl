@@ -23,5 +23,7 @@ namespace Newhl.MainSite.Common.DomainModel
         public string VerificationIdentifier { get; set; }
 
         public string AdditionalDetails { get; set; }
+
+        public PaymentStates State { get; set; }
     }
 }

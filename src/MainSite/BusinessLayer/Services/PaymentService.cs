@@ -48,9 +48,59 @@ namespace Newhl.MainSite.BusinessLayer.Services
             return retVal;
         }
 
+
+        public Payment GetById(long paymentId)
+        {
+            return this.PaymentRepository.GetById(paymentId);
+        }
+
+        public bool CancelPromise(long userId, long paymentId)
+        {
+            bool retVal = false;
+
+            AMFUserLogin player = this.UserRepository.GetById(userId);
+
+            if(player!=null)
+            {
+                Payment targetPayment = this.PaymentRepository.GetById(paymentId);
+
+                if(targetPayment != null)
+                {
+                    if(targetPayment.Player.Id == player.Id && targetPayment.State == PaymentStates.Promised)
+                    {
+                        retVal = this.PaymentRepository.Delete(targetPayment);
+                    }
+                }
+            }
+
+            return retVal;
+        }
+        public Payment ConfirmPromise(long userId, long paymentId)
+        {
+            Payment retVal = null;
+
+            AMFUserLogin player = this.UserRepository.GetById(userId);
+
+            if (player != null)
+            {
+                retVal = this.PaymentRepository.GetById(paymentId);
+
+                if (retVal != null)
+                {
+                    if (retVal.Player.Id == player.Id && retVal.State == PaymentStates.Promised)
+                    {
+                        retVal.State = PaymentStates.Confirmed;
+                        retVal = this.PaymentRepository.Save(retVal);
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
         public Payment VerifyUserPayment()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

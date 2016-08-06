@@ -50,6 +50,7 @@
     <Compile Include="DomainModel\Payment.cs" />
     <Compile Include="DomainModel\PaymentMethods.cs" />
     <Compile Include="DomainModel\PaymentPortions.cs" />
+    <Compile Include="DomainModel\PaymentStates.cs" />
     <Compile Include="DomainModel\PlayerLevel.cs" />
     <Compile Include="DomainModel\Program.cs" />
     <Compile Include="DomainModel\RoleType.cs" />

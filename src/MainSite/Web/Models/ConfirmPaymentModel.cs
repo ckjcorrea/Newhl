@@ -10,7 +10,5 @@ namespace Newhl.MainSite.Web.Models
     {
         public AMFUserLogin PlayerInfo { get; set; }
         public Payment PaymentDetails { get; set; }
-
-        public PaymentPortions DesiredPortion { get; set; }
     }
 }

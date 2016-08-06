@@ -67,3 +67,5 @@ CREATE TABLE [dbo].[Programs](
 ) ON [PRIMARY]
 
 GO
+
+ALTER Table [dbo].[Payments] ADD PaymentState Integer NOT NULL Default 0

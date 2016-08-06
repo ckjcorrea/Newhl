@@ -199,7 +199,8 @@ namespace Newhl.MainSite.Web.Controllers
                     retVal = newPlayer;
                 }
 
-                return this.View(retVal);
+                this.SetCurrentUser(retVal);
+                return this.View("Manage", retVal);
             }
             else
             {
@@ -209,14 +210,14 @@ namespace Newhl.MainSite.Web.Controllers
 
 
 
-    /// <summary>
-    /// Logs a user into the system and authorizes a request token
-    /// </summary>
-    /// <param name="userName">The username to log in</param>
-    /// <param name="password">The users password to sign in</param>
-    /// <param name="oauthToken">The oauth token to authorize</param>
-    /// <returns>The Grant Access view or the sign in screen again</returns>
-    [ValidateAntiForgeryToken]
+        /// <summary>
+        /// Logs a user into the system and authorizes a request token
+        /// </summary>
+        /// <param name="userName">The username to log in</param>
+        /// <param name="password">The users password to sign in</param>
+        /// <param name="oauthToken">The oauth token to authorize</param>
+        /// <returns>The Grant Access view or the sign in screen again</returns>
+        [ValidateAntiForgeryToken]
         public ActionResult ProcessSignin(string userName, string password, string oauthToken)
         {
             if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
@@ -228,15 +229,15 @@ namespace Newhl.MainSite.Web.Controllers
                 {
                     this.SetCurrentUser(user);
 
-                    if(this.CurrentPrincipal.IsInRole(RoleType.Names.Administrator))
+                    if (this.CurrentPrincipal.IsInRole(RoleType.Names.Administrator))
                     {
                         return this.Redirect("/Admin/Management/Index");
                     }
-                    else 
+                    else
                     {
                         return this.View("Manage", user);
                     }
-                }               
+                }
             }
 
             return this.Signin();
@@ -303,6 +304,7 @@ namespace Newhl.MainSite.Web.Controllers
         /// </summary>
         /// <param name="registerModel">The incoming parameters used to register the user</param>
         /// <returns>The Registered user view</returns>
+        [MVCAuthorization]
         public ActionResult Edit(AMFUserLogin registerModel)
         {
             AMFUserLogin registeredUser = null;

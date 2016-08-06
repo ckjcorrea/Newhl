@@ -113,22 +113,12 @@
                                 @foreach (Payment payment in Model.Payments)
                                 {
                                     <tr>
-                                        <td>
-                                            @payment.DateSubmitted
-                                        </td>
-                                        <td>
-                                            @payment.Amount
-                                </td>
-                                <td>
-                                    @payment.DateVerified
-                                </td>
-                                <td>
-                                    @payment.PaymentMethod
-                                </td>
-                                <td>
-                                    @payment.AdditionalDetails
-                                </td>
-                            </tr>
+                                        <td>@payment.DateSubmitted</td>
+                                        <td>@payment.Amount</td>
+                                        <td>@payment.DateVerified</td>
+                                        <td>@payment.PaymentMethod</td>
+                                        <td>@payment.AdditionalDetails</td>
+                                    </tr>
                                 }
                             </tbody>
                         </table>

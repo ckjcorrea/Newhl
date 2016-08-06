@@ -25,6 +25,14 @@
             document.location.href = "/Registration/Start";
         }
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#registerSubmitButton").click(function () {
+                $("#registerPlayerForm").submit();
+            });
+        });
+    </script>
 }
 
 <section class="main__middle__container">
@@ -39,18 +47,14 @@
                         <p id="feedback"></p>
                         <form role="form" id="registerPlayerForm" name="registerPlayerForm" method="post" action="/User/ProcessRegistration" class="registerPlayerForm">
                             <div class="form-group ">
-                                @{if ((ViewBag.exists != null) || (ViewData.ContainsKey("playerExists")))
-                                    {<p>
-                            <strong>
-                                There is a registration entered for a player with this email address. If you are updating your current registration,
-                                please click the <a href="/User/Signin">log in</a>, otherwise check spelling and re-enter email address and try again.
-                            </strong>
-                        </p>
-                        <div class="dc_clear"></div>
-                        <p>
-                            <input type="button" value="Update Registration" onclick="javascript:handleUpdateButton();" /> &nbsp;&nbsp;
-                        </p>
-                                    }
+                                @if ((ViewBag.exists != null) || (ViewData.ContainsKey("playerExists")))
+                                {
+                                    <p>
+                                        <strong>
+                                            There is a registration entered for a player with this email address. If you are updating your current registration,
+                                            please click the <a href="/User/Signin">log in</a>, otherwise check spelling and re-enter email address and try again.
+                                        </strong>
+                                    </p>
                                 }
                                 <div class="dc_clear"></div>
 
@@ -68,7 +72,7 @@
                                 Html.RenderPartial("_UserDetails", Model);
                             }
                             <div class="dc_clear"></div>
-                            <p><input type="submit" value="Save" /></p>
+                            <p><button type="button" id="registerSubmitButton" class="btn btn-primary">Register</button></p>
                         </form> <!--end form-->
                     </section>
                 </div>

@@ -10,6 +10,15 @@
             $("#saveButton").click(function () {
                 $("#saveForm").submit();
             });
+
+            $("#confirmPaymentButton").click(function () {
+                alert("Thank you for your payment");
+                $("#confirmPaymentForm").submit();
+            });
+
+            $("#redoPaymentButton").click(function() {
+                $("#redoPaymentForm").submit();
+            });
         });
     </script>
 }
@@ -18,7 +27,7 @@
         <div class="form-group ">
             <br /><br />
             <div class="row">
-                PaymentPortion: @Model.DesiredPortion;
+                Payment Amount: @Model.PaymentDetails.Amount
             </div>
             <div class="row">
                 Payment Method: @Model.PaymentDetails.PaymentMethod
@@ -40,22 +49,26 @@
                             </form>
                             </text>
                             break;
-                    }
                 }
-            </div>
-            <div class="one_fourth">
-                <br>
-                Payment Amount: @Model.PaymentDetails.Amount
-            </div>
-            <div class="one_fourth">
-
             </div>
         </div> <!--end form group-->
         
         <div class="dc_clear"></div>
 
-        <p><input type="submit" value="Enter Payment" /></p>
+        @if(Model.PaymentDetails.PaymentMethod!=PaymentMethods.Paypal)
+        {
+            <p>Does everything look correct about this payment? Or would you like to cancel this, go back and set your payment up differently?</p>
+            <span>
+                <button type="button" id="redoPaymentButton" class="btn btn-primary">Cancel</button>
+                <button type="button" id="confirmPaymentButton" class="btn btn-primary">Confirm</button>         
+            </span>            
+        }
         <!-- include complete payment button -->
+        <form id="redoPaymentForm" action="/Payment/CancelPromise" method="POST">
+            <input type="hidden" id="paymentId" name="paymentId" value="@Model.PaymentDetails.Id"/>
+        </form>
+        <form id="confirmPaymentForm" action="/Payment/ConfirmPromise" method="POST">
+            <input type="hidden" id="paymentId" name="paymentId" value="@Model.PaymentDetails.Id" />
         </form>
 </section>
 
