@@ -143,7 +143,10 @@
     <Content Include="Content\Images\content__images\FirstStep.jpg" />
     <Content Include="Content\Images\content__images\FistBump.jpg" />
     <Content Include="Content\Images\content__images\FlagsK.jpg" />
+    <Content Include="Content\Images\content__images\KellySledUp.jpg" />
     <Content Include="Content\Images\content__images\rink-map.jpg" />
+    <Content Include="Content\Images\content__images\ShootingDemoUp.jpg" />
+    <Content Include="Content\Images\content__images\SledDemoUp.jpg" />
     <Content Include="Content\Images\rink-map.jpg" />
     <Content Include="Content\Images\slider\GamePanCropped.jpg" />
     <Content Include="Content\Images\slider\GamePan.jpg" />
@@ -160,7 +163,6 @@
     <Content Include="Content\Images\content__images\WhiteBench.jpg" />
     <Content Include="Content\Images\slider\KellyJenCropped.jpg" />
     <Content Include="Content\Images\slider\KellyJen.jpg" />
-    <Content Include="Content\Images\content__images\KellySled.JPG" />
     <Content Include="Content\Images\content__images\laurie.jpg" />
     <Content Include="Content\Images\content__images\MarciaDee.jpg" />
     <Content Include="Content\Images\content__images\MoSled.JPG" />
@@ -184,8 +186,6 @@
     <Content Include="Content\Images\content__images\puck-hogs2.jpg" />
     <Content Include="Content\Images\content__images\RaceToPuck.jpg" />
     <Content Include="Content\Images\content__images\RaceToPuck2.jpg" />
-    <Content Include="Content\Images\content__images\ShootingDemo.JPG" />
-    <Content Include="Content\Images\content__images\SledDemo.JPG" />
     <Content Include="Content\Images\content__images\Somerville.jpg" />
     <Content Include="Content\Images\content__images\summer-program.png" />
     <Content Include="Content\Images\content__images\TinaSave.jpg" />
