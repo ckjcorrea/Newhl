@@ -15,6 +15,32 @@
             </div>
             <div class="panel-body">
                 <section class="col-md-8 main-content">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Start Date</th>
+                                <th>Start Time</th>
+                                <th>End Date</th>
+                                <th>Selected</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Program program in Model.ActivePrograms)
+                            {
+                                <tr>
+                                    <td>@program.Name</td>
+                                    <td>@program.Price</td>
+                                    <td>@program.StartDate</td>
+                                    <td>@program.StartTime</td>
+                                    <td>@program.EndDate</td>
+                                    <td><input type="checkbox" name="userSelected"/></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
                 </section>
             </div>
         </div>

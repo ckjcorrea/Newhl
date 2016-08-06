@@ -71,6 +71,18 @@ namespace Newhl.MainSite.Web.Controllers
             return this.View(retVal);
         }
 
+        [MVCAuthorization]
+        public ActionResult Manage()
+        {
+            if (this.CurrentPrincipal == null || this.CurrentPrincipal.IsAuthenticated == false)
+            {
+                return this.RedirectToAction("Signin", "User");
+            }
+            else
+            {
+                return this.View(this.CurrentPrincipal.User);
+            }
+        }
 
         public void ValidateUserRegistration(AMFUserLogin playerInfo)
         {
