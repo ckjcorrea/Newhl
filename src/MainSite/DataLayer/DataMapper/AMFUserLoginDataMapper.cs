@@ -38,8 +38,7 @@ namespace Newhl.MainSite.DataLayer.DataMapper
             existingMap = Mapper.FindTypeMapFor<AMFUserLogin, DTO.AMFUser>();
             if (existingMap == null)
             {
-                AutoMapper.Mapper.CreateMap<AMFUserLogin, DTO.AMFUser>()
-                    .ForMember(dest => dest.Payments, src => src.ResolveUsing<PaymentDTOListResolver>());
+                AutoMapper.Mapper.CreateMap<AMFUserLogin, DTO.AMFUser>();
             }
 
             existingMap = Mapper.FindTypeMapFor<DTO.AMFUser, AMFUserLogin>();
@@ -47,8 +46,6 @@ namespace Newhl.MainSite.DataLayer.DataMapper
             {
                 AutoMapper.Mapper.CreateMap<DTO.AMFUser, AMFUserLogin>();
             }
-
-            PaymentDataMapper.ConfigureAutoMapper();
         }
 
         /// <summary>
@@ -71,11 +68,6 @@ namespace Newhl.MainSite.DataLayer.DataMapper
         public override DTO.AMFUser Map(AMFUserLogin source, DTO.AMFUser destination)
         {
             DTO.AMFUser retVal = AutoMapper.Mapper.Map(source, destination);
-
-            foreach (DTO.Payment currentListItem in retVal.Payments)
-            {
-                currentListItem.Player = retVal;
-            }
 
             return retVal;
         }

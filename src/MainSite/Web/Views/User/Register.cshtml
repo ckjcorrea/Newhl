@@ -29,13 +29,18 @@
 
 <section class="main__middle__container">
     <div class="container">
-        <div class="row">
-            <section class="col-md-8 main-content">
-                <p id="feedback"></p>
-                <form role="form" id="registerPlayerForm" name="registerPlayerForm" method="post" action="/User/ProcessRegistration" class="registerPlayerForm">
-                    <div class="form-group ">
-                        @{if ((ViewBag.exists != null) || (ViewData.ContainsKey("playerExists")))
-                            {<p>
+        <div id="ctlx2" class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Register with NEWHL</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <section class="col-md-8 main-content">
+                        <p id="feedback"></p>
+                        <form role="form" id="registerPlayerForm" name="registerPlayerForm" method="post" action="/User/ProcessRegistration" class="registerPlayerForm">
+                            <div class="form-group ">
+                                @{if ((ViewBag.exists != null) || (ViewData.ContainsKey("playerExists")))
+                                    {<p>
                             <strong>
                                 There is a registration entered for a player with this email address. If you are updating your current registration,
                                 please click the <a href="/User/Signin">log in</a>, otherwise check spelling and re-enter email address and try again.
@@ -45,27 +50,29 @@
                         <p>
                             <input type="button" value="Update Registration" onclick="javascript:handleUpdateButton();" /> &nbsp;&nbsp;
                         </p>
-                            }
-                        }
-                        <div class="dc_clear"></div>
+                                    }
+                                }
+                                <div class="dc_clear"></div>
 
-                        @{ Html.ValidationMessage("exists");}
-                        @{ Html.ValidationMessage("requested"); }
-                        @{Html.ValidationMessage("FirstName"); }
-                        @{Html.ValidationMessage("LastName"); }
-                        @{Html.ValidationMessage("confirmEmail"); }
-                        @{Html.ValidationMessage("Password"); }
-                        @{Html.ValidationMessage("PwdConfirm"); }
-                        @{Html.ValidationMessage("SiteName"); }
-                        @{Html.ValidationMessage("Phone"); }
-                    </div>
-                    @{
-                        Html.RenderPartial("_UserDetails", Model);
-                    }
-                    <div class="dc_clear"></div>
-                    <p><input type="submit" value="Save" /></p>
-                </form> <!--end form-->
-            </section>
+                                @{ Html.ValidationMessage("exists");}
+                                @{ Html.ValidationMessage("requested"); }
+                                @{Html.ValidationMessage("FirstName"); }
+                                @{Html.ValidationMessage("LastName"); }
+                                @{Html.ValidationMessage("confirmEmail"); }
+                                @{Html.ValidationMessage("Password"); }
+                                @{Html.ValidationMessage("PwdConfirm"); }
+                                @{Html.ValidationMessage("SiteName"); }
+                                @{Html.ValidationMessage("Phone"); }
+                            </div>
+                            @{
+                                Html.RenderPartial("_UserDetails", Model);
+                            }
+                            <div class="dc_clear"></div>
+                            <p><input type="submit" value="Save" /></p>
+                        </form> <!--end form-->
+                    </section>
+                </div>
+            </div>
         </div>
     </div>
 </section>

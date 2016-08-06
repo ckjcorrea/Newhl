@@ -61,6 +61,7 @@
     <Compile Include="IntegrationTests\RepositoryTests\LoginAttemptRepositoryTest.cs" />
     <Compile Include="IntegrationTests\RepositoryTests\RepositoryTestBase.cs" />
     <Compile Include="Mock\MockServiceManagerBuilder.cs" />
+    <Compile Include="Mock\Repositories\MockPaymentRepository.cs" />
     <Compile Include="Mock\Repositories\MockProgramRepository.cs" />
     <Compile Include="Mock\Repositories\MockUserRepositoryHelper.cs" />
     <Compile Include="Mock\Repositories\MockLoginAttemptRepository.cs" />

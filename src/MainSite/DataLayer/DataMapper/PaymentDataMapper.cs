@@ -19,8 +19,7 @@ namespace Newhl.MainSite.DataLayer.DataMapper
         {
             if (AutoMapper.Mapper.FindTypeMapFor<Payment, DTO.Payment>() == null)
             {
-                AutoMapper.Mapper.CreateMap<Payment, DTO.Payment>()
-                    .ForMember(dest => dest.Player, opt => opt.Ignore());
+                AutoMapper.Mapper.CreateMap<Payment, DTO.Payment>();
             }
 
             if (AutoMapper.Mapper.FindTypeMapFor<DTO.Payment, Payment>() == null)

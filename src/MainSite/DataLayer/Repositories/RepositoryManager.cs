@@ -80,5 +80,20 @@ namespace Newhl.MainSite.DataLayer.Repositories
                 return this.programRepository;
             }
         }
+
+        private IPaymentRepository paymentRepository;
+
+        public IPaymentRepository PaymentRepository
+        {
+            get
+            {
+                if (this.paymentRepository == null)
+                {
+                    this.paymentRepository = new PaymentRepository(this.UnitOfWork);
+                }
+
+                return this.paymentRepository;
+            }
+        }
     }
 }

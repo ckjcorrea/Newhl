@@ -25,7 +25,10 @@ namespace Newhl.MainSite.Web.Controllers
             }
             else
             {
-                return this.View(this.CurrentPrincipal.User);
+                ManagePaymentsModel retVal = new ManagePaymentsModel();
+                retVal.Player = this.CurrentPrincipal.User;
+                retVal.Payments = this.ServiceManager.PaymentService.GetByPlayerId(retVal.Player.Id);
+                return this.View(retVal);
             }
         }
 
@@ -40,7 +43,7 @@ namespace Newhl.MainSite.Web.Controllers
             {
                 ConfirmPaymentModel retVal = new ConfirmPaymentModel();
 
-                retVal.PaymentDetails = this.ServiceManager.UserService.MakePayment(this.CurrentPrincipal.User.Id, paymentMethod, paymentAmount, checkNumber);
+                retVal.PaymentDetails = this.ServiceManager.PaymentService.AddUserPayment(this.CurrentPrincipal.User.Id, paymentMethod, paymentAmount, checkNumber);
                 retVal.DesiredPortion = paymentPortion;
                 retVal.PlayerInfo = this.CurrentPrincipal.User;
 

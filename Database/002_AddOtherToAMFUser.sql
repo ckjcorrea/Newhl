@@ -58,7 +58,8 @@ CREATE TABLE [dbo].[Programs](
 	[StartTime] [nvarchar](30) NOT NULL,
 	[Price] DECIMAL(19,4) NOT NULL,
 	[StartDate] [datetime] NOT NULL,
-	[EndDate] [datetime] NOT NULL
+	[EndDate] [datetime] NOT NULL,
+	[IsActive] [bit] NOT NULL
  CONSTRAINT [PK_Programs] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

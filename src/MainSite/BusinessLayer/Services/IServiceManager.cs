@@ -23,6 +23,8 @@ namespace Newhl.MainSite.BusinessLayer.Services
         IUserService UserService { get; }
 
         IEmailService EmailService { get; }
+
+        IPaymentService PaymentService { get; }
     }
 }
 

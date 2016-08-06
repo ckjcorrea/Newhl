@@ -360,20 +360,5 @@ namespace Newhl.MainSite.BusinessLayer.Services
 
             return retVal;
         }
-
-        public Payment MakePayment(long playerId, PaymentMethods paymentMethod, decimal paymentAmount, string additionalDetails)
-        {
-            AMFUserLogin targetUser = this.UserRepository.GetById(playerId);
-            Payment retVal = targetUser.AddPayment(paymentAmount, paymentMethod, additionalDetails);
-
-            targetUser = this.UserRepository.Save(targetUser);
-
-            if(targetUser == null)
-            {
-                retVal = null;
-            }
-
-            return retVal;
-        }
     }
 }

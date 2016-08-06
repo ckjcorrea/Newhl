@@ -224,10 +224,5 @@ namespace Newhl.MainSite.DataLayer.DTO
         /// </summary>
         [NHibernate.Mapping.Attributes.Property]
         public virtual string PasswordHint { get; set; }
-
-        [NHibernate.Mapping.Attributes.Bag(0, Table = "Payments", Cascade = "Save-Update")]
-        [NHibernate.Mapping.Attributes.Key(1, Column = "PlayerId")]
-        [NHibernate.Mapping.Attributes.OneToMany(2, ClassType = typeof(DTO.Payment))]
-        public virtual IList<DTO.Payment> Payments { get; set; }
     }
 }

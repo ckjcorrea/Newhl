@@ -111,7 +111,5 @@ namespace Newhl.MainSite.BusinessLayer.Services
         void ResetPassword(string userEmail, EmailConfiguration emailConfig);
 
         bool Delete(long id);
-
-        Payment MakePayment(long playerId, PaymentMethods paymentMethod, decimal paymentAmount, string additionalDetails);
     }
 }

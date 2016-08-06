@@ -21,5 +21,7 @@ namespace Newhl.MainSite.DataLayer.Repositories
         ILoginAttemptRepository LoginAttemptRepository { get; }
 
         IProgramRepository ProgramRepository { get; }
+
+        IPaymentRepository PaymentRepository { get; }
     }
 }

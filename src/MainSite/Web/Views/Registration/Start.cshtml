@@ -17,17 +17,28 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-}
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#registerUserButton").click(function () {
+                document.location.href="/User/Register"
+            });
+
+            $("#loginButton").click(function () {
+                document.location.href="/User/Signin"
+            });
+        });
+    </script>
+}
 <section class="main__middle__container">
     <div class="container">
         <div class="row">
             <section class="col-md-8 main-content">
-                <form id="checkEmailForm" method="post" action="/User/Register">
-                    <p>If you don't already have an account, please register first, or <a href="/User/Signin">Log in</a></p>
-                    <input type="text" id="email" name="email" />
-                    <input type="submit" value="Register" /> 
-                </form>
+                <p>If you don't already have an account, please sign up with the site first.  Otherwise go to the log in page, log in, and begin selecting your program</p>
+                <div class="row">
+                    <button type="button" id="registerUserButton" class="btn btn-primary">Sign up with NEWHL</button></p>
+                    <button type="button" id="loginButton" class="btn btn-primary">Log In</button></p>
+                </div>
             </section>
         </div>
     </div>

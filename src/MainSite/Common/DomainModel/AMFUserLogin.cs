@@ -120,26 +120,5 @@ namespace Newhl.MainSite.Common.DomainModel
         public string Stickhandling { get; set; }
         public string Somerville { get; set; }
         public string Games { get; set; }
-
-        public IList<Payment> Payments { get; set; }
-
-        public Payment AddPayment(decimal amount, PaymentMethods paymentMethod, string additionalDetails)
-        {
-            if (this.Payments == null)
-            {
-                this.Payments = new List<Payment>();
-            }
-
-            Payment newPayment = new Payment();
-            newPayment.Amount = amount;
-            newPayment.DateSubmitted = DateTime.Now;
-            newPayment.PaymentMethod = paymentMethod;
-            newPayment.AdditionalDetails = additionalDetails;
-            newPayment.Player = this;
-
-            this.Payments.Add(newPayment);
-
-            return newPayment;
-        }
     }
 }
