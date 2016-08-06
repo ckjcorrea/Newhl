@@ -109,7 +109,7 @@ namespace Newhl.MainSite.Common.DomainModel
         public string Emergency1 { get; set; }
         public string Emergency2 { get; set; }
         public string YearsExp { get; set; }
-        public string Level { get; set; }
+        public PlayerLevel Level { get; set; }
         public string Internet { get; set; }
         public string Referral { get; set; }
         public string Tournament { get; set; }
@@ -121,5 +121,25 @@ namespace Newhl.MainSite.Common.DomainModel
         public string Somerville { get; set; }
         public string Games { get; set; }
 
+        public IList<Payment> Payments { get; set; }
+
+        public Payment AddPayment(decimal amount, PaymentMethods paymentMethod, string additionalDetails)
+        {
+            if (this.Payments == null)
+            {
+                this.Payments = new List<Payment>();
+            }
+
+            Payment newPayment = new Payment();
+            newPayment.Amount = amount;
+            newPayment.DateSubmitted = DateTime.Now;
+            newPayment.PaymentMethod = paymentMethod;
+            newPayment.AdditionalDetails = additionalDetails;
+            newPayment.Player = this;
+
+            this.Payments.Add(newPayment);
+
+            return newPayment;
+        }
     }
 }

@@ -64,11 +64,28 @@ namespace Newhl.MainSite.BusinessLayer.Services
             return retVal;
         }
 
-        public AMFUserLogin Register(String FirstName, String LastName, String Email, String USAHockeyNum, String DOB, String Address1, String Address2, String City, String State, String ZipCode, String Phone1, String Phone2, String Emergency1, String Emergency2, String YearsExp, String Level, String Internet, String Referral, String Tournament, String Other, String LTP, String Tues, String Wed, String Stickhandling, String Somerville, String Games, DateTime dateCreated, UserStatus userStatus, String passwordHint)
+        public AMFUserLogin Register(String firstName, String lastName, String userName, string password, string passwordHint, String USAHockeyNum, String DOB, String Address1, String Address2, String City, String State, String ZipCode, String Phone1, String Phone2, String Emergency1, String Emergency2, String YearsExp, PlayerLevel playerLevel, String Internet, String Referral, String Tournament, String Other)
         {
             AMFUserLogin retVal = null;
 
-            AMFUserLogin userLogin = UserFactory.Create(FirstName, LastName, Email, USAHockeyNum, DOB, Address1, Address2, City, State, ZipCode, Phone1, Phone2, Emergency1, Emergency2, YearsExp, Level, Internet, Referral, Tournament, Other, LTP, Tues, Wed, Stickhandling, Somerville, Games, dateCreated, userStatus, passwordHint);
+            AMFUserLogin userLogin = UserFactory.Create(userName, password, firstName, lastName, passwordHint);
+            userLogin.USAHockeyNum = USAHockeyNum;
+            userLogin.DOB = DOB;
+            userLogin.Address1 = Address1;
+            userLogin.Address2 = Address2;
+            userLogin.City = City;
+            userLogin.State = State;
+            userLogin.ZipCode = ZipCode;
+            userLogin.Phone1 = Phone1;
+            userLogin.Phone2 = Phone2;
+            userLogin.Emergency1 = Emergency1;
+            userLogin.Emergency2 = Emergency2;
+            userLogin.YearsExp = YearsExp;
+            userLogin.Level = playerLevel;
+            userLogin.Internet = Internet;
+            userLogin.Referral = Referral;
+            userLogin.Tournament = Tournament;
+            userLogin.Other = Other;
             retVal = this.UserRepository.Save(userLogin);
 
             return retVal;
@@ -98,9 +115,14 @@ namespace Newhl.MainSite.BusinessLayer.Services
             return retVal;
         }
 
-        public AMFUserLogin Update(String firstName, String lastName, String email, String usaHockeyNum, String dOB, String address1, String address2, String city, String state, String zipCode, String phone1, String phone2, String emergency1, String emergency2, String yearsExp, String level, String internet, String referral, String tournament, String other, String lTP, String tues, String wed, String stickhandling, String somerville, String games, DateTime dateCreated, UserStatus userStatus, String passwordHint )
+        public AMFUserLogin Update(long userId, String firstName, String lastName, String email, String usaHockeyNum, String dOB, String address1, String address2, String city, String state, String zipCode, String phone1, String phone2, String emergency1, String emergency2, String yearsExp, PlayerLevel level, String internet, String referral, String tournament, String other)
         {
-            AMFUserLogin retVal = this.UserRepository.GetByEmail(email);
+            AMFUserLogin retVal = this.UserRepository.GetById(userId);
+
+            if (retVal == null)
+            {
+                retVal = this.UserRepository.GetByEmail(email);
+            }
 
             if (retVal != null)
             {
@@ -124,15 +146,6 @@ namespace Newhl.MainSite.BusinessLayer.Services
                 retVal.Referral = referral;
                 retVal.Tournament = tournament;
                 retVal.Other = other;
-                retVal.LTP = lTP;
-                retVal.Tuesday = tues;
-                retVal.Wednesday = wed;
-                retVal.Stickhandling = stickhandling;
-                retVal.Somerville = somerville;
-                retVal.Games = games;
-                retVal.DateCreated = dateCreated;
-                retVal.UserStatus = userStatus;
-                retVal.PasswordHint = passwordHint;
 
                 retVal = this.UserRepository.Save(retVal);
             }
@@ -343,6 +356,21 @@ namespace Newhl.MainSite.BusinessLayer.Services
             if(targetUser!=null)
             {
                 retVal = this.UserRepository.Delete(targetUser);
+            }
+
+            return retVal;
+        }
+
+        public Payment MakePayment(long playerId, PaymentMethods paymentMethod, decimal paymentAmount, string additionalDetails)
+        {
+            AMFUserLogin targetUser = this.UserRepository.GetById(playerId);
+            Payment retVal = targetUser.AddPayment(paymentAmount, paymentMethod, additionalDetails);
+
+            targetUser = this.UserRepository.Save(targetUser);
+
+            if(targetUser == null)
+            {
+                retVal = null;
             }
 
             return retVal;

@@ -1,0 +1,151 @@
+﻿@model Newhl.MainSite.Common.DomainModel.AMFUserLogin
+@using Newhl.MainSite.Common.DomainModel;
+<div class="form-group ">
+    <!-- If there is an existing registration for this email address, then show button to go to update page?-->
+    <label for="first-name">First Name: *</label>
+    <input required type="text" class="form-control" id="firstname" name="firstname" value="@Model.FirstName">
+</div>
+<div class="form-group ">
+    <label for="last-name">Last Name: *</label>
+    <input required type="text" class="form-control" id="lastname" name="lastname" value="@Model.LastName">
+</div>
+<div class="form-group">
+    <label for="email1">Email: *</label>
+    <input required type="email" class="form-control" id="email" name="email" value="@Model.Email">
+</div>
+<div class="form-group">
+    <label for="email2">Confirm Email: *</label>
+    <input required type="email" class="form-control" id="emailConfirm" name="emailConfirm" value="">
+</div>
+<div class="form-group">
+    <label for="email2">Password: *</label>
+    <input type="password" class="form-control" id="password" name="password" value="">
+</div>
+<div class="form-group">
+    <label for="email2">Re-type Password: *</label>
+    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" value="">
+</div>
+<div class="form-group">
+    <p>If you do not have a USA Hockey confirmation number for the season which you are registering, <br />please visit the <a href="https://usahockeyregistration.com/login_input.action" target="_blank">USA Hockey website</a> to obtain the number to enter in the next field.<br /></p>
+    <label for="usaReg">USA Hockey Registration#: *</label>
+    <input required type="text" class="form-control" id="usaHockeyNum" name="usaHockeyNum" value="@Model.USAHockeyNum">
+</div>
+<div class="form-group">
+    <label for="dateOfBirth">Date of Birth: *</label>
+    <input required type="date" class="form-control" id="DOB" name="DOB" value="@Model.DOB" style="max-width:25%">
+</div>
+<div class="form-group">
+    <label for="address">Address: *</label>
+    <input required type="text" class="form-control" id="address1" name="address1" value="@Model.Address1">
+</div>
+<div class="form-group col-md-6">
+    <label for="city">City: *</label>
+    <input required type="text" class="form-control" id="city" name="city" value="@Model.City">
+</div>
+<div class="form-group col-md-6">
+    <label for="address">State: *</label>
+    <input required type="text" class="form-control" id="state" name="state" value="@Model.State">
+</div>
+<div class="form-group col-md-6">
+    <label for="address">Zip: *</label>
+    <input required type="text" class="form-control" id="zipCode" name="zipCode" style="max-width:50%" value="@Model.ZipCode">
+</div>
+<div class="form-group col-md-6">
+    &nbsp;
+</div>
+<div class="dc_clear"></div>
+<div class="form-group">
+    <label for="phone1">Primary Phone: *</label>
+    <input required type="text" class="form-control" id="phone1" name="phone1" value="@Model.Phone1">
+</div>
+<div class="form-group">
+    <label for="phone2">Secondary Phone: </label>
+    <input type="text" class="form-control" id="phone2" name="phone2" value="@Model.Phone2">
+</div>
+<div class="form-group">
+    <label for="contact1">Emergency Contact 1: (name and phone number) *</label>
+    <input required type="text" class="form-control" id="emergency1" name="emergency1" value="@Model.Emergency1">
+</div>
+<div class="form-group">
+    <label for="contact2">Emergency Contact 2: (name and phone number)*</label>
+    <input required type="text" class="form-control" id="emergency2" name="emergency2" value="@Model.Emergency2">
+</div>
+<div class="form-group ">
+    <label for="contact1">Years of Experience: *</label>
+    <input required type="number" class="form-control" id="yearsExp" name="yearsExp" style="max-width:10%" value="@Model.YearsExp">
+</div>
+<div class="form-group ">
+    <br /><br />
+    <p><strong>Select your level of experience:</ br></strong></p>
+    <div class="one_sixth">
+        @Html.RadioButtonFor(m => m.Level, PlayerLevel.LearnToPlay, new { id = PlayerLevel.LearnToPlay })
+        <label for=@PlayerLevel.LearnToPlay>Learn To Play</label>
+    </div>
+    <div class="one_sixth">
+        @Html.RadioButtonFor(m => m.Level, PlayerLevel.Recreational, new { id = PlayerLevel.Recreational })
+        <label for=@PlayerLevel.Recreational>@PlayerLevel.Recreational</label>
+    </div>
+    <div class="one_sixth">
+        @Html.RadioButtonFor(m => m.Level, PlayerLevel.D, new { id = PlayerLevel.D })
+        <label for=@PlayerLevel.D>@PlayerLevel.D</label>
+    </div>
+    <div class="one_sixth">
+        @Html.RadioButtonFor(m => m.Level, PlayerLevel.C, new { id = PlayerLevel.C })
+        <label for=@PlayerLevel.C>@PlayerLevel.C</label>
+    </div>
+    <div class="one_sixth">
+        @Html.RadioButtonFor(m => m.Level, PlayerLevel.B, new { id = PlayerLevel.B })
+        <label for=@PlayerLevel.B>@PlayerLevel.B</label>
+        @Html.RadioButtonFor(m => m.Level, PlayerLevel.A, new { id = PlayerLevel.A })
+        <label for=@PlayerLevel.A>@PlayerLevel.A</label>
+    </div>
+    <div class="form-group">
+
+        <p><br /><br /><strong>How did you hear about NEWHL? <br /></strong></p>
+
+        <div class="one_sixth">
+            Internet Search:
+        </div>
+        <div class="one_sixth">
+            @{if (Model.Internet == "yes")
+                {<input type="checkbox" class="form-control" id="internet" name="internet" value="yes" checked="checked">}
+                else
+                {<input type="checkbox" class="form-control" id="internet" name="internet" value="yes" />}
+            }
+        </div>
+        <div class="one_sixth">
+            Referral / Word of Mouth:
+        </div>
+        <div class="one_sixth">
+            @{if (Model.Referral == "yes")
+                {<input type="checkbox" class="form-control" id="referral" name="referral" value="yes" checked="checked">}
+                else
+                {<input type="checkbox" class="form-control" id="referral" name="referral" value="yes">}
+            }
+        </div>
+        <div class="one_sixth">
+            Tournament:
+        </div>
+        <div class="one_sixth column-last">
+            @{if (Model.Tournament == "yes")
+                {<input type="checkbox" class="form-control" id="tournament" name="tournament" value="yes" checked="checked">}
+                else
+                {<input type="checkbox" class="form-control" id="tournament" name="tournament" value="yes">}
+            }
+        </div>
+        <br />
+    </div>
+    <div class="dc_clear"></div>
+    <div class="form-group">
+        <div class="one_sixth">
+            Other:
+        </div>
+        <div class="one_sixth">
+            @{ if (Model.Other == "yes")
+                {<input type="checkbox" class="form-control" id="other" name="other" value="yes" checked="checked">}
+                else
+                {<input type="checkbox" class="form-control" id="other" name="other" value="yes">}
+            }
+        </div>
+    </div>
+</div>

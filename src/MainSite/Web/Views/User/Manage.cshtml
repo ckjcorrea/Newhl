@@ -1,0 +1,47 @@
+﻿@model Newhl.MainSite.Common.DomainModel.AMFUserLogin
+@{
+    ViewBag.Title = "User Management";
+}
+@section headerPlugins
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#saveButton").click(function () {
+                $("#saveForm").submit();
+            });
+
+            $("#makePaymentButton").click(function () {
+                document.location.href("/Payment/Index");
+            });
+
+            $("#addProgramButton").click(function () {
+                document.location.href("/Program/Index");
+            });
+
+        });
+    </script>
+}
+<section class="main__middle__container">
+    <div class="container">
+        <h3 class="panel-title">Welcome @this.Context.User.Identity.Name</h3>
+        <div class="row">
+            <div class="col-med-4">
+                <form id="saveForm" action="/User/Edit/@Model.Id" method="post">
+                    <input type="hidden" name="id" id="id" value="@Model.Id" />
+                    @{
+                        Html.RenderPartial("_UserDetails", Model);
+                    }
+                    <br />
+                    <button type="button" id="saveButton" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+            <div class="col-med-4">
+                <button type="button" id="makePaymentButton" class="btn btn-primary">Make a Payment</button>
+                <br />
+                <button type="button" id="addProgramButton" class="btn btn-primary">Add a Program</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+

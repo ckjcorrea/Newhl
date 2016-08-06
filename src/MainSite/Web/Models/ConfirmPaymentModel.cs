@@ -6,13 +6,11 @@ using Newhl.MainSite.Common.DomainModel;
 
 namespace Newhl.MainSite.Web.Models
 {
-    /// <summary>
-    /// The class defines the inputs for the Register all
-    /// </summary>
-    public class RegisterModel
+    public class ConfirmPaymentModel
     {
-        public string EmailAddress { get; set; }
-               
         public AMFUserLogin PlayerInfo { get; set; }
+        public Payment PaymentDetails { get; set; }
+
+        public PaymentPortions DesiredPortion { get; set; }
     }
 }

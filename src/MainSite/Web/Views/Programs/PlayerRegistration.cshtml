@@ -130,7 +130,7 @@
                         <p><strong>Select your level of experience:</ br></strong></p>
                         <div class="one_sixth">
                             <label for="Beginner">Beginner</label>
-                            @{ if (Model.Level == "LTP")
+                            @{ if (Model.Level == Newhl.MainSite.Common.DomainModel.PlayerLevel.LearnToPlay)
                                 {
                                     <input type="radio" name="Level" id="LTP" value="LTP" checked="checked">}
                                 else
@@ -139,7 +139,7 @@
                         </div>
                         <div class="one_sixth">
                             <label for="Rec">Rec</label>
-                            @{ if (Model.Level == "Rec")
+                            @{ if (Model.Level == Newhl.MainSite.Common.DomainModel.PlayerLevel.Recreational)
                                 {<input type="radio" name="Level" id="Rec" value="Rec" checked="checked">}
                                 else
                                 {<input type="radio" name="Level" id="Rec" value="Rec"> }
@@ -147,7 +147,7 @@
                         </div>
                         <div class="one_sixth">
                             <label for="D">D</label>
-                            @{ if (Model.Level == "D")
+                            @{ if (Model.Level == Newhl.MainSite.Common.DomainModel.PlayerLevel.D)
                                 {<input type="radio" name="Level" id="D" value="D" checked="checked"> }
                                 else
                                 {<input type="radio" name="Level" id="D" value="D"> }
@@ -155,7 +155,7 @@
                         </div>
                         <div class="one_sixth">
                             <label for="C">C</label>
-                            @{ if (Model.Level == "C")
+                            @{ if (Model.Level == Newhl.MainSite.Common.DomainModel.PlayerLevel.C)
                                 {<input type="radio" name="Level" id="C" value="C" checked="checked"> }
                                 else
                                 {<input type="radio" name="Level" id="C" value="C"> }
@@ -163,7 +163,7 @@
                         </div>
                         <div class="one_sixth">
                             <label for="B">B</label>
-                            @{ if (Model.Level == "B")
+                            @{ if (Model.Level == Newhl.MainSite.Common.DomainModel.PlayerLevel.D)
                                 {<input type="radio" name="Level" id="B" value="B" checked="checked"> }
                                 else
                                 {<input type="radio" name="Level" id="B" value="B"> }
@@ -171,7 +171,7 @@
                         </div>
                         <div class="one_sixth column-last">
                             <label for="A">A</label>
-                            @{ if (Model.Level == "A")
+                            @{ if (Model.Level == Newhl.MainSite.Common.DomainModel.PlayerLevel.A)
                                 {<input type="radio" name="Level" id="A" value="A" checked="checked"> }
                                 else
                                 {<input type="radio" name="Level" id="A" value="A"> }

@@ -30,7 +30,7 @@ namespace Newhl.MainSite.BusinessLayer.Services
         /// <returns>An instance of a user</returns>
         AMFUserLogin Register(string userName, string password, string passwordHint, string firstName, string lastName);
 
-        AMFUserLogin Register(String FirstName, String LastName, String Email, String USAHockeyNum, String DOB, String Address1, String Address2, String City, String State, String ZipCode, String Phone1, String Phone2, String Emergency1, String Emergency2, String YearsExp, String Level, String Internet, String Referral, String Tournament, String Other, String LTP, String Tues, String Wed, String Stickhandling, String Somerville, String Games, DateTime DateCreated, UserStatus UserStatus, String PasswordHint);
+        AMFUserLogin Register(String firstName, String lastName, String userName, string password, string passwordHint, String USAHockeyNum, String DOB, String Address1, String Address2, String City, String State, String ZipCode, String Phone1, String Phone2, String Emergency1, String Emergency2, String YearsExp, PlayerLevel playerLevel, String Internet, String Referral, String Tournament, String Other);
 
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Newhl.MainSite.BusinessLayer.Services
         /// <returns></returns>
         AMFUserLogin Update(long userId, string firstName, string lastName, UserStatus userStatus, RoleType.Id userRole);
 
-        AMFUserLogin Update(String FirstName, String LastName, String Email, String USAHockeyNum, String DOB, String Address1, String Address2, String City, String State, String ZipCode, String Phone1, String Phone2, String Emergency1, String Emergency2, String YearsExp, String Level, String Internet, String Referral, String Tournament, String Other, String LTP, String Tues, String Wed, String Stickhandling, String Somerville, String Games, DateTime DateCreated, UserStatus UserStatus, String PasswordHint);
+        AMFUserLogin Update(long userId, String FirstName, String LastName, String Email, String USAHockeyNum, String DOB, String Address1, String Address2, String City, String State, String ZipCode, String Phone1, String Phone2, String Emergency1, String Emergency2, String YearsExp, PlayerLevel Level, String Internet, String Referral, String Tournament, String Other);
 
         /// <summary>
         /// Update a user with values a regular user can change.
@@ -111,5 +111,7 @@ namespace Newhl.MainSite.BusinessLayer.Services
         void ResetPassword(string userEmail, EmailConfiguration emailConfig);
 
         bool Delete(long id);
+
+        Payment MakePayment(long playerId, PaymentMethods paymentMethod, decimal paymentAmount, string additionalDetails);
     }
 }

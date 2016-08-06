@@ -1,0 +1,102 @@
+﻿@model Newhl.MainSite.Common.DomainModel.AMFUserLogin
+@using Newhl.MainSite.Common.DomainModel
+@{
+    ViewBag.Title = "Payment Management";
+}
+@section headerPlugins
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#enterPaymentButton").click(function () {
+                $("#makePaymentForm").submit();
+            });
+        });
+
+        function calculateAmountToPay(percentage) {
+            var amountOwed = 100;
+            var amountToPay = amountOwed * (percentage / 100);
+            jQuery("#paymentAmount").val(amountToPay);
+
+        }
+    </script>
+}
+<section class="main__middle__container">
+    <div class="container">
+        <div class="row">
+            <section class="col-md-8 main-content">
+                <p id="feedback"></p>
+                <form role="form" id="makePaymentForm" name="regProgramForm" method="post" action="/Payment/Confirm" class="regProgramForm">
+                    <div class="form-group">
+                        <div class="two_third column-last">
+                            Total Amount Owed: 100
+                        </div>
+                        <div class="dc_clear"></div>
+                        <br />
+                    </div><!--end form group-->
+
+                    <div class="form-group ">
+                        <br /><br />
+                        <p><strong>Select your payment portion:</ br></strong></p>
+                        <div class="one_fourth">
+                            <label for="PaymentPortions">50 Percent</label>
+                            <input type="radio" name="paymentPortion" id="paymentPortion" value="@PaymentPortions.Percentage_50" onclick="javascript:calculateAmountToPay(50);">
+                            <br>
+                        </div>
+                        <div class="one_fourth">
+                            <label for="PaymentPortions">100 Percent</label>
+                            <input type="radio" name="paymentPortion" id="paymentPortion value="@PaymentPortions.Percentage_100" onclick="javascript:calculateAmountToPay(100);">
+                            <br>
+                        </div>
+                        <div class="one_fourth">
+                            <label for="PaymentPortions">Other</label>
+                            <input type="radio" name="paymentPortion" id="paymentPortion value="@PaymentPortions.Other">
+                            <br>
+                            <label for="Other">Payment Amount:</label>
+                            <input required type="text" class="form-control" id="paymentAmount" name="paymentAmount" value="">
+                        </div>
+                        <div class="one_fourth">
+
+                        </div>
+                    </div> <!--end form group-->
+                    <div class="dc_clear"></div>
+                    <p>
+                        Enter payment type:
+                    </p>
+                    <div class="form-group">
+                        <div class="one_fourth">
+                            <label for="paymentMethod">Cash</label>
+                            <input type="radio" name="paymentMethod" id="paymentMethod" value="@PaymentMethods.Cash">
+                            <br>
+                        </div>
+                        <div class="one_fourth">
+                            <label for="paymentMethod">Check</label>
+                            <input type="radio" name="paymentMethod" id="paymentMethod" value="@PaymentMethods.Check">
+                            <br>
+                            <label for="check">Check Number:</label>
+                            <input type="number" class="form-control" id="checkNumber" name="checkNumber" value="@ViewBag.CheckNumber">
+                        </div>
+                        <div class="one_fourth">
+                            <label for="paymentMethod">Paypal</label>
+                            <input type="radio" name="paymentMethod" id="paymentMethod" value="@PaymentMethods.Paypal">
+                            <br>
+                        </div>
+                        <div class="one_fourth column-last">
+
+                        </div>
+
+                        <!--Enter Check number or select PayPal option-->
+
+                    </div>
+                    <div class="dc_clear"></div>
+
+                    <p><button type="button" id="enterPaymentButton" class="btn btn-primary">Enter Payment</button></p>
+                    <!-- include complete payment button -->
+                </form>
+            </section>
+
+        </div>
+    </div>
+</section>
+
+
+

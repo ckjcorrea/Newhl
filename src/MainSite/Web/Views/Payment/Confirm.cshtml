@@ -1,0 +1,79 @@
+﻿@model Newhl.MainSite.Web.Models.ConfirmPaymentModel
+@using Newhl.MainSite.Common.DomainModel
+@{
+    ViewBag.Title = "Payment Management";
+}
+@section headerPlugins
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#saveButton").click(function () {
+                $("#saveForm").submit();
+            });
+        });
+    </script>
+}
+<section class="main__middle__container">
+    <div class="container">
+        <div class="form-group ">
+            <br /><br />
+            <div class="row">
+                PaymentPortion: @Model.DesiredPortion;
+            </div>
+            <div class="row">
+                Payment Method: @Model.PaymentDetails.PaymentMethod
+
+                @switch (Model.PaymentDetails.PaymentMethod)
+                {
+                    case PaymentMethods.Check:
+                        <text><br/>Check Number: @Model.PaymentDetails.AdditionalDetails</text>
+                        break;
+                    case PaymentMethods.Paypal:
+                            <text><br>
+                            <form id="payPalSubmitForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="UZGLB2MGXZ538">
+                                <input type="hidden" name="item_name" value="Newhl Registration">
+                                <input type="hidden" id="amount" name="amount" value="@Model.PaymentDetails.Amount">
+                                <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+                            </text>
+                            break;
+                    }
+                }
+            </div>
+            <div class="one_fourth">
+                <br>
+                Payment Amount: @Model.PaymentDetails.Amount
+            </div>
+            <div class="one_fourth">
+
+            </div>
+        </div> <!--end form group-->
+        
+        <div class="dc_clear"></div>
+
+        <p><input type="submit" value="Enter Payment" /></p>
+        <!-- include complete payment button -->
+        </form>
+</section>
+
+<aside class="col-md-4">
+    <div class="form-group">
+        <!-- DC PayPal Payment Link Start
+        <form id="payPalSubmitForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <p>After entering payment amount, click on the button to make payment via PayPal</p>
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="KERRI@KERRIMACALUSO.COM">
+            <input type="hidden" name="item_name" value="Newhl Registration">
+            <input type="hidden" id="amount" name="amount" >
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="button_subtype" value="products">
+        </form>
+             -->
+        <!-- DC PayPal Payment Link End -->
+    </div>
+</aside>
+    </div>
+</section>

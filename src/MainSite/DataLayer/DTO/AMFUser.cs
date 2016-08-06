@@ -91,7 +91,7 @@ namespace Newhl.MainSite.DataLayer.DTO
         /// <summary>
         /// Gets or sets the users ZipCode
         /// </summary>
-        [NHibernate.Mapping.Attributes.Property]
+        [NHibernate.Mapping.Attributes.Property(Column ="Zip")]
         public virtual string ZipCode { get; set; }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Newhl.MainSite.DataLayer.DTO
         /// Gets or sets the users Experience Level
         /// </summary>
         [NHibernate.Mapping.Attributes.Property]
-        public virtual string Level { get; set; }
+        public virtual PlayerLevel Level { get; set; }
 
         /// <summary>
         /// Gets or sets the users Internet field
@@ -224,11 +224,10 @@ namespace Newhl.MainSite.DataLayer.DTO
         /// </summary>
         [NHibernate.Mapping.Attributes.Property]
         public virtual string PasswordHint { get; set; }
- 
 
-/*
-       [NHibernate.Mapping.Attributes.Property]
-        public virtual string ResetToken { get; set; }
-*/
+        [NHibernate.Mapping.Attributes.Bag(0, Table = "Payments", Cascade = "Save-Update")]
+        [NHibernate.Mapping.Attributes.Key(1, Column = "PlayerId")]
+        [NHibernate.Mapping.Attributes.OneToMany(2, ClassType = typeof(DTO.Payment))]
+        public virtual IList<DTO.Payment> Payments { get; set; }
     }
 }

@@ -18,6 +18,11 @@ namespace Newhl.MainSite.DataLayer.DataMapper
         /// </summary>
         static AMFUserLoginDataMapper()
         {
+            AMFUserLoginDataMapper.ConfigureAutoMapper();
+        }
+
+        internal static void ConfigureAutoMapper()
+        {
             var existingMap = Mapper.FindTypeMapFor<LoginAttempt, DTO.LoginAttempt>();
             if (existingMap == null)
             {
@@ -33,8 +38,8 @@ namespace Newhl.MainSite.DataLayer.DataMapper
             existingMap = Mapper.FindTypeMapFor<AMFUserLogin, DTO.AMFUser>();
             if (existingMap == null)
             {
-                AutoMapper.Mapper.CreateMap<AMFUserLogin, DTO.AMFUser>();
-
+                AutoMapper.Mapper.CreateMap<AMFUserLogin, DTO.AMFUser>()
+                    .ForMember(dest => dest.Payments, src => src.ResolveUsing<PaymentDTOListResolver>());
             }
 
             existingMap = Mapper.FindTypeMapFor<DTO.AMFUser, AMFUserLogin>();
@@ -43,6 +48,7 @@ namespace Newhl.MainSite.DataLayer.DataMapper
                 AutoMapper.Mapper.CreateMap<DTO.AMFUser, AMFUserLogin>();
             }
 
+            PaymentDataMapper.ConfigureAutoMapper();
         }
 
         /// <summary>
@@ -64,7 +70,14 @@ namespace Newhl.MainSite.DataLayer.DataMapper
         /// <returns>The destination populated with the source</returns>
         public override DTO.AMFUser Map(AMFUserLogin source, DTO.AMFUser destination)
         {
-            return Mapper.Map(source, destination);
+            DTO.AMFUser retVal = AutoMapper.Mapper.Map(source, destination);
+
+            foreach (DTO.Payment currentListItem in retVal.Payments)
+            {
+                currentListItem.Player = retVal;
+            }
+
+            return retVal;
         }
     }
 }
