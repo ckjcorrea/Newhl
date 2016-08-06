@@ -1,20 +1,82 @@
-﻿@{
+﻿@model Newhl.MainSite.Common.DomainModel.AMFUserLogin
+
+@using Newhl.MainSite.Common.DomainModel;
+@{
     ViewBag.Title = "Signup";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section headerPlugins
 {
-    <script src="@Url.Content("~/Scripts/UI/Register.js")" type="text/javascript"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    <script type="text/javascript">
+        function handleChangeEmailButton() {
+            document.location.href = "/Registration/Start";
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#registerSubmitButton").click(function () {
+                $("#registerPlayerForm").submit();
+            });
+        });
+    </script>
 }
-<div class="messaging-container">
-    <div id="ctlx2" class="panel panel-primary loginPanel">
-        <div class="panel-heading">
-            <h3 class="panel-title">Thank you for registering with Newhl.com</h3>
-        </div>
-        <div class="panel-body">           
-            <h2>You have successfully registered</h2>
-            <br/>
-            Please <a href="/User/Signin">Click here to login and continue</a>
+
+<section class="main__middle__container">
+    <div class="container">
+        <div id="ctlx2" class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Register with NEWHL</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <section class="col-md-8 main-content">
+                        <p id="feedback"></p>
+                        <form role="form" id="registerPlayerForm" name="registerPlayerForm" method="post" action="/User/ProcessRegistration" class="registerPlayerForm">
+                            <div class="form-group ">
+                                @if ((ViewBag.exists != null) || (ViewData.ContainsKey("playerExists")))
+                                {
+                                    <p>
+                                        <strong>
+                                            There is a registration entered for a player with this email address. If you are updating your current registration,
+                                            please click the <a href="/User/Signin">log in</a>, otherwise check spelling and re-enter email address and try again.
+                                        </strong>
+                                    </p>
+                                }
+                                <div class="dc_clear"></div>
+
+                                @{ Html.ValidationMessage("exists");}
+                                @{ Html.ValidationMessage("requested"); }
+                                @{Html.ValidationMessage("FirstName"); }
+                                @{Html.ValidationMessage("LastName"); }
+                                @{Html.ValidationMessage("confirmEmail"); }
+                                @{Html.ValidationMessage("Password"); }
+                                @{Html.ValidationMessage("PwdConfirm"); }
+                                @{Html.ValidationMessage("SiteName"); }
+                                @{Html.ValidationMessage("Phone"); }
+                            </div>
+                            @{
+                                Html.RenderPartial("_UserDetails", Model);
+                            }
+                            <div class="dc_clear"></div>
+                            <p><button type="button" id="registerSubmitButton" class="btn btn-primary">Register</button></p>
+                        </form> <!--end form-->
+                    </section>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>

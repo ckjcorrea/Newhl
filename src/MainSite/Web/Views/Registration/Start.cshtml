@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "New England Womens Hockey League";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section headerPlugins
+{
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#registerUserButton").click(function () {
+                document.location.href="/User/Register"
+            });
+
+            $("#loginButton").click(function () {
+                document.location.href="/User/Signin"
+            });
+        });
+    </script>
+}
+<section class="main__middle__container">
+    <div class="container">
+        <div class="row">
+            <section class="col-md-8 main-content">
+                <p>If you don't already have an account, please sign up with the site first.  Otherwise go to the log in page, log in, and begin selecting your program</p>
+                <div class="row">
+                    <button type="button" id="registerUserButton" class="btn btn-primary">Sign up with NEWHL</button></p>
+                    <button type="button" id="loginButton" class="btn btn-primary">Log In</button></p>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>

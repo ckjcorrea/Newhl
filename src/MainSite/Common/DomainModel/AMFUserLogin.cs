@@ -109,7 +109,7 @@ namespace Newhl.MainSite.Common.DomainModel
         public string Emergency1 { get; set; }
         public string Emergency2 { get; set; }
         public string YearsExp { get; set; }
-        public string Level { get; set; }
+        public PlayerLevel Level { get; set; }
         public string Internet { get; set; }
         public string Referral { get; set; }
         public string Tournament { get; set; }
@@ -120,6 +120,5 @@ namespace Newhl.MainSite.Common.DomainModel
         public string Stickhandling { get; set; }
         public string Somerville { get; set; }
         public string Games { get; set; }
-
     }
 }

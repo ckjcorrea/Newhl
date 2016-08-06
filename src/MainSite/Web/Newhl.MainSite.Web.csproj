@@ -887,7 +887,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\ForgotPassword.cshtml" />
     <Content Include="Views\User\PasswordHint.cshtml" />
-    <Content Include="Views\User\ProcessSignin.cshtml" />
+    <Content Include="Views\User\Manage.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Signin.cshtml" />
     <Content Include="Views\User\Signup.cshtml" />
@@ -911,14 +911,18 @@
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\AprilShowersController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProgramsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\API\UsetDetailModel.cs" />
-    <Compile Include="Models\ConfirmRegistrationModel.cs" />
+    <Compile Include="Models\ConfirmPaymentModel.cs" />
+    <Compile Include="Models\ManagePaymentsModel.cs" />
+    <Compile Include="Models\ManageProgramsModel.cs" />
     <Compile Include="Models\PagedListModel.cs" />
     <Compile Include="Models\PagingModel.cs" />
     <Compile Include="Models\PasswordHintModel.cs" />
@@ -942,7 +946,6 @@
     <Content Include="Views\Home\coaches.cshtml" />
     <Content Include="Views\Home\players.cshtml" />
     <Content Include="Views\Home\OffIce.cshtml" />
-    <Content Include="Views\Programs\RegisterPlayer.cshtml" />
     <Content Include="Views\Programs\LTP.cshtml" />
     <Content Include="Views\Programs\Rec.cshtml" />
     <Content Include="Views\Programs\CD.cshtml" />
@@ -950,11 +953,12 @@
     <Content Include="Views\AprilShowers\History.cshtml" />
     <Content Include="Views\Home\OffIce - Copy.cshtml" />
     <Content Include="Views\Programs\Schedule.cshtml" />
-    <Content Include="Views\Programs\RegistrationComplete.cshtml" />
-    <Content Include="Views\Programs\ConfirmRegistration.cshtml" />
-    <Content Include="Views\Programs\EnterPayment.cshtml" />
-    <Content Include="Views\Programs\PlayerRegistration.cshtml" />
     <Content Include="Views\AprilShowers\TournamentInfo.cshtml" />
+    <Content Include="Views\Registration\Start.cshtml" />
+    <Content Include="Views\User\_UserDetails.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\Confirm.cshtml" />
+    <Content Include="Views\Programs\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

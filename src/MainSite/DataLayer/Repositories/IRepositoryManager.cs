@@ -19,5 +19,9 @@ namespace Newhl.MainSite.DataLayer.Repositories
         /// Gets the current instance of the LoginAttemptRepository
         /// </summary>
         ILoginAttemptRepository LoginAttemptRepository { get; }
+
+        IProgramRepository ProgramRepository { get; }
+
+        IPaymentRepository PaymentRepository { get; }
     }
 }

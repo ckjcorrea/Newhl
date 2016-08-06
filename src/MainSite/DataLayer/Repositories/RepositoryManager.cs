@@ -65,5 +65,35 @@ namespace Newhl.MainSite.DataLayer.Repositories
                 return this.loginAttemptRepository;
             }
         }
+
+        private IProgramRepository programRepository;
+
+        public IProgramRepository ProgramRepository
+        {
+            get
+            {
+                if (this.programRepository == null)
+                {
+                    this.programRepository = new ProgramRepository(this.UnitOfWork);
+                }
+
+                return this.programRepository;
+            }
+        }
+
+        private IPaymentRepository paymentRepository;
+
+        public IPaymentRepository PaymentRepository
+        {
+            get
+            {
+                if (this.paymentRepository == null)
+                {
+                    this.paymentRepository = new PaymentRepository(this.UnitOfWork);
+                }
+
+                return this.paymentRepository;
+            }
+        }
     }
 }

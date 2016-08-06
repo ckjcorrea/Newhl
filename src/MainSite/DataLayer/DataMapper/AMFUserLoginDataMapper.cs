@@ -18,6 +18,11 @@ namespace Newhl.MainSite.DataLayer.DataMapper
         /// </summary>
         static AMFUserLoginDataMapper()
         {
+            AMFUserLoginDataMapper.ConfigureAutoMapper();
+        }
+
+        internal static void ConfigureAutoMapper()
+        {
             var existingMap = Mapper.FindTypeMapFor<LoginAttempt, DTO.LoginAttempt>();
             if (existingMap == null)
             {
@@ -34,7 +39,6 @@ namespace Newhl.MainSite.DataLayer.DataMapper
             if (existingMap == null)
             {
                 AutoMapper.Mapper.CreateMap<AMFUserLogin, DTO.AMFUser>();
-
             }
 
             existingMap = Mapper.FindTypeMapFor<DTO.AMFUser, AMFUserLogin>();
@@ -42,7 +46,6 @@ namespace Newhl.MainSite.DataLayer.DataMapper
             {
                 AutoMapper.Mapper.CreateMap<DTO.AMFUser, AMFUserLogin>();
             }
-
         }
 
         /// <summary>
@@ -64,7 +67,9 @@ namespace Newhl.MainSite.DataLayer.DataMapper
         /// <returns>The destination populated with the source</returns>
         public override DTO.AMFUser Map(AMFUserLogin source, DTO.AMFUser destination)
         {
-            return Mapper.Map(source, destination);
+            DTO.AMFUser retVal = AutoMapper.Mapper.Map(source, destination);
+
+            return retVal;
         }
     }
 }

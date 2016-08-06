@@ -1,0 +1,48 @@
+﻿@model Newhl.MainSite.Web.Models.ManageProgramsModel
+@using Newhl.MainSite.Common.DomainModel
+@{
+    ViewBag.Title = "Program Management";
+}
+@section headerPlugins
+{
+
+}
+<section class="main__middle__container">
+    <div class="container">
+        <div id="ctlx2" class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Manage your programs</h3>
+            </div>
+            <div class="panel-body">
+                <section class="col-md-8 main-content">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Start Date</th>
+                                <th>Start Time</th>
+                                <th>End Date</th>
+                                <th>Selected</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Program program in Model.ActivePrograms)
+                            {
+                                <tr>
+                                    <td>@program.Name</td>
+                                    <td>@program.Price</td>
+                                    <td>@program.StartDate</td>
+                                    <td>@program.StartTime</td>
+                                    <td>@program.EndDate</td>
+                                    <td><input type="checkbox" name="userSelected"/></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</section>

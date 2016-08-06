@@ -20,11 +20,10 @@ GO
 CREATE TABLE [dbo].[Programs](
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
-	[Day] [nvarchar](30) NOT NULL,
+	[DayOfWeek] [nvarchar](30) NOT NULL,
 	[StartTime] [nvarchar](30) NOT NULL,
 	[Price] DECIMAL(19,4) NOT NULL,
 	[StartDate] [datetime] NOT NULL,
-	[ExceptionDates] [datetime] NULL,
  CONSTRAINT [PK_Programs] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

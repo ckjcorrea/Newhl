@@ -71,5 +71,36 @@ namespace Newhl.MainSite.BusinessLayer.Services
                 return this.emailService;
             }
         }
+
+        private IPaymentService paymentService;
+
+        public IPaymentService PaymentService
+        {
+            get
+            {
+                if(this.paymentService == null)
+                {
+                    this.paymentService = new PaymentService(this.RepositoryManager.PaymentRepository, this.RepositoryManager.UserRepository);
+                }
+
+                return this.paymentService;
+            }
+        }
+
+        private IProgramService programService;
+
+        public IProgramService ProgramService
+        {
+            get
+            {
+                if (this.programService == null)
+                {
+                    this.programService = new ProgramService(this.RepositoryManager.ProgramRepository);
+                }
+
+                return this.programService;
+            }
+        }
+        
     }
 }
