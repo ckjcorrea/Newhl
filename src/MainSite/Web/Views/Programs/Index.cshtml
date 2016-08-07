@@ -38,7 +38,7 @@
                             <div>Sesson: {{ targetSeason.Name }}</div>
                             <div>Start Date: {{ targetSeason.StartDate }}</div>
                             <div>End Date: {{ targetSeason.EndDate }}</div>
-                            <div>Location: {{ targetSeason.Location }}</div>
+                            <div>Total Cost: {{ totalCost }}</div>
                             <div><button type="button" id="saveProgramsButton" class="btn btn-primary" ng-click="savePrograms();">Save</button></p></div>
                             <table class="table table-striped">
                                 <thead>
@@ -48,6 +48,7 @@
                                         <th>Day Of Week</th>
                                         <th>Start Date</th>
                                         <th>Start Time</th>
+                                        <th>Location</th>
                                         <th>Selected</th>
                                     </tr>
                                 </thead>
@@ -58,6 +59,7 @@
                                         <td>{{ program.DayOfWeek }}</td>
                                         <td>{{ program.StartDate }}</td>
                                         <td>{{ program.StartTime }}</td>
+                                        <td>{{ program.Location }}</td>
                                         <td><input name="selected" type=checkbox value="{{program.Id}}" ng-click="onSelectProgram(program)" ng-checked="{{program.IsSelected}}" /></td>
                                     </tr>
                                 </tbody>
