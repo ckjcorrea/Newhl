@@ -5,44 +5,66 @@
 }
 @section headerPlugins
 {
+    <script src="/Scripts/Controllers/SeasonController.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // This is stupid but for some reason the ng-change isn't working ont his select box, so for now
+        // route the angular call via a click on a hidden button.
+        function manuallyFireAngularRefresh() {
+            jQuery("#refreshButton").click();
+        };
 
+    </script>
 }
-<section class="main__middle__container">
-    <div class="container">
-        <div id="ctlx2" class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Manage your programs</h3>
-            </div>
-            <div class="panel-body">
-                <section class="col-md-8 main-content">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Start Date</th>
-                                <th>Start Time</th>
-                                <th>End Date</th>
-                                <th>Selected</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (Program program in Model.ActivePrograms)
-                            {
-                                <tr>
-                                    <td>@program.Name</td>
-                                    <td>@program.Price</td>
-                                    <td>@program.StartDate</td>
-                                    <td>@program.StartTime</td>
-                                    <td>@program.EndDate</td>
-                                    <td><input type="checkbox" name="userSelected"/></td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-
-                </section>
+<div class="bodyContent" ng-controller="SeasonController">
+    <section class="main__middle__container">
+        <div class="container">
+            <div id="ctlx2" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Manage your programs</h3>
+                </div>
+                <div class="panel-body">
+                    <section class="col-md-8 main-content">
+                        @if (Model.SelectedSeason != null)
+                        {
+                            <select id="selectedSeason" name="selectedSeason" onchange="javascript:manuallyFireAngularRefresh();">
+                                @foreach (Season season in Model.ActiveSeasons)
+                                {
+                                    <option id="@season.Id" name="@season.Id" value="@season.Id" @if (season.Id == Model.SelectedSeason.Id) { <text> selected </text> }>@season.Name</option>
+                                }
+                            </select>                        
+                            <button style="display:none" id="refreshButton" value="Refresh" ng-click="getSeason();">Refresh</button>
+                        }
+                        <div ng-init="getSeason();">
+                            <div>Sesson: {{ targetSeason.Name }}</div>
+                            <div>Start Date: {{ targetSeason.StartDate }}</div>
+                            <div>End Date: {{ targetSeason.EndDate }}</div>
+                            <div>Location: {{ targetSeason.Location }}</div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Day Of Week</th>
+                                        <th>Start Date</th>
+                                        <th>Start Time</th>
+                                        <th>Selected</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="program in targetSeason.Programs">
+                                        <td>{{ program.Name}}</td>
+                                        <td>{{ program.Price }}</td>
+                                        <td>{{ program.DayOfWeek }}</td>
+                                        <td>{{ program.StartDate }}</td>
+                                        <td>{{ program.StartTime }}</td>
+                                        <td><input name="selected" type=checkbox value="{{program.Id}}" ng-click="onSelectProgram(program.Id, targetSeason.Id)" ng-checked="idProgramSelected(program.Id, targetSeason.Id)" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>

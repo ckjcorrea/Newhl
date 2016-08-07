@@ -87,18 +87,18 @@ namespace Newhl.MainSite.BusinessLayer.Services
             }
         }
 
-        private IProgramService programService;
+        private ISeasonService seasonService;
 
-        public IProgramService ProgramService
+        public ISeasonService SeasonService
         {
             get
             {
-                if (this.programService == null)
+                if (this.seasonService == null)
                 {
-                    this.programService = new ProgramService(this.RepositoryManager.ProgramRepository);
+                    this.seasonService = new SeasonService(this.RepositoryManager.SeasonRepository);
                 }
 
-                return this.programService;
+                return this.seasonService;
             }
         }
         

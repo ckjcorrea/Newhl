@@ -20,7 +20,7 @@ namespace Newhl.MainSite.DataLayer.Repositories
         /// </summary>
         ILoginAttemptRepository LoginAttemptRepository { get; }
 
-        IProgramRepository ProgramRepository { get; }
+        ISeasonRepository SeasonRepository { get; }
 
         IPaymentRepository PaymentRepository { get; }
     }

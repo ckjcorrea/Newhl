@@ -10,11 +10,12 @@ namespace Newhl.MainSite.Common.DomainModel
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public string DayOfWeek { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
+        
         public DateTime StartTime { get; set; }
         public float Price { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+
+        public virtual DateTime DateCreated { get; set; }
 
         public bool IsActive { get; set; }
 

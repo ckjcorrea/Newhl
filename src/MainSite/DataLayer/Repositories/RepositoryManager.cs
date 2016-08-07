@@ -66,18 +66,18 @@ namespace Newhl.MainSite.DataLayer.Repositories
             }
         }
 
-        private IProgramRepository programRepository;
+        private ISeasonRepository seasonRepository;
 
-        public IProgramRepository ProgramRepository
+        public ISeasonRepository SeasonRepository
         {
             get
             {
-                if (this.programRepository == null)
+                if (this.seasonRepository == null)
                 {
-                    this.programRepository = new ProgramRepository(this.UnitOfWork);
+                    this.seasonRepository = new SeasonRepository(this.UnitOfWork);
                 }
 
-                return this.programRepository;
+                return this.seasonRepository;
             }
         }
 

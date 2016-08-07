@@ -12,7 +12,7 @@ namespace Newhl.MainSite.UnitTests.Mock.Repositories
 {
     public class MockProgramRepository
     {
-        public static void ConfigureAllMethods(Mock<IProgramRepository> repositoryObject)
+        public static void ConfigureAllMethods(Mock<ISeasonRepository> repositoryObject)
         {
 
         }
