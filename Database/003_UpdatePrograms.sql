@@ -40,3 +40,39 @@ ALTER Table [dbo].[Programs] DROP COLUMN EndDate;
 GO
 ALTER Table [dbo].[Programs] Add DateCreated datetime default '1/1/2016'
 GO
+ALTER Table [dbo].[Programs] DROP Column DayOfWeek;
+GO
+ALTER Table [dbo].[Programs] Add DayOfWeek Integer default 1
+GO
+
+CREATE TABLE [dbo].[PlayerSeasons](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[SeasonId] [bigint] NOT NULL,
+	[PlayerId] [bigint] NOT NULL
+ CONSTRAINT [PK_PlayerSeasons] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[PlayerSeasons]  WITH CHECK ADD  CONSTRAINT [FK_PlayerSeasons_Season] FOREIGN KEY([SeasonId])
+REFERENCES [dbo].[Seasons] ([Id])
+GO
+ALTER TABLE [dbo].[PlayerSeasons]  WITH CHECK ADD  CONSTRAINT [FK_PlayerSeasons_Players] FOREIGN KEY([PlayerId])
+REFERENCES [dbo].[AMFUsers] ([Id])
+GO
+CREATE TABLE [dbo].[PlayerSeasonPrograms](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[PlayerSeasonId] [bigint] NOT NULL,
+	[ProgramId] [bigint] NOT NULL
+ CONSTRAINT [PK_PlayerSeasonPrograms] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[PlayerSeasonPrograms]  WITH CHECK ADD  CONSTRAINT [FK_PlayerSeasonPrograms_PlayerSeason] FOREIGN KEY([PlayerSeasonId])
+REFERENCES [dbo].[PlayerSeasons] ([Id])
+GO

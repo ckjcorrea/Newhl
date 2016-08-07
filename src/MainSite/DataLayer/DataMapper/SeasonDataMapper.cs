@@ -20,7 +20,7 @@ namespace Newhl.MainSite.DataLayer.DataMapper
             if (AutoMapper.Mapper.FindTypeMapFor<Season, DTO.Season>() == null)
             {
                 AutoMapper.Mapper.CreateMap<Season, DTO.Season>()
-                    .ForMember(season => season.Programs, programs => programs.ResolveUsing<ProgramListDTOResolver>());
+                    .ForMember(season => season.Programs, programs => programs.ResolveUsing<SeasonProgramsDTOResolver>());
             }
 
             if (AutoMapper.Mapper.FindTypeMapFor<DTO.Season, Season>() == null)
@@ -45,7 +45,7 @@ namespace Newhl.MainSite.DataLayer.DataMapper
 
             foreach (DTO.Program currentListItem in retVal.Programs)
             {
-                currentListItem.Season = retVal;
+                currentListItem.SeasonId = retVal.Id;
             }
 
             return retVal;

@@ -23,5 +23,7 @@ namespace Newhl.MainSite.DataLayer.Repositories
         ISeasonRepository SeasonRepository { get; }
 
         IPaymentRepository PaymentRepository { get; }
+
+        IPlayerSeasonRepository PlayerSeasonRepository { get; }
     }
 }

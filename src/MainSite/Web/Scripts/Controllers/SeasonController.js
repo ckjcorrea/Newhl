@@ -5,25 +5,18 @@
         $scope.targetSeason = getTargetSeasonRequest.get();
     }
 
-    $scope.isProgramSelected = function (programId, seasonId) {
-        var retVal = false;
-
-        if ($scope.selectedPrograms !== 'undefined' && $scope.selectedPrograms !== null) {
-            if ($scope.selectedPrograms[programId] !== 'undefined' && $scope.selectedPrograms[programId] !== null) {
-                if ($scope.selectedPrograms[programId] === seasonId) {
-                    retVal = true;
-                }
-            }
+    $scope.onSelectProgram = function (program) {
+        if (typeof program !== 'undefined' && program !== null)
+        {
+            program.IsSelected = !program.IsSelected;
         }
-
-        return retVal;
     }
 
-    $scope.onSelectProgram = function (programId, seasonId) {
-        if (typeof $scope.selectedPrograms === 'undefined' || $scope.selectedPrograms === null) {
-            $scope.selectedPrograms = {};
-        }
-
-        $scope.selectedComments[programId] = seasonId;
+    $scope.savePrograms = function () {
+        $http.put('/api/Season/' + $scope.targetSeason.Id + "/Programs/Update", $scope.targetSeason)
+            .success(function (data) {
+                $scope.getSeason();
+            });
     }
+
 });

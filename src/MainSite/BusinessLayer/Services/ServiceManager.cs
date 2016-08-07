@@ -95,7 +95,7 @@ namespace Newhl.MainSite.BusinessLayer.Services
             {
                 if (this.seasonService == null)
                 {
-                    this.seasonService = new SeasonService(this.RepositoryManager.SeasonRepository);
+                    this.seasonService = new SeasonService(this.RepositoryManager.SeasonRepository, this.RepositoryManager.PlayerSeasonRepository);
                 }
 
                 return this.seasonService;

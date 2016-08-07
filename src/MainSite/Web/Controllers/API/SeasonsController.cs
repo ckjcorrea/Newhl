@@ -44,8 +44,39 @@ namespace Newhl.MainSite.Web.Controllers.API
         [WebApiAuthorization]
         public DisplaySeasonModel GetDisplay(long id)
         {
-            DisplaySeasonModel retVal = new DisplaySeasonModel(this.Services.SeasonService.GetById(id));
+            DisplaySeasonModel retVal = new DisplaySeasonModel();
+            PlayerSeason playerSeason = this.Services.SeasonService.GetPlayerSeason(this.CurrentPrincipal.User.Id, id);
+            IList<Program> seasonPrograms = null;
+
+            if(playerSeason!=null)
+            {
+                seasonPrograms = playerSeason.Programs;
+            }
+
+            retVal.Initialize(this.Services.SeasonService.GetById(id), seasonPrograms);
             return retVal;
+        }
+
+        [Route("api/Season/{id}/Programs/Update"), HttpPut()]
+        [WebApiAuthorization]
+        public void UpdatePrograms(long id, [FromBody] DisplaySeasonModel input)
+        {
+            IList<Season> activeSeasons = this.Services.SeasonService.GetAll(true);
+
+            IList<long> programsToAdd = new List<long>();
+
+            if(input != null && input.Programs != null)
+            {
+                foreach (DisplayProgramModel program in input.Programs)
+                {
+                    if(program.IsSelected == true)
+                    {
+                        programsToAdd.Add(program.Id);
+                    }
+                }
+            }
+
+            this.Services.SeasonService.UpdateSeasonPrograms(this.CurrentPrincipal.User.Id, id, programsToAdd);            
         }
     }
 }

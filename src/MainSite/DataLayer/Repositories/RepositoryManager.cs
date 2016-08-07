@@ -95,5 +95,20 @@ namespace Newhl.MainSite.DataLayer.Repositories
                 return this.paymentRepository;
             }
         }
+
+        private IPlayerSeasonRepository playerSeasonRepository;
+
+        public IPlayerSeasonRepository PlayerSeasonRepository
+        {
+            get
+            {
+                if (this.playerSeasonRepository == null)
+                {
+                    this.playerSeasonRepository = new PlayerSeasonRepository(this.UnitOfWork);
+                }
+
+                return this.playerSeasonRepository;
+            }
+        }
     }
 }

@@ -8,52 +8,34 @@ namespace Newhl.MainSite.Web.Models.API
 {
     public class DisplayProgramModel
     {
-        public DisplayProgramModel(Season season, Program program)
-        {
-            this.Season = season;
-            this.Source = program;
-        }
+        public DisplayProgramModel() { }
 
-        private Season Season { get; set; }
-        private Program Source { get; set; }
+        public void Initialize(Season season, Program program, bool isSelected)
+        {
+            this.Id = program.Id;
+            this.Name = program.Name;
+            this.DayOfWeek = program.DayOfWeek.ToString();
+            this.StartDate = season.StartDate.AddDays(int.Parse(program.DayOfWeek.ToString("d"))).ToShortDateString();
+            this.StartTime = program.StartTime.ToShortTimeString();
+            this.Price = program.Price;
+            this.IsActive = program.IsActive;
+            this.Location = program.Location;
+            this.IsSelected = isSelected;
+        }
+        public long Id { get; set; }
 
-        public long Id
-        {
-            get { return this.Source.Id; }
-        }
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get { return this.Source.Name; }
-        }
+        public string DayOfWeek { get; set; }
 
-        public string DayOfWeek
-        {
-            get { return this.Source.DayOfWeek.ToString(); }
-        }
+        public string StartDate { get; set; }
 
-        public string StartDate
-        {
-            get { return this.Season.StartDate.AddDays(int.Parse(this.Source.DayOfWeek.ToString("d"))).ToShortDateString(); }
-        }
+        public string StartTime { get; set; }
+        public float Price { get; set; }
+        public bool IsActive { get; set; }
 
-        public string StartTime
-        {
-            get { return this.Source.StartTime.ToShortTimeString(); }
-        }
-        public float Price
-        {
-            get { return this.Source.Price; }
-        }
+        public string Location { get; set; }
 
-        public bool IsActive
-        {
-            get { return this.Source.IsActive; }
-        }
-
-        public string Location
-        {
-            get { return this.Source.Location; }
-        }
+        public bool IsSelected { get; set; }
     }
 }

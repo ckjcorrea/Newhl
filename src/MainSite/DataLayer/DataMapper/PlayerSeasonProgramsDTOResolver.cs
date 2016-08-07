@@ -9,11 +9,11 @@ using Newhl.MainSite.Common.DomainModel;
 
 namespace Newhl.MainSite.DataLayer.DataMapper
 {
-    class ProgramListDTOResolver : MappedListResolver<Program, DTO.Program>
+    class PlayerSeasonProgramsDTOResolver : MappedListResolver<Program, DTO.Program>
     {
         protected override IList<DTO.Program> GetDestinationList(ResolutionResult source)
         {
-            return ((DTO.Season)source.Context.DestinationValue).Programs;
+            return ((DTO.PlayerSeason)source.Context.DestinationValue).Programs;
         }
 
         protected override IList<Program> GetSourceList(ResolutionResult source)
@@ -22,7 +22,7 @@ namespace Newhl.MainSite.DataLayer.DataMapper
 
             if (source.Value != null)
             {
-                retVal = ((Season)source.Value).Programs;
+                retVal = ((PlayerSeason)source.Value).Programs;
             }
 
             return retVal;

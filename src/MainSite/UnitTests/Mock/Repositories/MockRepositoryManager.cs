@@ -70,5 +70,21 @@ namespace Newhl.MainSite.UnitTests.Mock.Repositories
                 return this.mockPaymentRepository.Object;
             }
         }
+
+        Mock<IPlayerSeasonRepository> mockPlayerSeasonRepository;
+
+        public IPlayerSeasonRepository PlayerSeasonRepository
+        {
+            get
+            {
+                if (this.mockPlayerSeasonRepository == null)
+                {
+                    this.mockPlayerSeasonRepository = new Mock<IPlayerSeasonRepository>();
+                    MockPlayerSeasonRepository.ConfigureAllMethods(this.mockPlayerSeasonRepository);
+                }
+
+                return this.mockPlayerSeasonRepository.Object;
+            }
+        }
     }
 }

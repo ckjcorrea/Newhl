@@ -14,8 +14,7 @@ namespace Newhl.MainSite.DataLayer.DTO
         [NHibernate.Mapping.Attributes.Generator(1, Class = "native")]
         public virtual long Id { get; set; }
 
-        [NHibernate.Mapping.Attributes.ManyToOne(Name = "Season", Class = "Season", ClassType = typeof(Season), Column = "SeasonId")]
-        public virtual Season Season { get; set; }
+        public virtual long SeasonId { get; set; }
 
         [NHibernate.Mapping.Attributes.Property]
         public virtual string Name { get; set; }

@@ -8,62 +8,49 @@ namespace Newhl.MainSite.Web.Models.API
 {
     public class DisplaySeasonModel
     {
-        public DisplaySeasonModel(Season source)
-        {
-            this.Source = source;
-        }
+        public DisplaySeasonModel() { }
 
-        private Season source;
-        private IList<DisplayProgramModel> programs;
-
-        private Season Source
+        public void Initialize(Season source, IList<Program> selectedPrograms)
         {
-            get { return this.source; }
-            set
+            this.Id = source.Id;
+            this.Name = source.Name;
+            this.StartDate = source.StartDate.ToShortDateString();
+            this.EndDate = source.EndDate.ToShortDateString();
+            this.DateCreated = source.DateCreated.ToShortDateString();
+            this.IsActive = source.IsActive;
+
+            this.Programs = new List<DisplayProgramModel>();
+
+            for (int i = 0; i < source.Programs.Count; i++)
             {
-                this.source = value;
-                this.programs = new List<DisplayProgramModel>();
+                DisplayProgramModel programToAdd = new DisplayProgramModel();
 
-                for(int i = 0; i < this.source.Programs.Count; i++)
+                bool isSelected = false;
+
+                if (selectedPrograms != null)
                 {
-                    this.programs.Add(new DisplayProgramModel(this.source, this.source.Programs[i]));
+                    if (selectedPrograms.FirstOrDefault(p => p.Id == source.Programs[i].Id)!=null)
+                    {
+                        isSelected = true;
+                    }
                 }
+
+                programToAdd.Initialize(source, source.Programs[i], isSelected);
+                Programs.Add(programToAdd);
             }
         }
 
-        public long Id
-        {
-            get { return this.Source.Id; }
-        }
+        public long Id { get; set; }
 
-        public string Name
-        {
-            get { return this.Source.Name; }
-        }
+        public string Name { get; set; }
 
-        public string StartDate
-        {
-            get { return this.Source.StartDate.ToShortDateString(); }
-        }
+        public string StartDate { get; set; }
 
-        public string EndDate
-        {
-            get { return this.Source.EndDate.ToShortDateString(); }
-        }
+        public string EndDate { get; set; }
+        public string DateCreated { get; set; }
 
-        public string DateCreated
-        {
-            get { return this.Source.DateCreated.ToShortDateString(); }
-        }
+        public bool IsActive { get; set; }
 
-        public bool IsActive
-        {
-            get { return this.Source.IsActive; }
-        }
-
-        public IList<DisplayProgramModel> Programs
-        {
-            get { return this.programs; }
-        }
+        public IList<DisplayProgramModel> Programs { get; set; }
     }
 }
