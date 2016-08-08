@@ -8,6 +8,7 @@ namespace Newhl.MainSite.Web.Models
 {
     public class ConfirmPaymentModel
     {
+        public PlayerSeason PlayerSeason { get; set; }
         public AMFUserLogin PlayerInfo { get; set; }
         public Payment PaymentDetails { get; set; }
     }

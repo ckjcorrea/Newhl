@@ -114,11 +114,5 @@ namespace Newhl.MainSite.Common.DomainModel
         public string Referral { get; set; }
         public string Tournament { get; set; }
         public string Other { get; set; }
-        public string LTP { get; set; }
-        public string Tuesday { get; set; }
-        public string Wednesday { get; set; }
-        public string Stickhandling { get; set; }
-        public string Somerville { get; set; }
-        public string Games { get; set; }
     }
 }

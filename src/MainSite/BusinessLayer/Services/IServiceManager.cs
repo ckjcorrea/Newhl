@@ -26,7 +26,7 @@ namespace Newhl.MainSite.BusinessLayer.Services
 
         IPaymentService PaymentService { get; }
 
-        IProgramService ProgramService { get; }
+        ISeasonService SeasonService { get; }
     }
 }
 

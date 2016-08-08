@@ -10,7 +10,7 @@ namespace Newhl.MainSite.Common.DomainModel
     {
         public long Id { get; set; }
 
-        public AMFUserLogin Player { get; set; }
+        public long PlayerSeasonId { get; set; }
 
         public decimal Amount { get; set; }
 
@@ -25,5 +25,7 @@ namespace Newhl.MainSite.Common.DomainModel
         public string AdditionalDetails { get; set; }
 
         public PaymentStates State { get; set; }
+
+        public Guid TransactionId { get; set; }
     }
 }

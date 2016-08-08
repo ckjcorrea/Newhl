@@ -66,33 +66,33 @@ namespace Newhl.MainSite.DataLayer.Repositories
             }
         }
 
-        private IProgramRepository programRepository;
+        private ISeasonRepository seasonRepository;
 
-        public IProgramRepository ProgramRepository
+        public ISeasonRepository SeasonRepository
         {
             get
             {
-                if (this.programRepository == null)
+                if (this.seasonRepository == null)
                 {
-                    this.programRepository = new ProgramRepository(this.UnitOfWork);
+                    this.seasonRepository = new SeasonRepository(this.UnitOfWork);
                 }
 
-                return this.programRepository;
+                return this.seasonRepository;
             }
         }
 
-        private IPaymentRepository paymentRepository;
+        private IPlayerSeasonRepository playerSeasonRepository;
 
-        public IPaymentRepository PaymentRepository
+        public IPlayerSeasonRepository PlayerSeasonRepository
         {
             get
             {
-                if (this.paymentRepository == null)
+                if (this.playerSeasonRepository == null)
                 {
-                    this.paymentRepository = new PaymentRepository(this.UnitOfWork);
+                    this.playerSeasonRepository = new PlayerSeasonRepository(this.UnitOfWork);
                 }
 
-                return this.paymentRepository;
+                return this.playerSeasonRepository;
             }
         }
     }

@@ -10,6 +10,7 @@ namespace Newhl.MainSite.Web.Models
     {
         public AMFUserLogin Player { get; set; }
 
-        public IList<Program> ActivePrograms { get; set; }
+        public Season SelectedSeason { get; set; }
+        public IList<Season> ActiveSeasons { get; set; }
     }
 }

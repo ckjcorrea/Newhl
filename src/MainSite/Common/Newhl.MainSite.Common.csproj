@@ -52,10 +52,12 @@
     <Compile Include="DomainModel\PaymentPortions.cs" />
     <Compile Include="DomainModel\PaymentStates.cs" />
     <Compile Include="DomainModel\PlayerLevel.cs" />
+    <Compile Include="DomainModel\PlayerSeason.cs" />
     <Compile Include="DomainModel\Program.cs" />
     <Compile Include="DomainModel\RoleType.cs" />
     <Compile Include="DomainModel\LoginAttempt.cs" />
     <Compile Include="DomainModel\AMFUserLogin.cs" />
+    <Compile Include="DomainModel\Season.cs" />
     <Compile Include="DomainModel\UserStatus.cs" />
     <Compile Include="Factories\LoginAttemptFactory.cs" />
     <Compile Include="Factories\UserFactory.cs" />

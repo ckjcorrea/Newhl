@@ -23,7 +23,7 @@ namespace Newhl.MainSite.Web.Controllers
     public class ProgramsController : ControllerBase
     {
         [MVCAuthorization]
-        public ActionResult Index()
+        public ActionResult Index(long? id)
         {
             if (this.CurrentPrincipal == null || this.CurrentPrincipal.IsAuthenticated == false)
             {
@@ -33,7 +33,17 @@ namespace Newhl.MainSite.Web.Controllers
             {
                 ManageProgramsModel retVal = new ManageProgramsModel();
                 retVal.Player = this.CurrentPrincipal.User;
-                retVal.ActivePrograms = this.ServiceManager.ProgramService.GetAll(true);
+                retVal.ActiveSeasons = this.ServiceManager.SeasonService.GetAll(true);
+
+                if(retVal.ActiveSeasons.Count > 0)
+                {
+                    retVal.SelectedSeason = retVal.ActiveSeasons[0];
+
+                    if (id.HasValue)
+                    {
+                        retVal.SelectedSeason = retVal.ActiveSeasons.FirstOrDefault(i => i.Id == id.Value);
+                    }
+                }
 
                 return this.View(retVal);
             }

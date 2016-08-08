@@ -14,11 +14,13 @@ namespace Newhl.MainSite.DataLayer.DTO
         [NHibernate.Mapping.Attributes.Generator(1, Class = "native")]
         public virtual long Id { get; set; }
 
+        public virtual long SeasonId { get; set; }
+
         [NHibernate.Mapping.Attributes.Property]
         public virtual string Name { get; set; }
 
         [NHibernate.Mapping.Attributes.Property]
-        public virtual string DayOfWeek { get; set; }
+        public virtual DayOfWeek DayOfWeek { get; set; }
 
         [NHibernate.Mapping.Attributes.Property]
         public virtual DateTime StartTime { get; set; }
@@ -27,10 +29,7 @@ namespace Newhl.MainSite.DataLayer.DTO
         public virtual float Price { get; set; }
 
         [NHibernate.Mapping.Attributes.Property]
-        public virtual DateTime StartDate { get; set; }
-
-        [NHibernate.Mapping.Attributes.Property]
-        public virtual DateTime EndDate { get; set; }
+        public virtual DateTime DateCreated { get; set; }
 
         [NHibernate.Mapping.Attributes.Property]
         public virtual bool IsActive { get; set; }

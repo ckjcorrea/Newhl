@@ -39,15 +39,15 @@ namespace Newhl.MainSite.UnitTests.Mock.Repositories
             }
         }
 
-        Mock<IProgramRepository> mockProgramRepository;
+        Mock<ISeasonRepository> mockProgramRepository;
 
-        public IProgramRepository ProgramRepository
+        public ISeasonRepository SeasonRepository
         {
             get
             {
                 if (this.mockProgramRepository == null)
                 {
-                    this.mockProgramRepository = new Mock<IProgramRepository>();
+                    this.mockProgramRepository = new Mock<ISeasonRepository>();
                     MockProgramRepository.ConfigureAllMethods(this.mockProgramRepository);
                 }
 
@@ -55,19 +55,19 @@ namespace Newhl.MainSite.UnitTests.Mock.Repositories
             }
         }
 
-        Mock<IPaymentRepository> mockPaymentRepository;
+        Mock<IPlayerSeasonRepository> mockPlayerSeasonRepository;
 
-        public IPaymentRepository PaymentRepository
+        public IPlayerSeasonRepository PlayerSeasonRepository
         {
             get
             {
-                if (this.mockPaymentRepository == null)
+                if (this.mockPlayerSeasonRepository == null)
                 {
-                    this.mockPaymentRepository = new Mock<IPaymentRepository>();
-                    MockPaymentRepository.ConfigureAllMethods(this.mockPaymentRepository);
+                    this.mockPlayerSeasonRepository = new Mock<IPlayerSeasonRepository>();
+                    MockPlayerSeasonRepository.ConfigureAllMethods(this.mockPlayerSeasonRepository);
                 }
 
-                return this.mockPaymentRepository.Object;
+                return this.mockPlayerSeasonRepository.Object;
             }
         }
     }

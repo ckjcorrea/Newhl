@@ -10,87 +10,80 @@ namespace Newhl.MainSite.BusinessLayer.Services
 {
     public class PaymentService : IPaymentService
     {
-        public PaymentService(IPaymentRepository paymentRepository, IAMFUserRepository userRepository)
+        public PaymentService(IPlayerSeasonRepository playerSeasonRepository)
         {
-            this.PaymentRepository = paymentRepository;
-            this.UserRepository = userRepository;
+            this.PlayerSeasonRepository = playerSeasonRepository;
         }
 
         /// <summary>
         /// Gets and sets the contained user repository
         /// </summary>
-        protected IPaymentRepository PaymentRepository { get; private set; }
-        protected IAMFUserRepository UserRepository { get; private set; }
+        protected IPlayerSeasonRepository PlayerSeasonRepository { get; private set; }
 
-        public IList<Payment> GetByPlayerId(long playerId)
-        {
-            return this.PaymentRepository.GetByUserId(playerId);
-        }
-
-        public Payment AddUserPayment(long playerId, PaymentMethods paymentMethod, decimal paymentAmount, string additionalDetails)
+        public Payment AddSeasonPayment(long playerId, PaymentMethods paymentMethod, decimal paymentAmount, string additionalDetails, long playerSeasonId)
         {
             Payment retVal = null;
 
-            AMFUserLogin targetUser = this.UserRepository.GetById(playerId);
-            
-            if(targetUser != null)
+            PlayerSeason targetSeason = this.PlayerSeasonRepository.GetById(playerSeasonId);
+
+            if (targetSeason != null && targetSeason.PlayerId == playerId)
             {
                 retVal = new Payment();
                 retVal.Amount = paymentAmount;
                 retVal.DateSubmitted = DateTime.Now;
                 retVal.PaymentMethod = paymentMethod;
                 retVal.AdditionalDetails = additionalDetails;
-                retVal.Player = targetUser;
+                retVal.PlayerSeasonId = targetSeason.Id;
+                retVal.TransactionId = Guid.NewGuid();
 
-                retVal = this.PaymentRepository.Save(retVal);
+                targetSeason.Payments.Add(retVal);
+                targetSeason = this.PlayerSeasonRepository.Save(targetSeason);
+
+                retVal = targetSeason.Payments.FirstOrDefault(p => p.TransactionId == retVal.TransactionId);
             }
 
             return retVal;
         }
 
-
-        public Payment GetById(long paymentId)
-        {
-            return this.PaymentRepository.GetById(paymentId);
-        }
-
-        public bool CancelPromise(long userId, long paymentId)
+        public bool CancelPromise(long playerId, long playerSeasonId, long paymentId)
         {
             bool retVal = false;
 
-            AMFUserLogin player = this.UserRepository.GetById(userId);
+            PlayerSeason targetSeason = this.PlayerSeasonRepository.GetById(playerSeasonId);
 
-            if(player!=null)
+            if (targetSeason != null && targetSeason.PlayerId == playerId)
             {
-                Payment targetPayment = this.PaymentRepository.GetById(paymentId);
-
+                Payment targetPayment = targetSeason.Payments.FirstOrDefault(p => p.Id == paymentId);
+                
                 if(targetPayment != null)
                 {
-                    if(targetPayment.Player.Id == player.Id && targetPayment.State == PaymentStates.Promised)
+                    if(targetPayment.State == PaymentStates.Promised)
                     {
-                        retVal = this.PaymentRepository.Delete(targetPayment);
+                        targetSeason.Payments.Remove(targetPayment);
+                        this.PlayerSeasonRepository.Save(targetSeason);
+                        retVal = true;
                     }
                 }
             }
 
             return retVal;
         }
-        public Payment ConfirmPromise(long userId, long paymentId)
+        public Payment ConfirmPromise(long playerId, long playerSeasonId, long paymentId)
         {
             Payment retVal = null;
 
-            AMFUserLogin player = this.UserRepository.GetById(userId);
+            PlayerSeason targetSeason = this.PlayerSeasonRepository.GetById(playerSeasonId);
 
-            if (player != null)
+            if (targetSeason != null && targetSeason.PlayerId == playerId)
             {
-                retVal = this.PaymentRepository.GetById(paymentId);
+                retVal = targetSeason.Payments.FirstOrDefault(p => p.Id == paymentId);
 
                 if (retVal != null)
                 {
-                    if (retVal.Player.Id == player.Id && retVal.State == PaymentStates.Promised)
+                    if (retVal.State == PaymentStates.Promised)
                     {
                         retVal.State = PaymentStates.Confirmed;
-                        retVal = this.PaymentRepository.Save(retVal);
+                        this.PlayerSeasonRepository.Save(targetSeason);
                     }
                 }
             }

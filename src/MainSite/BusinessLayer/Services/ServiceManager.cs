@@ -80,25 +80,25 @@ namespace Newhl.MainSite.BusinessLayer.Services
             {
                 if(this.paymentService == null)
                 {
-                    this.paymentService = new PaymentService(this.RepositoryManager.PaymentRepository, this.RepositoryManager.UserRepository);
+                    this.paymentService = new PaymentService(this.RepositoryManager.PlayerSeasonRepository);
                 }
 
                 return this.paymentService;
             }
         }
 
-        private IProgramService programService;
+        private ISeasonService seasonService;
 
-        public IProgramService ProgramService
+        public ISeasonService SeasonService
         {
             get
             {
-                if (this.programService == null)
+                if (this.seasonService == null)
                 {
-                    this.programService = new ProgramService(this.RepositoryManager.ProgramRepository);
+                    this.seasonService = new SeasonService(this.RepositoryManager.SeasonRepository, this.RepositoryManager.PlayerSeasonRepository);
                 }
 
-                return this.programService;
+                return this.seasonService;
             }
         }
         

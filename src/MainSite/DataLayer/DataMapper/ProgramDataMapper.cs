@@ -19,7 +19,8 @@ namespace Newhl.MainSite.DataLayer.DataMapper
         {
             if (AutoMapper.Mapper.FindTypeMapFor<Program, DTO.Program>() == null)
             {
-                AutoMapper.Mapper.CreateMap<Program, DTO.Program>();
+                AutoMapper.Mapper.CreateMap<Program, DTO.Program>()
+                    .ForMember(va => va.SeasonId, opt => opt.Ignore());
             }
 
             if (AutoMapper.Mapper.FindTypeMapFor<DTO.Program, Program>() == null)
