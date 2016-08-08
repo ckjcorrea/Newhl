@@ -83,12 +83,13 @@ CREATE TABLE [dbo].[Payments](
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[PlayerSeasonId] [bigint] NOT NULL,
 	[Amount] float NOT NULL,
-	[PaymentMethod] int NOT NULL,
+	[PaymentMethod] nvarchar(20) NOT NULL,
 	[DateSubmitted] datetime not NULL,
 	[DateVerified] datetime NULL,
 	[VerificationIdentifier] nvarchar(255) NULL,
 	[AdditionalDetails] nvarchar(512) NULL,
-	[PaymentState] int NOT NULL
+	[PaymentState] int NOT NULL,
+	[TransactionId] nvarchar(36) NOT NULL
  CONSTRAINT [PK_PAYMENTS] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

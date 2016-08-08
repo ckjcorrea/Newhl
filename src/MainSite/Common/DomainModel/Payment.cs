@@ -25,5 +25,7 @@ namespace Newhl.MainSite.Common.DomainModel
         public string AdditionalDetails { get; set; }
 
         public PaymentStates State { get; set; }
+
+        public Guid TransactionId { get; set; }
     }
 }

@@ -34,10 +34,12 @@ namespace Newhl.MainSite.BusinessLayer.Services
                 retVal.PaymentMethod = paymentMethod;
                 retVal.AdditionalDetails = additionalDetails;
                 retVal.PlayerSeasonId = targetSeason.Id;
+                retVal.TransactionId = Guid.NewGuid();
 
                 targetSeason.Payments.Add(retVal);
                 targetSeason = this.PlayerSeasonRepository.Save(targetSeason);
-                retVal = targetSeason.Payments[targetSeason.Payments.Count - 1];
+
+                retVal = targetSeason.Payments.FirstOrDefault(p => p.TransactionId == retVal.TransactionId);
             }
 
             return retVal;

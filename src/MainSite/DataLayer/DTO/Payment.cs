@@ -35,8 +35,11 @@ namespace Newhl.MainSite.DataLayer.DTO
         [NHibernate.Mapping.Attributes.Property]
         public virtual string AdditionalDetails { get; set; }
 
-        [NHibernate.Mapping.Attributes.Property(Column ="PaymentState")]
+        [NHibernate.Mapping.Attributes.Property(Column = "PaymentState")]
         public virtual PaymentStates State { get; set; }
+
+        [NHibernate.Mapping.Attributes.Property]
+        public virtual Guid TransactionId { get; set;}
 
     }
 }
