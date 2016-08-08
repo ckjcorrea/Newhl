@@ -40,7 +40,7 @@
                     <select id="selectedSeason" name="selectedSeason" onchange="javascript:manuallyFireAngularRefresh();">
                         @foreach (PlayerSeason season in Model.PlayerSeasons)
                         {
-                            <option id="@season.Id" name="@season.Id" value="@season.Id" @if (season.Id == Model.SelectedSeason.Id) { <text> selected </text>  }>@season.Id</option>
+                            <option id="@season.Id" name="@season.Id" value="@season.Id" @if (season.Id == Model.SelectedSeason.Id) { <text> selected </text>  }>@Model.PlayerSeasonDetails[season.Id].Name</option>
                         }
                     </select>
                     <div>

@@ -82,11 +82,9 @@
     <Compile Include="DTO\Program.cs" />
     <Compile Include="DTO\Season.cs" />
     <Compile Include="Repositories\ILoginAttemptRepository.cs" />
-    <Compile Include="Repositories\IPaymentRepository.cs" />
     <Compile Include="Repositories\IPlayerSeasonRepository.cs" />
     <Compile Include="Repositories\ISeasonRepository.cs" />
     <Compile Include="Repositories\LoginAttemptRepository.cs" />
-    <Compile Include="Repositories\PaymentRepository.cs" />
     <Compile Include="Repositories\PlayerSeasonRepository.cs" />
     <Compile Include="Repositories\SeasonRepository.cs" />
     <Compile Include="UnitOfWork.cs" />

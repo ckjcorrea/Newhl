@@ -81,21 +81,6 @@ namespace Newhl.MainSite.DataLayer.Repositories
             }
         }
 
-        private IPaymentRepository paymentRepository;
-
-        public IPaymentRepository PaymentRepository
-        {
-            get
-            {
-                if (this.paymentRepository == null)
-                {
-                    this.paymentRepository = new PaymentRepository(this.UnitOfWork);
-                }
-
-                return this.paymentRepository;
-            }
-        }
-
         private IPlayerSeasonRepository playerSeasonRepository;
 
         public IPlayerSeasonRepository PlayerSeasonRepository

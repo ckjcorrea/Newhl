@@ -55,22 +55,6 @@ namespace Newhl.MainSite.UnitTests.Mock.Repositories
             }
         }
 
-        Mock<IPaymentRepository> mockPaymentRepository;
-
-        public IPaymentRepository PaymentRepository
-        {
-            get
-            {
-                if (this.mockPaymentRepository == null)
-                {
-                    this.mockPaymentRepository = new Mock<IPaymentRepository>();
-                    MockPaymentRepository.ConfigureAllMethods(this.mockPaymentRepository);
-                }
-
-                return this.mockPaymentRepository.Object;
-            }
-        }
-
         Mock<IPlayerSeasonRepository> mockPlayerSeasonRepository;
 
         public IPlayerSeasonRepository PlayerSeasonRepository

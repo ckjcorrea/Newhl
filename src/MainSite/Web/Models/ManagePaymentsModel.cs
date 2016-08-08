@@ -13,5 +13,7 @@ namespace Newhl.MainSite.Web.Models
         public PlayerSeason SelectedSeason { get; set; }
 
         public IList<PlayerSeason> PlayerSeasons { get; set; }
+
+        public IDictionary<long, Season> PlayerSeasonDetails { get; set; }
     }
 }

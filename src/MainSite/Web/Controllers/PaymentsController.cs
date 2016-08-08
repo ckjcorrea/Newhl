@@ -17,28 +17,6 @@ namespace Newhl.MainSite.Web.Controllers
     public class PaymentsController : ControllerBase
     {
         [MVCAuthorization]
-        public ActionResult Index()
-        {
-            if (this.CurrentPrincipal == null || this.CurrentPrincipal.IsAuthenticated == false)
-            {
-                return this.RedirectToAction("Signin", "User");
-            }
-            else
-            {
-                ManagePaymentsModel retVal = new ManagePaymentsModel();
-                retVal.Player = this.CurrentPrincipal.User;
-                retVal.PlayerSeasons = this.ServiceManager.SeasonService.GetPlayerSeasons(this.CurrentPrincipal.User.Id);
-
-                if (retVal.PlayerSeasons != null && retVal.PlayerSeasons.Count > 0)
-                {
-                    retVal.SelectedSeason = retVal.PlayerSeasons[0];
-                }
-
-                return this.View(retVal);
-            }
-        }
-
-        [MVCAuthorization]
         public ActionResult Season(long? seasonId)
         {
             if (this.CurrentPrincipal == null || this.CurrentPrincipal.IsAuthenticated == false)
@@ -50,6 +28,7 @@ namespace Newhl.MainSite.Web.Controllers
                 ManagePaymentsModel retVal = new ManagePaymentsModel();
                 retVal.Player = this.CurrentPrincipal.User;
                 retVal.PlayerSeasons = this.ServiceManager.SeasonService.GetPlayerSeasons(this.CurrentPrincipal.User.Id);
+                retVal.PlayerSeasonDetails = new Dictionary<long, Season>();
 
                 if(seasonId.HasValue)
                 {
@@ -61,6 +40,11 @@ namespace Newhl.MainSite.Web.Controllers
                     {
                         retVal.SelectedSeason = retVal.PlayerSeasons[0];
                     }
+                }
+
+                for(int i = 0; i < retVal.PlayerSeasons.Count; i++)
+                {
+                    retVal.PlayerSeasonDetails.Add(retVal.PlayerSeasons[i].Id, this.ServiceManager.SeasonService.GetById(retVal.PlayerSeasons[i].SeasonId));
                 }
 
                 return this.View(retVal);
