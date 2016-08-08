@@ -52,13 +52,5 @@ namespace Newhl.MainSite.DataLayer.Repositories
             criteria.Add(Expression.Eq("Id", id));
             return criteria.UniqueResult<DTO.Payment>();
         }
-
-        public IList<Payment> GetByUserId(long userId)
-        {
-            ICriteria criteria = ((UnitOfWork)this.UnitOfWork).CurrentSession.CreateCriteria<DTO.Payment>();
-            criteria.CreateCriteria("Player").Add(Expression.Eq("Id", userId));
-            criteria.AddOrder(Order.Desc("DateSubmitted"));
-            return this.GetDataMapper().Map(criteria.List<DTO.Payment>());
-        }
     }
 }

@@ -13,9 +13,9 @@ namespace Newhl.MainSite.DataLayer.DTO
         [NHibernate.Mapping.Attributes.Id(0, Name = "Id", UnsavedValue = "0")]
         [NHibernate.Mapping.Attributes.Generator(1, Class = "native")]
         public virtual long Id { get; set; }
-        
-        [NHibernate.Mapping.Attributes.ManyToOne(Class = "AMFUser", ClassType = typeof(AMFUser), Column = "PlayerId")]
-        public virtual AMFUser Player { get; set; }
+
+        [NHibernate.Mapping.Attributes.Property]
+        public virtual long PlayerSeasonId { get; set; }
 
         [NHibernate.Mapping.Attributes.Property]
         public virtual decimal Amount { get; set; }

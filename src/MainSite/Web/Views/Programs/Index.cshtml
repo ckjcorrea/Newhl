@@ -13,6 +13,10 @@
             jQuery("#refreshButton").click();
         };
 
+        function gotoMakePayment() {
+            var seasonId = jQuery("#targetSeasonId").val();
+            window.location.href = "/Payments/Season/" + seasonId;
+        }
     </script>
 }
 <div class="bodyContent" ng-controller="SeasonController">
@@ -35,10 +39,11 @@
                             <button style="display:none" id="refreshButton" value="Refresh" ng-click="getSeason();">Refresh</button>
                         }
                         <div ng-init="getSeason();">
+                            <input type="hidden" id="targetSeasonId" name="targetSeasonId" value="{{ targetSeason.Id }}"/>
                             <div>Sesson: {{ targetSeason.Name }}</div>
                             <div>Start Date: {{ targetSeason.StartDate }}</div>
                             <div>End Date: {{ targetSeason.EndDate }}</div>
-                            <div>Total Cost: {{ totalCost }}</div>
+                            <div>Total Cost: {{ totalCost }} <button type="button" id="enterPaymentButton" class="btn btn-primary" onclick="javascript:gotoMakePayment();">Make Payment</button></div>
                             <div><button type="button" id="saveProgramsButton" class="btn btn-primary" ng-click="savePrograms();">Save</button></p></div>
                             <table class="table table-striped">
                                 <thead>

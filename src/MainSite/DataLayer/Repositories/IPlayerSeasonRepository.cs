@@ -10,6 +10,7 @@ namespace Newhl.MainSite.DataLayer.Repositories
 {
     public interface IPlayerSeasonRepository : INHibernateRepository<PlayerSeason, long>
     {
+        IList<PlayerSeason> GetByPlayerId(long playerId);
         PlayerSeason GetByPlayerIdAndSeasonId(long playerId, long seasonId);
     }
 }

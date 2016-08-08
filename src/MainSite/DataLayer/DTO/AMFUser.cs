@@ -155,42 +155,6 @@ namespace Newhl.MainSite.DataLayer.DTO
         public virtual string Other { get; set; }
 
         /// <summary>
-        /// Gets or sets the users LTP field
-        /// </summary>
-        [NHibernate.Mapping.Attributes.Property]
-        public virtual string LTP { get; set; }
-
-        /// <summary>
-        /// Gets or sets the users Tuesday field
-        /// </summary>
-        [NHibernate.Mapping.Attributes.Property]
-        public virtual string Tuesday { get; set; }
-
-        /// <summary>
-        /// Gets or sets the users Wednesday field
-        /// </summary>
-        [NHibernate.Mapping.Attributes.Property]
-        public virtual string Wednesday { get; set; }
-
-        /// <summary>
-        /// Gets or sets the users Stickhandling field
-        /// </summary>
-        [NHibernate.Mapping.Attributes.Property]
-        public virtual string Stickhandling { get; set; }
-
-        /// <summary>
-        /// Gets or sets the users Somerville field
-        /// </summary>
-        [NHibernate.Mapping.Attributes.Property]
-        public virtual string Somerville { get; set; }
-
-        /// <summary>
-        /// Gets or sets the users Games field
-        /// </summary>
-        [NHibernate.Mapping.Attributes.Property]
-        public virtual string Games { get; set; }
-
-        /// <summary>
         /// Gets or sets the date created.
         /// </summary>
         [NHibernate.Mapping.Attributes.Property]

@@ -13,7 +13,10 @@ namespace Newhl.MainSite.BusinessLayer.Services
 
         Season GetById(long id);
 
-        PlayerSeason GetPlayerSeason(long playerId, long seasonId);
+        PlayerSeason GetPlayerSeasonById(long playerSeasonId);
+        PlayerSeason GetPlayerSeasonBySeasonId(long playerId, long seasonId);
+
+        IList<PlayerSeason> GetPlayerSeasons(long playerId);
 
         bool UpdateSeasonPrograms(long playerId, long seasonId, IList<long> programsToAdd);
     }

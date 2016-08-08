@@ -52,6 +52,13 @@ namespace Newhl.MainSite.DataLayer.Repositories
             return criteria.UniqueResult<DTO.PlayerSeason>();
         }
 
+        public IList<PlayerSeason> GetByPlayerId(long playerId)
+        {
+            ICriteria criteria = ((UnitOfWork)this.UnitOfWork).CurrentSession.CreateCriteria<DTO.PlayerSeason>();
+            criteria.Add(Expression.Eq("PlayerId", playerId));
+            return this.GetDataMapper().Map(criteria.List<DTO.PlayerSeason>());
+        }
+
         public PlayerSeason GetByPlayerIdAndSeasonId(long playerId, long seasonId)
         {
             ICriteria criteria = ((UnitOfWork)this.UnitOfWork).CurrentSession.CreateCriteria<DTO.PlayerSeason>();
@@ -64,13 +71,13 @@ namespace Newhl.MainSite.DataLayer.Repositories
         {
             if (itemToSave != null && itemToSave.Programs != null)
             {
-                DTO.PlayerSeason dtoPost = this.GetDTOById(itemToSave.Id);
+                DTO.PlayerSeason dtoItem = this.GetDTOById(itemToSave.Id);
 
-                if (dtoPost != null)
+                if (dtoItem != null)
                 {
                     foreach (Program domainProgram in itemToSave.Programs)
                     {
-                        if (dtoPost.Programs.FirstOrDefault(t => t.Id == domainProgram.Id) == null)
+                        if (dtoItem.Programs.FirstOrDefault(t => t.Id == domainProgram.Id) == null)
                         {
                             ICriteria criteria = this.UnitOfWork.CurrentSession.CreateCriteria<DTO.Program>();
                             criteria.Add(Expression.Eq("Id", domainProgram.Id));
@@ -78,7 +85,22 @@ namespace Newhl.MainSite.DataLayer.Repositories
 
                             if (existsTest != null)
                             {
-                                dtoPost.Programs.Add(existsTest);
+                                dtoItem.Programs.Add(existsTest);
+                            }
+                        }
+                    }
+
+                    foreach (Payment domainPayment in itemToSave.Payments)
+                    {
+                        if (dtoItem.Programs.FirstOrDefault(t => t.Id == domainPayment.Id) == null)
+                        {
+                            ICriteria criteria = this.UnitOfWork.CurrentSession.CreateCriteria<DTO.Payment>();
+                            criteria.Add(Expression.Eq("Id", domainPayment.Id));
+                            DTO.Payment existsTest = criteria.UniqueResult<DTO.Payment>();
+
+                            if (existsTest != null)
+                            {
+                                dtoItem.Payments.Add(existsTest);
                             }
                         }
                     }

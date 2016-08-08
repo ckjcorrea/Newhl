@@ -37,9 +37,7 @@ namespace Newhl.MainSite.BusinessLayer.Services
                     "USA Hockey Number: " + playerInfo.USAHockeyNum + "\n" + "DOB: " + playerInfo.DOB + "\n" + "Address: " + playerInfo.Address1 + " " + playerInfo.Address2 + "\n" +
                     "City: " + playerInfo.City + "\n" + "State: " + playerInfo.State + "\n" + "Zip Code: " + playerInfo.ZipCode + "\n" + "Primary Phone: " + playerInfo.Phone1 + "\n" +
                     "Secondary Phone: " + playerInfo.Phone2 + "\n" + "Emergency Contacts: " + playerInfo.Emergency1 + ", " + playerInfo.Emergency2 + "\n" + "Years Experience: " + playerInfo.YearsExp + "\n" +
-                    "Experience Level: " + playerInfo.Level + "\n" + "\n" + "Programs requested: " + "\n" + "Learn To Play (Monday): " + playerInfo.LTP + "Rec Skill (Tuesday): " + playerInfo.Tuesday + "\n" +
-                    "C/D SKills (Wednesday): " + playerInfo.Wednesday + "\n" + "Stickhandling and Shooting Skills (Thursday): " + playerInfo.Stickhandling + "\n" +
-                    "Mixed Level Skills (Somerville, Thursday PM): " + playerInfo.Somerville + "\n" + "Games (Friday): " + playerInfo.Games; ;
+                    "Experience Level: " + playerInfo.Level + "\n" + "\n" + "Programs requested: " + "\n";
 
             return retVal;
         }

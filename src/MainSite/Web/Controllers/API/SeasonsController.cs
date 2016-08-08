@@ -45,7 +45,7 @@ namespace Newhl.MainSite.Web.Controllers.API
         public DisplaySeasonModel GetDisplay(long id)
         {
             DisplaySeasonModel retVal = new DisplaySeasonModel();
-            PlayerSeason playerSeason = this.Services.SeasonService.GetPlayerSeason(this.CurrentPrincipal.User.Id, id);
+            PlayerSeason playerSeason = this.Services.SeasonService.GetPlayerSeasonBySeasonId(this.CurrentPrincipal.User.Id, id);
             IList<Program> seasonPrograms = null;
 
             if(playerSeason!=null)

@@ -75,4 +75,43 @@ CREATE TABLE [dbo].[PlayerSeasonPrograms](
 GO
 ALTER TABLE [dbo].[PlayerSeasonPrograms]  WITH CHECK ADD  CONSTRAINT [FK_PlayerSeasonPrograms_PlayerSeason] FOREIGN KEY([PlayerSeasonId])
 REFERENCES [dbo].[PlayerSeasons] ([Id])
+GO 
+DROP Table [dbo].[Payments]
+GO
+
+CREATE TABLE [dbo].[Payments](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[PlayerSeasonId] [bigint] NOT NULL,
+	[Amount] float NOT NULL,
+	[PaymentMethod] int NOT NULL,
+	[DateSubmitted] datetime not NULL,
+	[DateVerified] datetime NULL,
+	[VerificationIdentifier] nvarchar(255) NULL,
+	[AdditionalDetails] nvarchar(512) NULL,
+	[PaymentState] int NOT NULL
+ CONSTRAINT [PK_PAYMENTS] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  ForeignKey [FK_Payments_PlayerSeasons]    Script Date: 09/15/2014 08:05:13 ******/
+ALTER TABLE [dbo].[Payments]  WITH CHECK ADD  CONSTRAINT [FK_Payments_PlayerSeasons] FOREIGN KEY([PlayerSeasonId])
+REFERENCES [dbo].[PlayerSeasons] ([Id])
+GO
+ALTER TABLE [dbo].[Payments] CHECK CONSTRAINT [FK_Payments_PlayerSeasons]
+GO
+ALTER Table [dbo].[AMFUsers] DROP Column LTP
+GO
+ALTER Table [dbo].[AMFUsers] DROP Column Tuesday
+GO
+ALTER Table [dbo].[AMFUsers] DROP Column Wednesday
+GO
+ALTER Table [dbo].[AMFUsers] DROP Column Stickhandling
+GO
+ALTER Table [dbo].[AMFUsers] DROP Column Somerville
+GO
+ALTER Table [dbo].[AMFUsers] DROP Column Games
 GO

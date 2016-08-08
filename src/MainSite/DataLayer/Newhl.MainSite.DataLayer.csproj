@@ -70,6 +70,7 @@
     <Compile Include="DataMapper\LoginAttemptDataMapper.cs" />
     <Compile Include="DataMapper\PaymentDataMapper.cs" />
     <Compile Include="DataMapper\PlayerSeasonDataMapper.cs" />
+    <Compile Include="DataMapper\PlayerSeasonPaymentsDTOResolver.cs" />
     <Compile Include="DataMapper\PlayerSeasonProgramsDTOResolver.cs" />
     <Compile Include="DataMapper\ProgramDataMapper.cs" />
     <Compile Include="DataMapper\SeasonProgramsDTOResolver.cs" />

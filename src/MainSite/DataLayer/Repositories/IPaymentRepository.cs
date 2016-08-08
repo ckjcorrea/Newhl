@@ -9,6 +9,5 @@ namespace Newhl.MainSite.DataLayer.Repositories
 {
     public interface IPaymentRepository : INHibernateRepository<Payment, long>
     {
-        IList<Payment> GetByUserId(long userId);
     }
 }

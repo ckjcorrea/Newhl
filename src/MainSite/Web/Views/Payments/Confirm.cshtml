@@ -64,11 +64,13 @@
             </span>            
         }
         <!-- include complete payment button -->
-        <form id="redoPaymentForm" action="/Payment/CancelPromise" method="POST">
+        <form id="redoPaymentForm" action="/Payments/CancelPromise" method="POST">
             <input type="hidden" id="paymentId" name="paymentId" value="@Model.PaymentDetails.Id"/>
+            <input type="hidden" id="playerSeasonId" name="playerSeasonId" value="@Model.PlayerSeason.Id"/>
         </form>
-        <form id="confirmPaymentForm" action="/Payment/ConfirmPromise" method="POST">
+        <form id="confirmPaymentForm" action="/Payments/ConfirmPromise" method="POST">
             <input type="hidden" id="paymentId" name="paymentId" value="@Model.PaymentDetails.Id" />
+            <input type="hidden" id="playerSeasonId" name="playerSeasonId" value="@Model.PlayerSeason.Id" />
         </form>
 </section>
 

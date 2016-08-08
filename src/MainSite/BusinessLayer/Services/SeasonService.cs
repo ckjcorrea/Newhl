@@ -46,61 +46,71 @@ namespace Newhl.MainSite.BusinessLayer.Services
         {
             bool retVal = false;
 
-            if(programsToAdd.Count > 0)
+            // Load up the season by the first
+            Season targetSeason = this.SeasonRepository.GetById(seasonId);
+            IList<Program> foundProgramsToAdd = new List<Program>();
+
+            if (targetSeason != null)
             {
-                // Load up the season by the first
-                Season targetSeason = this.SeasonRepository.GetById(seasonId);
-                IList<Program> foundProgramsToAdd = new List<Program>();
+                bool allMatch = true;
 
-                if (targetSeason != null)
+                // first make sure all the programs are for the same season
+                for(int i = 0; i < programsToAdd.Count; i++)
                 {
-                    bool allMatch = true;
+                    Program foundProgramToAdd = targetSeason.Programs.FirstOrDefault(p => p.Id == programsToAdd[i]);
 
-                    // first make sure all the programs are for the same season
-                    for(int i = 0; i < programsToAdd.Count; i++)
+                    if(foundProgramToAdd != null)
                     {
-                        Program foundProgramToAdd = targetSeason.Programs.FirstOrDefault(p => p.Id == programsToAdd[i]);
-
-                        if(foundProgramToAdd != null)
-                        {
-                            foundProgramsToAdd.Add(foundProgramToAdd);
-                        }
-                        else
-                        {
-                            // write an error
-                            allMatch = false;
-                            break;
-                        }
-                    }  
+                        foundProgramsToAdd.Add(foundProgramToAdd);
+                    }
+                    else
+                    {
+                        // write an error
+                        allMatch = false;
+                        break;
+                    }
+                }  
                     
-                    if(allMatch)
+                if(allMatch)
+                {
+                    PlayerSeason playerSeason = this.PlayerSeasonRepository.GetByPlayerIdAndSeasonId(playerId, seasonId);
+
+                    if(playerSeason==null)
                     {
-                        PlayerSeason playerSeason = this.PlayerSeasonRepository.GetByPlayerIdAndSeasonId(playerId, seasonId);
+                        playerSeason = new PlayerSeason();
+                        playerSeason.PlayerId = playerId;
+                        playerSeason.SeasonId = seasonId;
+                    }
 
-                        if(playerSeason==null)
-                        {
-                            playerSeason = new PlayerSeason();
-                            playerSeason.PlayerId = playerId;
-                            playerSeason.SeasonId = seasonId;
-                        }
-
+                    if (targetSeason.StartDate >= DateTime.Now && (playerSeason.Payments == null || playerSeason.Payments.Count == 0))
+                    {
                         playerSeason.UpdateSeasonPrograms(foundProgramsToAdd);
                         playerSeason = this.PlayerSeasonRepository.Save(playerSeason);
-                        
-                        if(playerSeason != null)
+
+                        if (playerSeason != null)
                         {
                             retVal = true;
                         }
-                    }                
-                }
+                    }
+                }                
             }
 
             return retVal;
         }
 
-        public PlayerSeason GetPlayerSeason(long playerId, long seasonId)
+        public PlayerSeason GetPlayerSeasonById(long playerSeasonId)
+        {
+            return this.PlayerSeasonRepository.GetById(playerSeasonId);
+        }
+        public PlayerSeason GetPlayerSeasonBySeasonId(long playerId, long seasonId)
         {
             return this.PlayerSeasonRepository.GetByPlayerIdAndSeasonId(playerId, seasonId);
         }
+
+        public IList<PlayerSeason> GetPlayerSeasons(long playerId)
+        {
+            return this.PlayerSeasonRepository.GetByPlayerId(playerId);
+        }
+
     }
 }

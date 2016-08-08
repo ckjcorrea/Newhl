@@ -10,6 +10,8 @@ namespace Newhl.MainSite.Web.Models
     {
         public AMFUserLogin Player { get; set; }
 
-        public IList<Payment> Payments { get; set; }
+        public PlayerSeason SelectedSeason { get; set; }
+
+        public IList<PlayerSeason> PlayerSeasons { get; set; }
     }
 }

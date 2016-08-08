@@ -260,6 +260,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Controllers\PaymentController.js" />
     <Content Include="Scripts\Controllers\SeasonController.js" />
     <Content Include="Scripts\Controllers\UserController.js" />
     <Content Include="Scripts\datepicker\css\datepicker.css" />
@@ -1041,12 +1042,13 @@
     <Compile Include="Code\Extensions\PagerExtensions.cs" />
     <Compile Include="Code\XmlResult.cs" />
     <Compile Include="Controllers\API\BaseAPIController.cs" />
+    <Compile Include="Controllers\API\PaymentController.cs" />
     <Compile Include="Controllers\API\SeasonsController.cs" />
     <Compile Include="Controllers\API\UsersController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\AprilShowersController.cs" />
-    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\ProgramsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
@@ -1056,6 +1058,7 @@
     </Compile>
     <Compile Include="Models\API\DisplayProgramModel.cs" />
     <Compile Include="Models\API\DisplaySeasonModel.cs" />
+    <Compile Include="Models\API\PlayerSeasonPaymentModel.cs" />
     <Compile Include="Models\API\UsetDetailModel.cs" />
     <Compile Include="Models\ConfirmPaymentModel.cs" />
     <Compile Include="Models\ManagePaymentsModel.cs" />
@@ -1093,8 +1096,8 @@
     <Content Include="Views\AprilShowers\TournamentInfo.cshtml" />
     <Content Include="Views\Registration\Start.cshtml" />
     <Content Include="Views\User\_UserDetails.cshtml" />
-    <Content Include="Views\Payment\Index.cshtml" />
-    <Content Include="Views\Payment\Confirm.cshtml" />
+    <Content Include="Views\Payments\Index.cshtml" />
+    <Content Include="Views\Payments\Confirm.cshtml" />
     <Content Include="Views\Programs\Index.cshtml" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -1108,6 +1111,7 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Views\Payments\Season.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

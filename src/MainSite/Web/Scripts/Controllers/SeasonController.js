@@ -7,8 +7,6 @@
             $scope.targetSeason = data;
             $scope.updateTotalCost();
         });
-
-        $scope.updateTotalCost();
     }
 
     $scope.updateTotalCost = function () {

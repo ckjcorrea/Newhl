@@ -80,7 +80,7 @@ namespace Newhl.MainSite.BusinessLayer.Services
             {
                 if(this.paymentService == null)
                 {
-                    this.paymentService = new PaymentService(this.RepositoryManager.PaymentRepository, this.RepositoryManager.UserRepository);
+                    this.paymentService = new PaymentService(this.RepositoryManager.PlayerSeasonRepository);
                 }
 
                 return this.paymentService;

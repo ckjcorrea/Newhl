@@ -16,6 +16,8 @@ namespace Newhl.MainSite.Common.DomainModel
 
         public IList<Program> Programs { get; set; }
 
+        public IList<Payment> Payments { get; set; }
+
         public void UpdateSeasonPrograms(IList<Program> programsToAdd)
         {
             if(this.Programs==null)
@@ -29,6 +31,18 @@ namespace Newhl.MainSite.Common.DomainModel
             {
                 this.Programs.Add(programsToAdd[i]);
             }
+        }
+
+        public float CalculateAmountDue()
+        {
+            float retVal = 0;
+
+            for (int i = 0; i < this.Programs.Count; i++)
+            {
+                retVal += this.Programs[i].Price;
+            }
+
+            return retVal;
         }
     }
 }
