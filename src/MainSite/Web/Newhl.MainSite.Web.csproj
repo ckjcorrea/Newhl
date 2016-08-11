@@ -125,6 +125,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\AprilShowers\2016-syracuse-blades.jpg" />
+    <Content Include="Content\Images\AprilShowers\AS-Outlaws.jpg" />
+    <Content Include="Content\Images\AprilShowers\Icetrogen.jpg" />
+    <Content Include="Content\Images\AprilShowers\OutlawsZoom.jpg" />
+    <Content Include="Content\Images\AprilShowers\rink-map.jpg" />
     <Content Include="Content\Images\AS-Outlaws.jpg" />
     <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\Content_01Resize.jpg" />
@@ -144,6 +149,8 @@
     <Content Include="Content\Images\content__images\FistBump.jpg" />
     <Content Include="Content\Images\content__images\FlagsK.jpg" />
     <Content Include="Content\Images\content__images\KellySledUp.jpg" />
+    <Content Include="Content\Images\content__images\NorahSkills.jpg" />
+    <Content Include="Content\Images\content__images\Pushups.jpg" />
     <Content Include="Content\Images\content__images\rink-map.jpg" />
     <Content Include="Content\Images\content__images\ShootingDemoUp.jpg" />
     <Content Include="Content\Images\content__images\SledDemoUp.jpg" />
@@ -232,6 +239,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Docs\2016-17-NEWHL-Pricing.docx" />
     <None Include="Properties\PublishProfiles\AMFSite.pubxml" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1022,7 +1030,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\ForgotPassword.cshtml" />
     <Content Include="Views\User\PasswordHint.cshtml" />
-    <Content Include="Views\User\Manage.cshtml" />
+    <Content Include="Views\User\Manage-Copy.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Signin.cshtml" />
     <Content Include="Views\User\Signup.cshtml" />
@@ -1111,6 +1119,10 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Views\Payments\Season.cshtml" />
+    <Content Include="Views\AprilShowers\TeamRegistration.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\User\Manage.cshtml" />
+    <Content Include="Views\Programs\Somerville.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1120,6 +1132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Docs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\DataLayer.NHibernate\Newhl.Common.DataLayer.NHibernate.csproj">
@@ -1154,7 +1167,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56998</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

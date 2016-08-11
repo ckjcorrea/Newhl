@@ -11,6 +11,7 @@
         $(document).ready(function () {
             $("#enterPaymentButton").click(function () {
                 $("#makePaymentForm").submit();
+                alert("Your payment details have been recorded.");
             });
         });
 
@@ -30,11 +31,13 @@
 }
 <section class="main__middle__container" ng-controller="PaymentController">
     <div class="container">
+        <p>&nbsp;</p>
         <div id="ctlx2" class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Manage your payments</h3>
             </div>
             <div class="panel-body">
+                <p><strong>Payments For Season:</strong></p>
                 @if (Model.SelectedSeason != null)
                 {
                     <select id="selectedSeason" name="selectedSeason" onchange="javascript:manuallyFireAngularRefresh();">
@@ -44,12 +47,16 @@
                         }
                     </select>
                     <div>
-                        <div>
-                            Total Cost: {{ seasonPaymentDetails.TotalCost }}
-                            <input type="hidden" id="totalCost" value="{{ seasonPaymentDetails.TotalCost }}"/>
+                        <div><br />
+                            <p><strong>Total Cost:</strong> {{ seasonPaymentDetails.TotalCost }}</p>
+                            <input type="hidden" id="totalCost" value="{{ seasonPaymentDetails.TotalCost }}" />
                         </div>
-                        <div>Amound Paid: {{ amountPaid}}</div>
-                        <div>Amount Due: {{ seasonPaymentDetails.TotalCost - amountPaid}}</div>
+                        <div>
+                            <p><strong>Amound Paid:</strong> {{ amountPaid}}</p>
+                        </div>
+                        <div>
+                            <p><strong>Amount Due:</strong> {{ seasonPaymentDetails.TotalCost - amountPaid}}</p>
+                        </div>
                     </div>
                     <button style="display:none" id="refreshButton" value="Refresh" ng-click="getSeasonPaymentDetails();" >Refresh</button>
                 }
@@ -59,10 +66,11 @@
                         <p id="feedback"></p>
                         <div ng-init="getSeasonPaymentDetails();">
                             <form role="form" id="makePaymentForm" name="regProgramForm" method="post" action="/Payments/Confirm" class="regProgramForm">
-                                <input type="hidden" name="playerSeasonId" value=" {{ seasonPaymentDetails.PlayerSeasonId }}"/>
+                                <input type="hidden" name="playerSeasonId" value="{{ seasonPaymentDetails.PlayerSeasonId }}"/>
     
                                 <br />
                                 <div class="form-group ">
+                                    <p>A minimum of 50% payment must be promised at time of registration, and paid before the first instructional day. The remaining 50% must be paid by January, 6 2017. All single-day registrations must be paid in full. All outstanding balances must be paid in full before registering for another season.</p>
                                     <p><strong>Select your payment portion:</ br></strong></p>
                                     <div class="one_fourth">
                                         <label for="paymentPortion">50 Percent</label>

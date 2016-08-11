@@ -23,22 +23,24 @@
     </script>
 }
 <section class="main__middle__container">
-    <div class="container">
-        <div class="form-group ">
-            <br /><br />
+    <div class="container recent-posts">
+        <div class="form-group ">            
             <div class="row">
-                Payment Amount: @Model.PaymentDetails.Amount
+                <h5>Confirm Payment Details</h5>
+                <hr />
+                <p><strong>Payment Amount:</strong> @Model.PaymentDetails.Amount</p>
+                <p><strong>Payment Method:</strong> @Model.PaymentDetails.PaymentMethod</p>
             </div>
             <div class="row">
-                Payment Method: @Model.PaymentDetails.PaymentMethod
 
                 @switch (Model.PaymentDetails.PaymentMethod)
                 {
                     case PaymentMethods.Check:
-                        <text><br/>Check Number: @Model.PaymentDetails.AdditionalDetails</text>
+                        <text><br />Check Number: @Model.PaymentDetails.AdditionalDetails</text>
                         break;
                     case PaymentMethods.Paypal:
-                            <text><br>
+                        <text><br>
+                            <p>Use the button below to complete payment via PayPal now.</p>
                             <form id="payPalSubmitForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
                                 <input type="hidden" name="cmd" value="_s-xclick">
                                 <input type="hidden" name="hosted_button_id" value="UZGLB2MGXZ538">
@@ -47,48 +49,49 @@
                                 <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                                 <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
                             </form>
-                            </text>
-                            break;
+                            <!-- PAYPAL CODE TO USE FOR LIVE SITE IS AT BOTTOM OF PAGE -->
+                        </text>
+                        break;
                 }
-            </div>
-        </div> <!--end form group-->
-        
+            </div> <!--end row-->
+        </div> <!-- end form group -->
         <div class="dc_clear"></div>
+        <div class="form-group ">
 
-        @if(Model.PaymentDetails.PaymentMethod!=PaymentMethods.Paypal)
-        {
-            <p>Does everything look correct about this payment? Or would you like to cancel this, go back and set your payment up differently?</p>
-            <span>
-                <button type="button" id="redoPaymentButton" class="btn btn-primary">Cancel</button>
-                <button type="button" id="confirmPaymentButton" class="btn btn-primary">Confirm</button>         
-            </span>            
-        }
-        <!-- include complete payment button -->
-        <form id="redoPaymentForm" action="/Payments/CancelPromise" method="POST">
-            <input type="hidden" id="paymentId" name="paymentId" value="@Model.PaymentDetails.Id"/>
-            <input type="hidden" id="playerSeasonId" name="playerSeasonId" value="@Model.PlayerSeason.Id"/>
-        </form>
-        <form id="confirmPaymentForm" action="/Payments/ConfirmPromise" method="POST">
-            <input type="hidden" id="paymentId" name="paymentId" value="@Model.PaymentDetails.Id" />
-            <input type="hidden" id="playerSeasonId" name="playerSeasonId" value="@Model.PlayerSeason.Id" />
-        </form>
+            @if (Model.PaymentDetails.PaymentMethod != PaymentMethods.Paypal)
+            {
+                <p>Does everything look correct about this payment? Or would you like to cancel this, go back and set your payment up differently?<br /> Program registrations can not be changed once payment information has been confirmed.</p>
+                <span>
+                    <button type="button" id="redoPaymentButton" class="btn btn-primary">Cancel</button>
+                    <button type="button" id="confirmPaymentButton" class="btn btn-primary">Confirm</button>
+                </span>
+            }
+            <!-- include complete payment button -->
+            <form id="redoPaymentForm" action="/Payments/CancelPromise" method="POST">
+                <input type="hidden" id="paymentId" name="paymentId" value="@Model.PaymentDetails.Id" />
+                <input type="hidden" id="playerSeasonId" name="playerSeasonId" value="@Model.PlayerSeason.Id" />
+            </form>
+            <form id="confirmPaymentForm" action="/Payments/ConfirmPromise" method="POST">
+                <input type="hidden" id="paymentId" name="paymentId" value="@Model.PaymentDetails.Id" />
+                <input type="hidden" id="playerSeasonId" name="playerSeasonId" value="@Model.PlayerSeason.Id" />
+            </form>
+        </div>
+    </div>
+    <div class="dc_clear"></div>
 </section>
 
-<aside class="col-md-4">
-    <div class="form-group">
-        <!-- DC PayPal Payment Link Start
-        <form id="payPalSubmitForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <p>After entering payment amount, click on the button to make payment via PayPal</p>
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="KERRI@KERRIMACALUSO.COM">
-            <input type="hidden" name="item_name" value="Newhl Registration">
-            <input type="hidden" id="amount" name="amount" >
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="button_subtype" value="products">
-        </form>
-             -->
-        <!-- DC PayPal Payment Link End -->
-    </div>
-</aside>
-    </div>
-</section>
+<!-- PAYPAL CODE TO USE FOR LIVE SITE --
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="Kerri@KerriMacaluso.com">
+    <input type="hidden" name="item_name" value="NEWHL Registration">
+    <input type="hidden" name="amount" value="@Model.PaymentDetails.Amount">
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="button_subtype" value="products">
+    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+</form>
+-->
+
+
+
+

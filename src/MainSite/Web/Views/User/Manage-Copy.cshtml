@@ -8,15 +8,14 @@
         $(document).ready(function () {
             $("#saveButton").click(function () {
                 $("#saveForm").submit();
-                alert("Your information has been updated.");
             });
 
             $("#makePaymentButton").click(function () {
-                window.location.href = "/Payments/Season";
+                document.location.href("/Payments/Season");
             });
 
             $("#addProgramButton").click(function () {
-                window.location.href = "/Programs/Index";
+                document.location.href("/Programs/Index");
             });
 
         });
@@ -24,7 +23,6 @@
 }
 <section class="main__middle__container">
     <div class="container">
-        <p>&nbsp;</p>
         <div id="ctlx2" class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Welcome @this.Context.User.Identity.Name</h3>
@@ -38,18 +36,13 @@
                                 Html.RenderPartial("_UserDetails", Model);
                             }
                             <br />
-                            <button type="button" id="saveButton" class="btn btn-primary">Save My Info</button>
+                            <button type="button" id="saveButton" class="btn btn-primary">Save</button>
                         </form>
                     </div>
                     <div class="col-sm-4">
-                        <p>To register for available programs, click below
-                            <br /><button type="button" id="addProgramButton" class="btn btn-primary">Manage Programs</button>
-                        </p>
-                        <p>
-                            To make payments for your programs, click below<br />
-                            <button type="button" id="makePaymentButton" class="btn btn-primary">Manage Payments</button>                            
-                        </p>
-                        
+                        <button type="button" id="makePaymentButton" class="btn btn-primary">Manage Payments</button>
+                        <br />
+                        <button type="button" id="addProgramButton" class="btn btn-primary">Manage Programs</button>
                     </div>
                 </div>
             </div>
