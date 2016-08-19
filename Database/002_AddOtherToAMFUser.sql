@@ -1,8 +1,8 @@
 USE [NewhlDb]
 GO
 
-ALTER TABLE [dbo].[AMFUsers] ADD Other nvarchar(5) NULL;
-GO
+/*ALTER TABLE [dbo].[AMFUsers] ADD Other nvarchar(5) NULL;
+GO*/
 
 ALTER TABLE [dbo].[AMFUsers] ALTER COLUMN Address2 nvarchar(255) NULL;
 GO

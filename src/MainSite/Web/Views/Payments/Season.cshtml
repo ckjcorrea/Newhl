@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="one_fourth">
                                         <label for="paymentPortion">Other</label>
-                                        <input type="radio" name="paymentPortion" value="@PaymentPortions.Other">
+                                        <input type="radio" checked="checked" name="paymentPortion" value="@PaymentPortions.Other">
                                         <br>
                                         <label for="Other">Payment Amount:</label>
                                         <input required type="text" class="form-control" id="paymentAmount" name="paymentAmount" value="">
@@ -95,7 +95,7 @@
                                 </div> <!--end form group-->
                                 <div class="dc_clear"></div>
                                 <p>
-                                    Enter payment type:
+                                    <strong>Enter payment type:</strong>
                                 </p>
                                 <div class="form-group">
                                     <div class="one_fourth">
@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="one_fourth">
                                         <label for="paymentMethod">Check</label>
-                                        <input type="radio" name="paymentMethod" id="paymentMethod" value="@PaymentMethods.Check">
+                                        <input type="radio" name="paymentMethod" id="paymentMethod" checked="checked" value="@PaymentMethods.Check">
                                         <br>
                                         <label for="check">Check Number:</label>
                                         <input type="number" class="form-control" id="checkNumber" name="checkNumber" value="@ViewBag.CheckNumber">

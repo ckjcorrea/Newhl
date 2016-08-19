@@ -113,6 +113,9 @@ namespace Newhl.MainSite.Web.Controllers
                 if(targetPayment != null)
                 {
                     return this.RedirectToAction("Season");
+
+                    //ADD CODE HERE FOR SENDING EMAIL TO PLAYER AND KERRI ABOUT PAYMENT
+
                 }
                 else
                 {

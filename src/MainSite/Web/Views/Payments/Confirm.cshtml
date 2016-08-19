@@ -12,7 +12,7 @@
             });
 
             $("#confirmPaymentButton").click(function () {
-                alert("Thank you for your payment");
+                alert("Thank you for your payment. Payment and program registration details can be reviewed at any time. You may continue using the NEWHL website or close out if you are done.");
                 $("#confirmPaymentForm").submit();
             });
 
@@ -26,7 +26,7 @@
     <div class="container recent-posts">
         <div class="form-group ">            
             <div class="row">
-                <h5>Confirm Payment Details</h5>
+                <h5><strong>Please review payment details below, then Confirm.</strong></h5>
                 <hr />
                 <p><strong>Payment Amount:</strong> @Model.PaymentDetails.Amount</p>
                 <p><strong>Payment Method:</strong> @Model.PaymentDetails.PaymentMethod</p>
@@ -36,7 +36,7 @@
                 @switch (Model.PaymentDetails.PaymentMethod)
                 {
                     case PaymentMethods.Check:
-                        <text><br />Check Number: @Model.PaymentDetails.AdditionalDetails</text>
+                        <text><br /><strong>Check Number:</strong> @Model.PaymentDetails.AdditionalDetails</text>
                         break;
                     case PaymentMethods.Paypal:
                         <text><br>
@@ -60,7 +60,7 @@
 
             @if (Model.PaymentDetails.PaymentMethod != PaymentMethods.Paypal)
             {
-                <p>Does everything look correct about this payment? Or would you like to cancel this, go back and set your payment up differently?<br /> Program registrations can not be changed once payment information has been confirmed.</p>
+                <p>Does everything look correct about this payment? Or would you like to cancel this, go back and set your payment up differently?<br /> Please Note: Program registrations can not be changed once payment information has been confirmed.</p>
                 <span>
                     <button type="button" id="redoPaymentButton" class="btn btn-primary">Cancel</button>
                     <button type="button" id="confirmPaymentButton" class="btn btn-primary">Confirm</button>
