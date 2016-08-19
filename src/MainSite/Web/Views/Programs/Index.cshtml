@@ -22,12 +22,14 @@
 <div class="bodyContent" ng-controller="SeasonController">
     <section class="main__middle__container">
         <div class="container">
+            <p>&nbsp;</p>
             <div id="ctlx2" class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Manage your programs</h3>
                 </div>
                 <div class="panel-body">
                     <section class="col-md-8 main-content">
+                        <p><strong>Select Session Below:</strong></p>
                         @if (Model.SelectedSeason != null)
                         {
                             <select id="selectedSeason" name="selectedSeason" onchange="javascript:manuallyFireAngularRefresh();">
@@ -38,13 +40,30 @@
                             </select>                        
                             <button style="display:none" id="refreshButton" value="Refresh" ng-click="getSeason();">Refresh</button>
                         }
+                        <p>&nbsp;</p>
                         <div ng-init="getSeason();">
-                            <input type="hidden" id="targetSeasonId" name="targetSeasonId" value="{{ targetSeason.Id }}"/>
-                            <div>Sesson: {{ targetSeason.Name }}</div>
-                            <div>Start Date: {{ targetSeason.StartDate }}</div>
-                            <div>End Date: {{ targetSeason.EndDate }}</div>
-                            <div>Total Cost: {{ totalCost }} <button type="button" id="enterPaymentButton" class="btn btn-primary" onclick="javascript:gotoMakePayment();">Make Payment</button></div>
-                            <div><button type="button" id="saveProgramsButton" class="btn btn-primary" ng-click="savePrograms();">Save</button></p></div>
+                            <section class="col-md-6">
+                                <div class="one_half">
+                                    <input type="hidden" id="targetSeasonId" name="targetSeasonId" value="{{ targetSeason.Id }}" />
+                                    <div><p><strong>Session:</strong> {{ targetSeason.Name }}</p></div>
+                                    <div><p><strong>Start Date:</strong> {{ targetSeason.StartDate }}</p></div>
+                                    <div><p><strong>End Date:</strong> {{ targetSeason.EndDate }}</p></div>
+                                    <div><p><strong>Total Cost:</strong> {{ totalCost }} </p><div>
+                                </div>
+                            </section>
+                            <aside>
+                                <div class="col-md-6">
+                                    <p>
+                                        Make sure to save program registrations after selecting programs below.
+                                        <button type="button" id="saveProgramsButton" class="btn btn-primary" ng-click="savePrograms();">Save Programs</button>
+                                    </p>
+                                    <p><br />
+                                        After programs have been saved, enter payment information.
+                                        <button type="button" id="enterPaymentButton" class="btn btn-primary" onclick="javascript:gotoMakePayment();">Make Payment</button>
+                                        <br />
+                                    </p>
+                                </div>
+                            </aside>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>

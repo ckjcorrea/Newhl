@@ -70,6 +70,14 @@ namespace Newhl.MainSite.Web.Controllers
         /// Returns the CD page.
         /// </summary>
         /// <returns>The MVC View for the CD page of the NEWHL site</returns>
+        public ActionResult Somerville()
+        {
+            return this.View();
+        }
+        /// <summary>
+        /// Returns the CD page.
+        /// </summary>
+        /// <returns>The MVC View for the CD page of the NEWHL site</returns>
         public ActionResult CD()
         {
             return this.View();

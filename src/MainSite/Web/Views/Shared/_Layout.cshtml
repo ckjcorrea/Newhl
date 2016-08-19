@@ -18,6 +18,8 @@
         <!-- Bootstrap -->
         <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <!--        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />-->
+        <!-- Shortcodes -->
+<!--        <link rel="stylesheet" type="text/css" href="~/shortcodes/shortcodes.css" />-->
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="~/Scripts/jquery.min.js" type="text/javascript" ></script>
@@ -48,7 +50,7 @@
                         <ul class="nav navbar-nav">
                             <!--<li class="active"><a href="index.cshtml">About NEWHL</a></li>-->
                             <li class="dropdown">
-                                <a href="/Home/about" class="dropdown-toggle" data-toggle="dropdown" style="color:#fff" >About NEWHL</a>
+                                <a href="/Home/about" class="dropdown-toggle" data-toggle="dropdown" style="color:#fff; cursor:pointer" >About NEWHL</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/Home/about">What is NEWHL?</a></li>
                                     <li><a href="/Home/coaches">Our Coaches</a></li>
@@ -57,10 +59,11 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="/Programs/LTP" class="dropdown-toggle" data-toggle="dropdown" style="color:#fff">Our Programs</a>
+                                <a href="/Programs/LTP" class="dropdown-toggle" data-toggle="dropdown" style="color:#fff; cursor:pointer">Our Programs</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/Programs/LTP">Learn To Play</a></li>
                                     <li><a href="/Programs/Rec">Recreational Level</a></li>
+                                    <li><a href="/Programs/Somerville">Mixed Evenings</a></li>
                                     <li><a href="/Programs/CD">C/D Level</a></li>
                                     <li><a href="/Programs/Games">Weekly Games</a></li>
                                     <li><a href="/Registration/Start">Register Now</a></li>
@@ -68,19 +71,19 @@
                             </li>
             <!--<li><a href="full_width.html">full page</a></li>-->
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#fff">April Showers</a>
+                                <a href="/AprilShowers/TournamentInfo" class="dropdown-toggle" data-toggle="dropdown" style="color:#fff; cursor:pointer">April Showers</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/AprilShowers/TournamentInfo">Tourney Info</a></li>
-                                    <li><a href="/AprilShowers/History">Tourney History</a></li>
-                                    <li><a href="index_with_blog.html">Register a Team</a></li>
-                                    <li><a href="portfolio.html">Register as Player</a></li>
+ <!--                                      <li><a href="/AprilShowers/History">Tourney History</a></li> -->
+                                 <li><a href="/AprilShowers/TeamRegistration">Register a Team</a></li>
+  <!--                                    <li><a href="portfolio.html">Register as Player</a></li> 
                                     <li><a href="typography.html">Accommodations</a></li>
                                     <li><a href="typography.html">Directions To Rinks</a></li>
                                     <li><a href="typography.html">Game Schedule</a></li>
-                                    <li><a href="typography.html">Live Results</a></li>
+                                    <li><a href="typography.html">Live Results</a></li>-->
                                 </ul>
                             </li>
-                            <li><a href="contact.html" style="color:#fff">Contact Us</a></li>
+                            <li><a href="/Home/Contact" style="color:#fff; cursor:pointer">Contact Us</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->

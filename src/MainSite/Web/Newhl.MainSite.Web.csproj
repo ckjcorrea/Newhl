@@ -40,6 +40,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -72,6 +73,10 @@
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -87,6 +92,10 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -125,6 +134,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\AprilShowers\2016-syracuse-blades.jpg" />
+    <Content Include="Content\Images\AprilShowers\AS-Outlaws.jpg" />
+    <Content Include="Content\Images\AprilShowers\Icetrogen.jpg" />
+    <Content Include="Content\Images\AprilShowers\OutlawsZoom.jpg" />
+    <Content Include="Content\Images\AprilShowers\rink-map.jpg" />
     <Content Include="Content\Images\AS-Outlaws.jpg" />
     <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\Content_01Resize.jpg" />
@@ -143,7 +157,12 @@
     <Content Include="Content\Images\content__images\FirstStep.jpg" />
     <Content Include="Content\Images\content__images\FistBump.jpg" />
     <Content Include="Content\Images\content__images\FlagsK.jpg" />
+    <Content Include="Content\Images\content__images\KellySledUp.jpg" />
+    <Content Include="Content\Images\content__images\NorahSkills.jpg" />
+    <Content Include="Content\Images\content__images\Pushups.jpg" />
     <Content Include="Content\Images\content__images\rink-map.jpg" />
+    <Content Include="Content\Images\content__images\ShootingDemoUp.jpg" />
+    <Content Include="Content\Images\content__images\SledDemoUp.jpg" />
     <Content Include="Content\Images\rink-map.jpg" />
     <Content Include="Content\Images\slider\GamePanCropped.jpg" />
     <Content Include="Content\Images\slider\GamePan.jpg" />
@@ -160,7 +179,6 @@
     <Content Include="Content\Images\content__images\WhiteBench.jpg" />
     <Content Include="Content\Images\slider\KellyJenCropped.jpg" />
     <Content Include="Content\Images\slider\KellyJen.jpg" />
-    <Content Include="Content\Images\content__images\KellySled.JPG" />
     <Content Include="Content\Images\content__images\laurie.jpg" />
     <Content Include="Content\Images\content__images\MarciaDee.jpg" />
     <Content Include="Content\Images\content__images\MoSled.JPG" />
@@ -184,8 +202,6 @@
     <Content Include="Content\Images\content__images\puck-hogs2.jpg" />
     <Content Include="Content\Images\content__images\RaceToPuck.jpg" />
     <Content Include="Content\Images\content__images\RaceToPuck2.jpg" />
-    <Content Include="Content\Images\content__images\ShootingDemo.JPG" />
-    <Content Include="Content\Images\content__images\SledDemo.JPG" />
     <Content Include="Content\Images\content__images\Somerville.jpg" />
     <Content Include="Content\Images\content__images\summer-program.png" />
     <Content Include="Content\Images\content__images\TinaSave.jpg" />
@@ -232,6 +248,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Docs\2016-17-NEWHL-Pricing.docx" />
     <None Include="Properties\PublishProfiles\AMFSite.pubxml" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1017,12 +1034,13 @@
     <Content Include="Scripts\UI\Register.js" />
     <Content Include="Scripts\UI\SignIn.js" />
     <Content Include="Scripts\UI\EmbeddedHelpers.js" />
+    <Content Include="Views\Home\favicon.ico" />
     <Content Include="Web.config" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\ForgotPassword.cshtml" />
     <Content Include="Views\User\PasswordHint.cshtml" />
-    <Content Include="Views\User\Manage.cshtml" />
+    <Content Include="Views\User\Manage-Copy.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Signin.cshtml" />
     <Content Include="Views\User\Signup.cshtml" />
@@ -1111,6 +1129,11 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Views\Payments\Season.cshtml" />
+    <Content Include="Views\AprilShowers\TeamRegistration.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\User\Manage.cshtml" />
+    <Content Include="Views\Programs\Somerville.cshtml" />
+    <None Include="Properties\PublishProfiles\NEWHL Site.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1120,6 +1143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Docs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\DataLayer.NHibernate\Newhl.Common.DataLayer.NHibernate.csproj">
@@ -1154,7 +1178,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56998</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

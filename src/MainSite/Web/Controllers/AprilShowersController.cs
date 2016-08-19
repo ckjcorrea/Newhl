@@ -37,5 +37,13 @@ namespace Newhl.MainSite.Web.Controllers
             return this.View();
         }
 
+        /// <summary>
+        /// Returns the About page.
+        /// </summary>
+        /// <returns>The MVC View for the About page of the NEWHL site</returns>
+        public ActionResult TeamRegistration()
+        {
+            return this.View();
+        }
     }
 }
