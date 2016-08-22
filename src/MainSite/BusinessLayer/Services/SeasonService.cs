@@ -80,6 +80,11 @@ namespace Newhl.MainSite.BusinessLayer.Services
                         playerSeason = new PlayerSeason();
                         playerSeason.PlayerId = playerId;
                         playerSeason.SeasonId = seasonId;
+
+                        // This is a hack for now, so that the player season will save first, then add in the programs
+                        // It should all work at the same time, but there is a bug with the NHibernate and REpository code that is bigger than I thought
+                        // So for now just do two saves for the first pass.
+                        playerSeason = this.PlayerSeasonRepository.Save(playerSeason);
                     }
 
                     if (targetSeason.StartDate >= DateTime.Now && (playerSeason.Payments == null || playerSeason.Payments.Count == 0))

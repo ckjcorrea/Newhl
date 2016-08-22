@@ -34,13 +34,21 @@ namespace Newhl.MainSite.Web.Controllers.API
             {
                 retVal.PlayerSeasonId = playerSeason.Id;
                 retVal.TotalCost = playerSeason.CalculateAmountDue();
-                retVal.Payments = playerSeason.Payments;
+                retVal.Payments = new List<DisplaySeasonPayment>();
+
+                if(playerSeason.Payments != null)
+                {
+                    foreach(Payment seasonPayment in playerSeason.Payments)
+                    {
+                        retVal.Payments.Add(new DisplaySeasonPayment(seasonPayment));
+                    }
+                }
             }
             else
             {
                 retVal.PlayerSeasonId = 0;
                 retVal.TotalCost = 0;
-                retVal.Payments = new List<Payment>();
+                retVal.Payments = new List<DisplaySeasonPayment>();
             }
 
             return retVal;

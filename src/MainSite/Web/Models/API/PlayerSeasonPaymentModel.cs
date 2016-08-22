@@ -11,6 +11,6 @@ namespace Newhl.MainSite.Web.Models.API
         public long PlayerSeasonId { get; set; }
         public float TotalCost { get; set; }
 
-        public IList<Payment> Payments { get; set; }
+        public IList<DisplaySeasonPayment> Payments { get; set; }
     }
 }
