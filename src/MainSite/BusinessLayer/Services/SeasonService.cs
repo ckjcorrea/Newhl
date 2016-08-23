@@ -42,26 +42,26 @@ namespace Newhl.MainSite.BusinessLayer.Services
             return this.SeasonRepository.GetById(id);
         }
 
-        public bool UpdateSeasonPrograms(long playerId, long seasonId, IList<long> programsToAdd)
+        public bool UpdateSeasonPrograms(long playerId, long seasonId, IList<long> programsToUpdate)
         {
             bool retVal = false;
 
             // Load up the season by the first
             Season targetSeason = this.SeasonRepository.GetById(seasonId);
-            IList<Program> foundProgramsToAdd = new List<Program>();
+            IList<Program> foundProgramsToUpdate = new List<Program>();
 
             if (targetSeason != null)
             {
                 bool allMatch = true;
 
                 // first make sure all the programs are for the same season
-                for(int i = 0; i < programsToAdd.Count; i++)
+                for(int i = 0; i < programsToUpdate.Count; i++)
                 {
-                    Program foundProgramToAdd = targetSeason.Programs.FirstOrDefault(p => p.Id == programsToAdd[i]);
+                    Program foundProgramToUpdate = targetSeason.Programs.FirstOrDefault(p => p.Id == programsToUpdate[i]);
 
-                    if(foundProgramToAdd != null)
+                    if(foundProgramToUpdate != null)
                     {
-                        foundProgramsToAdd.Add(foundProgramToAdd);
+                        foundProgramsToUpdate.Add(foundProgramToUpdate);
                     }
                     else
                     {
@@ -87,9 +87,13 @@ namespace Newhl.MainSite.BusinessLayer.Services
                         playerSeason = this.PlayerSeasonRepository.Save(playerSeason);
                     }
 
-                    if (targetSeason.StartDate >= DateTime.Now && (playerSeason.Payments == null || playerSeason.Payments.Count == 0))
+
+                    bool isChangeRemovingPrograms = playerSeason.IsChangeRemovingPrograms(foundProgramsToUpdate);
+
+                    if ((isChangeRemovingPrograms == false) ||
+                        (isChangeRemovingPrograms == true && playerSeason.CanRemovePrograms(targetSeason) == true))
                     {
-                        playerSeason.UpdateSeasonPrograms(foundProgramsToAdd);
+                        playerSeason.UpdateSeasonPrograms(targetSeason, foundProgramsToUpdate);
                         playerSeason = this.PlayerSeasonRepository.Save(playerSeason);
 
                         if (playerSeason != null)

@@ -18,18 +18,82 @@ namespace Newhl.MainSite.Common.DomainModel
 
         public IList<Payment> Payments { get; set; }
 
-        public void UpdateSeasonPrograms(IList<Program> programsToAdd)
+        public bool IsChangeRemovingPrograms(IList<Program> programsToUpdate)
+        {
+            bool retVal = false;
+
+            if (this.Programs == null)
+            {
+                this.Programs = new List<Program>();
+            }
+
+            // First find all the programs currently saved in the database, but not in this programsToUpdate list.
+            for (int i = this.Programs.Count - 1; i > -1; i--)
+            {
+                Program currentProgram = this.Programs[i];
+                Program alreadyRegisteredProgram = programsToUpdate.FirstOrDefault(t => t.Id == currentProgram.Id);
+
+                /// We didn't find it, so see if we can remove it and remove it
+                if (alreadyRegisteredProgram == null)
+                {
+                    retVal = true;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        public bool CanRemovePrograms(Season targetSeason)
+        {
+            bool retVal = false;
+
+            if(targetSeason.Id != this.SeasonId)
+            {
+                if (targetSeason.StartDate >= DateTime.Now && (this.Payments == null || this.Payments.Count == 0))
+                {
+                    retVal = true;
+                }
+            }
+
+            return retVal;
+        }
+
+        public void UpdateSeasonPrograms(Season targetSeason, IList<Program> programsToUpdate)
         {
             if(this.Programs==null)
             {
                 this.Programs = new List<Program>();
             }
 
-            this.Programs.Clear();
+            bool isChangeRemovingPrograms = this.IsChangeRemovingPrograms(programsToUpdate);
 
-            for (int i = 0; i < programsToAdd.Count; i++)
+            if ((isChangeRemovingPrograms == false) ||
+                (isChangeRemovingPrograms == true && this.CanRemovePrograms(targetSeason) == true))
             {
-                this.Programs.Add(programsToAdd[i]);
+                // First find all the programs currently saved in the database, but not in this programsToUpdate list.
+                for (int i = this.Programs.Count - 1; i > -1; i--)
+                {
+                    Program currentProgram = this.Programs[i];
+                    Program alreadyRegisteredProgram = programsToUpdate.FirstOrDefault(t => t.Id == currentProgram.Id);
+
+                    /// We didn't find it, so see if we can remove it and remove it
+                    if (alreadyRegisteredProgram == null)
+                    {
+                        this.Programs.RemoveAt(i);
+                    }
+                }
+
+                // Next go through the programsToUpdate list and add in any of those not found in the programs currently saved
+                foreach (Program programToUpdate in programsToUpdate)
+                {
+                    Program alreadyRegisteredProgram = this.Programs.FirstOrDefault(t => t.Id == programToUpdate.Id);
+
+                    if (alreadyRegisteredProgram == null)
+                    {
+                        this.Programs.Add(programToUpdate);
+                    }
+                }
             }
         }
 
