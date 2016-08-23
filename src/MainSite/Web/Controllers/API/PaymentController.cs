@@ -33,7 +33,9 @@ namespace Newhl.MainSite.Web.Controllers.API
             if (playerSeason != null)
             {
                 retVal.PlayerSeasonId = playerSeason.Id;
-                retVal.TotalCost = playerSeason.CalculateAmountDue();
+                retVal.Discount = playerSeason.CalculateDiscount(this.Services.SeasonService.GetById(playerSeason.SeasonId).GetDiscounts());
+                retVal.ProgramsCost = playerSeason.CalculateAmountDue();
+                retVal.TotalCost = retVal.ProgramsCost - retVal.Discount;
                 retVal.Payments = new List<DisplaySeasonPayment>();
 
                 if(playerSeason.Payments != null)

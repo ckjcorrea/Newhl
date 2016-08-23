@@ -108,5 +108,22 @@ namespace Newhl.MainSite.Common.DomainModel
 
             return retVal;
         }
+
+        public float CalculateDiscount(IList<PercentageDiscount> discounts)
+        {
+            float retVal = 0.0f;
+
+            for(int i = 0; i < discounts.Count; i++)
+            {
+                float currentDiscount = discounts[i].CalculateDiscount(this.CalculateAmountDue(), this.Programs);
+
+                if(currentDiscount > retVal)
+                {
+                    retVal = currentDiscount;
+                }
+            }
+
+            return retVal;
+        }
     }
 }

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\WhiteListConfiguration.cs" />
+    <Compile Include="DomainModel\PercentageDiscount.cs" />
     <Compile Include="DomainModel\Payment.cs" />
     <Compile Include="DomainModel\PaymentMethods.cs" />
     <Compile Include="DomainModel\PaymentPortions.cs" />
