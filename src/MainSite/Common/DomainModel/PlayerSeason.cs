@@ -48,7 +48,7 @@ namespace Newhl.MainSite.Common.DomainModel
         {
             bool retVal = false;
 
-            if(targetSeason.Id != this.SeasonId)
+            if(targetSeason.Id == this.SeasonId)
             {
                 if (targetSeason.StartDate >= DateTime.Now && (this.Payments == null || this.Payments.Count == 0))
                 {
