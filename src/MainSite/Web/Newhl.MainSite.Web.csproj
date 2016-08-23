@@ -1076,6 +1076,7 @@
     </Compile>
     <Compile Include="Models\API\DisplayProgramModel.cs" />
     <Compile Include="Models\API\DisplaySeasonModel.cs" />
+    <Compile Include="Models\API\DisplaySeasonPayment.cs" />
     <Compile Include="Models\API\PlayerSeasonPaymentModel.cs" />
     <Compile Include="Models\API\UsetDetailModel.cs" />
     <Compile Include="Models\ConfirmPaymentModel.cs" />
