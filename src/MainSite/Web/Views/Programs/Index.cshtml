@@ -48,7 +48,9 @@
                                     <div><p><strong>Session:</strong> {{ targetSeason.Name }}</p></div>
                                     <div><p><strong>Start Date:</strong> {{ targetSeason.StartDate }}</p></div>
                                     <div><p><strong>End Date:</strong> {{ targetSeason.EndDate }}</p></div>
-                                    <div><p><strong>Total Cost:</strong> {{ totalCost }} </p><div>
+                                    <div><p><strong>Programs Cost:</strong> {{ totalCost }} </p><div>
+                                    <div><p><strong>Discount:</strong> {{ targetSeason.DiscountAmount }} </p><div>
+                                    <div><p><strong>Total Cost:</strong> {{ totalCost - targetSeason.DiscountAmount }} </p><div>
                                 </div>
                             </section>
                             <aside>

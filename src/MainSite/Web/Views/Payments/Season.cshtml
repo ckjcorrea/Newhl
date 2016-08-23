@@ -46,8 +46,15 @@
                             <option id="@season.Id" name="@season.Id" value="@season.Id" @if (season.Id == Model.SelectedSeason.Id) { <text> selected </text>  }>@Model.PlayerSeasonDetails[season.Id].Name</option>
                         }
                     </select>
+                    <br/><br/>
                     <div>
-                        <div><br />
+                        <div>
+                            <p><strong>Program Cost:</strong> {{ seasonPaymentDetails.ProgramsCost }}</p>
+                        </div>
+                        <div>
+                            <p><strong>Discount:</strong> {{ seasonPaymentDetails.Discount }}</p>
+                        </div>
+                        <div>
                             <p><strong>Total Cost:</strong> {{ seasonPaymentDetails.TotalCost }}</p>
                             <input type="hidden" id="totalCost" value="{{ seasonPaymentDetails.TotalCost }}" />
                         </div>

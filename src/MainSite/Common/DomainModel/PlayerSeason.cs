@@ -48,7 +48,7 @@ namespace Newhl.MainSite.Common.DomainModel
         {
             bool retVal = false;
 
-            if(targetSeason.Id != this.SeasonId)
+            if(targetSeason.Id == this.SeasonId)
             {
                 if (targetSeason.StartDate >= DateTime.Now && (this.Payments == null || this.Payments.Count == 0))
                 {
@@ -104,6 +104,23 @@ namespace Newhl.MainSite.Common.DomainModel
             for (int i = 0; i < this.Programs.Count; i++)
             {
                 retVal += this.Programs[i].Price;
+            }
+
+            return retVal;
+        }
+
+        public float CalculateDiscount(IList<PercentageDiscount> discounts)
+        {
+            float retVal = 0.0f;
+
+            for(int i = 0; i < discounts.Count; i++)
+            {
+                float currentDiscount = discounts[i].CalculateDiscount(this.CalculateAmountDue(), this.Programs);
+
+                if(currentDiscount > retVal)
+                {
+                    retVal = currentDiscount;
+                }
             }
 
             return retVal;
