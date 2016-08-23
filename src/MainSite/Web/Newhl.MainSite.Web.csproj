@@ -163,6 +163,7 @@
     <Content Include="Content\Images\content__images\rink-map.jpg" />
     <Content Include="Content\Images\content__images\ShootingDemoUp.jpg" />
     <Content Include="Content\Images\content__images\SledDemoUp.jpg" />
+    <Content Include="Content\Images\NEWHL-logo.png" />
     <Content Include="Content\Images\rink-map.jpg" />
     <Content Include="Content\Images\slider\GamePanCropped.jpg" />
     <Content Include="Content\Images\slider\GamePan.jpg" />

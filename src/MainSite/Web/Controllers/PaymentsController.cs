@@ -9,6 +9,7 @@ using Newhl.Common.DomainModel;
 using Newhl.Common.Security;
 using Newhl.Common.Utilities;
 using Newhl.MainSite.Common.DomainModel;
+using Newhl.MainSite.BusinessLayer.Services;
 using Newhl.MainSite.Web.Models;
 using Newhl.MainSite.Web.Code.Filters;
 
@@ -112,9 +113,15 @@ namespace Newhl.MainSite.Web.Controllers
 
                 if(targetPayment != null)
                 {
-                    return this.RedirectToAction("Season");
-
                     //ADD CODE HERE FOR SENDING EMAIL TO PLAYER AND KERRI ABOUT PAYMENT
+                    EmailService sendPlayerEmail = new EmailService();
+                    EmailConfiguration emailConfig = new EmailConfiguration();              
+                    AMFUserLogin playerDemoInfo = this.ServiceManager.UserService.GetByEmail(this.CurrentPrincipal.User.Email);
+                    PlayerSeason playerSeasonInfo = this.ServiceManager.SeasonService.GetPlayerSeasonById(playerSeasonId);
+                                           
+                    sendPlayerEmail.SendThankYouForPaymentEmail(this.CurrentPrincipal.User.Email, emailConfig, playerDemoInfo, playerSeasonInfo);
+
+                    return this.RedirectToAction("Season");
 
                 }
                 else

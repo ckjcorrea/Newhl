@@ -10,8 +10,28 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#enterPaymentButton").click(function () {
-                $("#makePaymentForm").submit();
-                alert("Your payment details have been recorded.");
+                var f = $("#makePaymentForm");
+                if (f[0].checkValidity()) {
+
+                    var radioValue = $("#paymentMethod:checked").val();
+
+                    if (radioValue == 'Check') {
+                        if (!$("#checkNumber").val()) {
+                            alert('Check Number is blank.');
+                        }
+                        else {
+                            $("#makePaymentForm").submit();
+                        }
+                    }
+                    else {
+                        $("#makePaymentForm").submit();
+                    }
+
+                } else {
+                    if (!$("#paymentAmount").val()) {
+                        alert('Payment Amount is blank.');
+                    }
+                }
             });
         });
 
@@ -84,10 +104,10 @@
                                     </div>
                                     <div class="one_fourth">
                                         <label for="paymentPortion">Other</label>
-                                        <input type="radio" checked="checked" name="paymentPortion" value="@PaymentPortions.Other">
+                                        <input type="radio" name="paymentPortion" checked="checked" value="@PaymentPortions.Other">
                                         <br>
                                         <label for="Other">Payment Amount:</label>
-                                        <input required type="text" class="form-control" id="paymentAmount" name="paymentAmount" value="">
+                                        <input type="text" class="form-control" id="paymentAmount" name="paymentAmount" value="" required>
                                     </div>
                                     <div class="one_fourth">
 
