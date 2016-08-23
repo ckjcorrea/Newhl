@@ -36,6 +36,11 @@
         $http.put('/api/Season/' + $scope.targetSeason.Id + "/Programs/Update", $scope.targetSeason)
             .success(function (data) {
                 $scope.getSeason();
+                alert('Your selections have been saved');
+            })
+            .error(function (data) {
+                $scope.getSeason();
+                alert('There was a problem saving your selections.');
             });
     }
 });

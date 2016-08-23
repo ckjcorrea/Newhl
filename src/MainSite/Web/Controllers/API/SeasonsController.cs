@@ -59,7 +59,7 @@ namespace Newhl.MainSite.Web.Controllers.API
 
         [Route("api/Season/{id}/Programs/Update"), HttpPut()]
         [WebApiAuthorization]
-        public void UpdatePrograms(long id, [FromBody] DisplaySeasonModel input)
+        public HttpResponseMessage UpdatePrograms(long id, [FromBody] DisplaySeasonModel input)
         {
             IList<Season> activeSeasons = this.Services.SeasonService.GetAll(true);
 
@@ -76,7 +76,14 @@ namespace Newhl.MainSite.Web.Controllers.API
                 }
             }
 
-            this.Services.SeasonService.UpdateSeasonPrograms(this.CurrentPrincipal.User.Id, id, programsToAdd);            
+            if(this.Services.SeasonService.UpdateSeasonPrograms(this.CurrentPrincipal.User.Id, id, programsToAdd))
+            {
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }
