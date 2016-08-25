@@ -252,6 +252,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Docs\2016-17-NEWHL-Pricing.docx" />
+    <Content Include="Content\Docs\2016-2017-NEWHL-Final-Pricing.pdf" />
     <None Include="Properties\PublishProfiles\AMFSite.pubxml" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1147,7 +1148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Docs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\DataLayer.NHibernate\Newhl.Common.DataLayer.NHibernate.csproj">
