@@ -13,6 +13,7 @@ namespace Newhl.MainSite.BusinessLayer.Services
     {
         void SendThankYouForRegisteringEmail(string emailAddress, EmailConfiguration emailConfig);
         void SendThankYouForRegisteringEmail(string emailAddress, EmailConfiguration emailConfig, EmailManager emailManager);
+        void SendThankYouForPaymentEmail(string emailAddress, EmailConfiguration emailConfig, AMFUserLogin playerInfo, PlayerSeason playerSeasonInfo);
 
         void SendAdminNotificationEmail(string emailAddress, EmailConfiguration emailConfig, AMFUserLogin playerInfo);
         void SendAdminNotificationEmail(string emailAddress, EmailConfiguration emailConfig, EmailManager emailManager, AMFUserLogin playerInfo);

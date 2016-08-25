@@ -3,32 +3,32 @@
 <div class="form-group ">
     <!-- If there is an existing registration for this email address, then show button to go to update page?-->
     <label for="first-name">First Name: *</label>
-    <input required type="text" class="form-control" id="firstname" name="firstname" value="@Model.FirstName">
+    <input required type="text" class="form-control" id="firstname" name="firstname" maxlength="30" value="@Model.FirstName">
 </div>
 <div class="form-group ">
     <label for="last-name">Last Name: *</label>
-    <input required type="text" class="form-control" id="lastname" name="lastname" value="@Model.LastName">
+    <input required type="text" class="form-control" id="lastname" name="lastname" maxlength="50" value="@Model.LastName">
 </div>
 <div class="form-group">
     <label for="email1">Email: *</label>
-    <input required type="email" class="form-control" id="email" name="email" value="@Model.Email">
+    <input required type="email" class="form-control" id="email" name="email" maxlength="255" value="@Model.Email">
 </div>
 <div class="form-group">
     <label for="email2">Confirm Email: *</label>
-    <input required type="email" class="form-control" id="emailConfirm" name="emailConfirm" value="">
+    <input required type="email" class="form-control" id="emailConfirm" maxlength="255" name="emailConfirm" value="">
 </div>
 <div class="form-group">
     <label for="email2">Password: *</label>
-    <input type="password" class="form-control" id="password" name="password" value="">
+    <input type="password" class="form-control" id="password" maxlength="50" name="password" value="">
 </div>
 <div class="form-group">
     <label for="email2">Re-type Password: *</label>
-    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" value="">
+    <input type="password" class="form-control" id="passwordConfirm" maxlength="50" name="passwordConfirm" value="">
 </div>
 <div class="form-group">
     <p>If you do not have a USA Hockey confirmation number for the season which you are registering, <br />please visit the <a href="https://usahockeyregistration.com/login_input.action" target="_blank">USA Hockey website</a> to obtain the number to enter in the next field.<br /></p>
     <label for="usaReg">USA Hockey Registration#: *</label>
-    <input required type="text" class="form-control" id="usaHockeyNum" name="usaHockeyNum" value="@Model.USAHockeyNum">
+    <input required type="text" class="form-control" id="usaHockeyNum" maxlength="30" name="usaHockeyNum" value="@Model.USAHockeyNum">
 </div>
 <div class="form-group">
     <label for="dateOfBirth">Date of Birth: *</label>
@@ -36,15 +36,15 @@
 </div>
 <div class="form-group">
     <label for="address">Address: *</label>
-    <input required type="text" class="form-control" id="address1" name="address1" value="@Model.Address1">
+    <input required type="text" class="form-control" id="address1" maxlength="255" name="address1" value="@Model.Address1">
 </div>
 <div class="form-group col-md-6">
     <label for="city">City: *</label>
-    <input required type="text" class="form-control" id="city" name="city" value="@Model.City">
+    <input required type="text" class="form-control" id="city" maxlength="50" name="city" value="@Model.City">
 </div>
 <div class="form-group col-md-6">
     <label for="address">State: *</label>
-    <select class="form-control" id="state" name="state" >
+    <select class="form-control" id="state" maxlength="15" name="state" >
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>
@@ -101,7 +101,7 @@
 </div>
 <div class="form-group col-md-6">
     <label for="address">Zip: *</label>
-    <input required type="text" class="form-control" id="zipCode" name="zipCode" style="max-width:50%" value="@Model.ZipCode">
+    <input required type="text" class="form-control" id="zipCode" maxlength="10" name="zipCode" style="max-width:50%" value="@Model.ZipCode">
 </div>
 <div class="form-group col-md-6">
     &nbsp;
@@ -109,19 +109,19 @@
 <div class="dc_clear"></div>
 <div class="form-group">
     <label for="phone1">Primary Phone: *</label>
-    <input required type="text" class="form-control" id="phone1" name="phone1" value="@Model.Phone1">
+    <input required type="text" class="form-control" id="phone1" maxlength="12" name="phone1" value="@Model.Phone1">
 </div>
 <div class="form-group">
     <label for="phone2">Secondary Phone: </label>
-    <input type="text" class="form-control" id="phone2" name="phone2" value="@Model.Phone2">
+    <input type="text" class="form-control" id="phone2" maxlength="12" name="phone2" value="@Model.Phone2">
 </div>
 <div class="form-group">
     <label for="contact1">Emergency Contact 1: (name and phone number) *</label>
-    <input required type="text" class="form-control" id="emergency1" name="emergency1" value="@Model.Emergency1">
+    <input required type="text" class="form-control" id="emergency1" maxlength="255" name="emergency1" value="@Model.Emergency1">
 </div>
 <div class="form-group">
     <label for="contact2">Emergency Contact 2: (name and phone number)*</label>
-    <input required type="text" class="form-control" id="emergency2" name="emergency2" value="@Model.Emergency2">
+    <input required type="text" class="form-control" id="emergency2" maxlength="255" name="emergency2" value="@Model.Emergency2">
 </div>
 <div class="form-group ">
     <label for="contact1">Years of Experience: *</label>
