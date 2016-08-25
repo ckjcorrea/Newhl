@@ -28,13 +28,13 @@ namespace Newhl.MainSite.BusinessLayer.Services
 
         public void SendThankYouForPaymentEmail(string emailAddress, EmailConfiguration emailConfig, AMFUserLogin playerInfo, PlayerSeason playerSeasonInfo)
         {
-            if (!emailConfig.IsDebugMode)
-            {
+            //if (!emailConfig.IsDebugMode)
+            //{
                 EmailManager emailManager = new EmailManager(EmailConfiguration.GetInstance());
                 String emailBody = "Thank you for submitting your registration for a NEWHL Program. ";
                 emailBody = GenerateEmailDetails(playerInfo, playerSeasonInfo);
                 emailManager.SendEmail(emailConfig.FromAddress, emailAddress, "Payment Details for NEWHL Registration", emailBody);
-            }
+            //}
         }
 
         public void SendAdminNotificationEmail(string emailAddress, EmailConfiguration emailConfig, AMFUserLogin playerInfo)
@@ -66,16 +66,16 @@ namespace Newhl.MainSite.BusinessLayer.Services
                 retVal = retVal + playerSeasonInfo.Programs[i].Name + "  ";
             }
 
-            retVal = retVal + "/n" + "/n" + "Payment Details listed below: " + "/n" ;
-            for (int x = 0; x < playerSeasonInfo.Payments.Count; x++)
+            retVal = retVal + "\n" + "\n" + "Payment Details listed below: " + "\n" ;
+            for (int x = 0; x < playerSeasonInfo.Payments.Count/2; x++)
             {
                 retVal = retVal + "Payment Method: " + playerSeasonInfo.Payments[x].PaymentMethod + ", ";
-                if (playerSeasonInfo.Payments[x].PaymentMethod.Equals("Check"))
+                if (playerSeasonInfo.Payments[x].PaymentMethod.Equals(Newhl.MainSite.Common.DomainModel.PaymentMethods.Check))
                 {
                     retVal = retVal + "Check Number: " + playerSeasonInfo.Payments[x].AdditionalDetails + ", ";
                 }
                 retVal = retVal + "Payment Amount: " + playerSeasonInfo.Payments[x].Amount + ", ";
-                retVal = retVal + "Payment Promised On: " + playerSeasonInfo.Payments[x].DateSubmitted + " ";
+                retVal = retVal + "Payment Promised On: " + playerSeasonInfo.Payments[x].DateSubmitted + " " + "\n";
             }
             return retVal;
         }

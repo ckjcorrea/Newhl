@@ -120,6 +120,7 @@ namespace Newhl.MainSite.Web.Controllers
                     PlayerSeason playerSeasonInfo = this.ServiceManager.SeasonService.GetPlayerSeasonById(playerSeasonId);
                                            
                     sendPlayerEmail.SendThankYouForPaymentEmail(this.CurrentPrincipal.User.Email, emailConfig, playerDemoInfo, playerSeasonInfo);
+                    sendPlayerEmail.SendThankYouForPaymentEmail("NEWHLeague@gmail.com", emailConfig, playerDemoInfo, playerSeasonInfo);
 
                     return this.RedirectToAction("Season");
 
