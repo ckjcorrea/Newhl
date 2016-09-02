@@ -1,0 +1,90 @@
+customer# 93905481
+callin # 1007
+
+
+TITLE: Connect to Server
+------------------------------
+
+Cannot connect to Christine-HP\CHRISTINESQLDB.
+
+------------------------------
+ADDITIONAL INFORMATION:
+
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified) (Microsoft SQL Server, Error: -1)
+
+
+For help, click: http://go.microsoft.com/fwlink?ProdName=Microsoft+SQL+Server&EvtSrc=MSSQLServer&EvtID=-1&LinkId=20476
+
+------------------------------
+BUTTONS:
+
+OK
+------------------------------
+
+
+
+INSERT INTO Seasons (Name, StartDate, EndDate, DateCreated, IsActive)
+VALUES ('Nashoba 2016-17','09/13/2016','04/06/2017','08/17/2016', 1);
+
+INSERT INTO Programs (Name, StartTime, Price, IsActive, SeasonId, Location, DateCreated, DayOfWeek)
+VALUES ('Games','9:30AM','390.00', 1, 1, 'Somerville', '08/17/2016', 5);
+
+
+
+select AMFUsers.Id, AMFUsers.FirstName, AMFUsers.LastName, AMFUsers.Email, AMFUsers.USAHockeyNum,
+Programs.Progam 
+from dbo.AMFUsers 
+inner join dbo.PlayerSeasons on AMFUsers.Id = PlayerSeasons.PlayerId 
+inner join dbo.PlayerSeasonPrograms on dbo.PlayerSeasons.SeasonId = dbo.PlayerSeasonPrograms.PlayerSeasonId
+inner join dbo.Programs on dbo.Programs.Id = dbo.PlayerSeasonPrograms.ProgramId
+where PlayerSeasons.SeasonID = 1 and Programs.Id = 2
+
+----------
+-- queries to set user as inactive and check status--
+UPDATE AMFUsers SET UserStatus=1 WHERE Id = 26
+
+select id, firstname, lastname, userstatus from AMFUsers
+
+--query to find Player in database --
+SELECT *
+  FROM [NEWHLDB].[dbo].[AMFUsers]
+  where firstname like '%sally%'
+  --where id=1
+ order by datecreated desc
+ 
+--Get season by Player --
+ select * from dbo.PlayerSeasons where PlayerId=85  --SeasonID 69/2, 70/3 --SeasonID 85 luisa
+ 
+--get registered programs by player --
+ select dbo.PlayerSeasonPrograms.id as PSPId, dbo.PlayerSeasonPrograms.PlayerSeasonId, dbo.PlayerSeasonPrograms.ProgramId, 
+ dbo.PlayerSeasons.Id as PSId, dbo.PlayerSeasons.SeasonId, dbo.PlayerSeasons.PlayerId,
+ dbo.AMFUsers.Id as AMFId, dbo.AMFUsers.FirstName, dbo.AMFUsers.LastName, dbo.AMFUsers.Email
+ from dbo.PlayerSeasonPrograms
+ inner join dbo.PlayerSeasons on dbo.PlayerSeasonPrograms.PlayerSeasonId = dbo.PlayerSeasons.id
+ inner join dbo.AMFUsers on AMFUsers.Id = dbo.PlayerSeasons.PlayerId
+ where dbo.AMFUsers.UserStatus=0 and 
+ dbo.PlayerSeasonPrograms.ProgramId = 2
+
+
+select * from playerseasons where id = 75
+select * from playerseasonprograms where playerseasonid = 75 --kerri id=16, PSid=11, programId=3,6
+															 --christine id=25, PSid=23, programId=3,4,6
+--Get Player Payments by season --
+select * from dbo.payments where PlayerSeasonId = 75
+select * from dbo.payments where paymentmethod = 1 and amount = 1966.50
+
+
+----------
+
+--check on 
+id=15 Nancy Silverman - registered for Friday Only
+id=16 Kerri Macaluso - Wed/Fri (Paid $830 ?)
+id=17 Wendy Spears (44)
+if=54 Lori Vonachen - all set
+id=61 Christine Ray - Wed, paid 435
+id=71 Sue Brown - Tues/Friday PayPal
+id=80 Holly Talanian - Somerville 2016/Somerville 2017, paid 475
+id=81 Holly Talanian - made inactive
+Sally Whelan
+Deborah Schnair
+

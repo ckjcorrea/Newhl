@@ -116,3 +116,4 @@ ALTER Table [dbo].[AMFUsers] DROP Column Somerville
 GO
 ALTER Table [dbo].[AMFUsers] DROP Column Games
 GO
+

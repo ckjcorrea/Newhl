@@ -84,10 +84,12 @@
                                         <td>{{ program.StartDate }}</td>
                                         <td>{{ program.StartTime }}</td>
                                         <td>{{ program.Location }}</td>
-                                        <td><input name="selected" type=checkbox value="{{program.Id}}" ng-click="onSelectProgram(program)" ng-checked="{{program.IsSelected}}" /></td>
+                                        <td><input name="selected" type=checkbox value="{{program.Id}}" ng-disabled="{{!program.IsActive}}" ng-click="onSelectProgram(program)" ng-checked="{{program.IsSelected}}" /></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <p><strong>Registration for Wednesday C-D Skills and Friday Games is now closed because the programs are full.</strong><br />
+                             You may select the available programs after they load.</p>
                         </div>
                     </section>
                 </div>

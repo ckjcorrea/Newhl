@@ -1,0 +1,38 @@
+-- queries to set user as inactive and check status--
+UPDATE AMFUsers SET UserStatus=1 WHERE Id = 26
+
+select id, firstname, lastname, userstatus from AMFUsers
+
+--query to find Player in database --
+SELECT *
+  FROM [NEWHLDB].[dbo].[AMFUsers]
+  where lastname like '%whelan%'
+  --where id=44
+ order by datecreated desc
+ 
+--Get season by Player --
+ select * from dbo.PlayerSeasons where PlayerId=15  --SeasonID 69/2, 70/3 --SeasonID 85 luisa
+ 
+--get registered programs by player --
+ select * from dbo.PlayerSeasonPrograms
+ where dbo.PlayerSeasonPrograms.PlayerSeasonId =37
+--where dbo.PlayerSeasonPrograms.ProgramId = 6
+
+
+--Get Player Payments by season --
+select * from dbo.payments where PlayerSeasonId = 10
+
+
+--insert statement for player seasons and programs--
+insert into dbo.PlayerSeasons (SeasonId, PlayerId) values (2, 89)
+insert into dbo.PlayerSeasonPrograms (PlayerSeasonId, ProgramId)
+values (85, 5)
+
+--get list of players (name, email) and all programs they have registered for--
+ select dbo.PlayerSeasonPrograms.id as PSPId, dbo.PlayerSeasonPrograms.PlayerSeasonId, dbo.PlayerSeasonPrograms.ProgramId, 
+ dbo.PlayerSeasons.Id as PSId, dbo.PlayerSeasons.SeasonId, dbo.PlayerSeasons.PlayerId,
+ dbo.AMFUsers.Id as AMFId, dbo.AMFUsers.FirstName, dbo.AMFUsers.LastName, dbo.AMFUsers.Email
+ from dbo.PlayerSeasonPrograms
+ inner join dbo.PlayerSeasons on dbo.PlayerSeasonPrograms.PlayerSeasonId = dbo.PlayerSeasons.id
+ inner join dbo.AMFUsers on AMFUsers.Id = dbo.PlayerSeasons.PlayerId
+ where dbo.AMFUsers.UserStatus=0

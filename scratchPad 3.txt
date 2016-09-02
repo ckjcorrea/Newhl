@@ -1,0 +1,33 @@
+select AMFUsers.Id, AMFUsers.FirstName, AMFUsers.LastName, AMFUsers.Email, AMFUsers.USAHockeyNum,
+Programs.Progam 
+from dbo.AMFUsers 
+inner join dbo.PlayerSeasons on AMFUsers.Id = PlayerSeasons.PlayerId 
+inner join dbo.PlayerSeasonPrograms on dbo.PlayerSeasons.SeasonId = dbo.PlayerSeasonPrograms.PlayerSeasonId
+inner join dbo.Programs on dbo.Programs.Id = dbo.PlayerSeasonPrograms.ProgramId
+where PlayerSeasons.SeasonID = 1 and Programs.Id = 2
+
+
+
+Id	Name	StartTime	Price	IsActive	SeasonId	Location	DateCreated	DayOfWeek
+1	Learn To Play	9:30AM	350.0000	1	1	Nashoba	2016-08-17 00:00:00.000	1
+2	Rec Skills	9:30AM	840.0000	1	1	Nashoba	2016-08-17 00:00:00.000	2
+3	C-D Skills	9:30AM	870.0000	1	1	Nashoba	2016-08-17 00:00:00.000	3
+4	Stickhandling-Shooting	9:30AM	810.0000	1	1	Nashoba	2016-08-17 00:00:00.000	4
+5	Mixed Skills	8:00PM	475.0000	1	2	Somerville	2016-08-17 00:00:00.000	2
+6	Games	9:30AM	390.0000	1	1	Nashoba	2016-08-17 00:00:00.000	5
+
+
+select AMFUsers.Id, AMFUsers.FirstName, AMFUsers.LastName, AMFUsers.Email, AMFUsers.USAHockeyNum, AMFUsers.UserStatus,
+PlayerSeasons.Id, PlayerSeasons.SeasonId 
+--PlayerSeasonPrograms.PlayerSeasonId,
+--PlayerSeasonPrograms.ProgramId  
+from dbo.AMFUsers 
+inner join dbo.PlayerSeasons on AMFUsers.Id = PlayerSeasons.PlayerId 
+--inner join dbo.PlayerSeasonPrograms on dbo.PlayerSeasons.SeasonId = dbo.PlayerSeasonPrograms.PlayerSeasonId
+--inner join dbo.Programs on dbo.Programs.Id = dbo.PlayerSeasonPrograms.ProgramId
+order by AMFUsers.DateCreated
+--where PlayerSeasonPrograms.ProgramId = 2
+
+select * from dbo.PlayerSeasonPrograms
+join dbo.PlayerSeasons on dbo.PlayerSeasonPrograms.PlayerSeasonId = dbo.PlayerSeasons.SeasonId
+--where PlayerSeasonPrograms.ProgramId = 2

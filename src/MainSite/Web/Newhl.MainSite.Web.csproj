@@ -253,6 +253,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Docs\2016-17-NEWHL-Pricing.docx" />
     <Content Include="Content\Docs\2016-2017-NEWHL-Final-Pricing.pdf" />
+    <Content Include="Content\Docs\LiabilityForm2016-2017.pdf" />
     <None Include="Properties\PublishProfiles\AMFSite.pubxml" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
